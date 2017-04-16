@@ -23,6 +23,10 @@ namespace Transformer
 
         private void setScintillaStyle(Scintilla scintilla)
         {
+            // Set line wrap
+            if (Properties.Settings.Default.wrap) scintilla.WrapMode = WrapMode.Word;
+            else scintilla.WrapMode = WrapMode.None;
+            
             // Set the XML Lexer
             scintilla.Lexer = Lexer.Xml;
 
@@ -121,6 +125,8 @@ namespace Transformer
 
         private void callTransform()
         {
+            scintilla3.ReadOnly = false; // Remove read-only status from output so we can write to it
+
             TextReader source = new StringReader(scintilla2.Text);
             TextReader xsl = new StringReader(scintilla1.Text);
             Console.Write(source.ToString(), xsl.ToString());
@@ -128,10 +134,13 @@ namespace Transformer
           
                 MemoryStream stream = new MemoryStream();
                 StreamWriter writer =  xformer.createWriter(stream); // writer will write to the stream
+
             if (xformer.Transform(XmlReader.Create(source), XmlReader.Create(xsl), writer))
             {
                 // print output to tabpage
+                System.Diagnostics.Debug.Write(stream.Length);
                 printOutput(stream, scintilla3);
+                scintilla3.ReadOnly = true; // Set output back to read-only
 
                 //show msgbox
                 //MessageBox.Show("Success!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);

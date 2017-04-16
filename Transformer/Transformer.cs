@@ -16,9 +16,10 @@ namespace Transformer
         public bool Transform(XmlReader source, XmlReader xsl, StreamWriter writer)
         {
             XslCompiledTransform transformer = new XslCompiledTransform();
-            transformer.Load(xsl);
+
             try
             {
+                transformer.Load(xsl);
                 transformer.Transform(source, new XsltArgumentList(), writer);
 
             }
@@ -33,6 +34,11 @@ namespace Transformer
             {
                 MessageBox.Show("I don't want badly formed XML, for now", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "XSL Load Exception", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
             }
 
             //close writer and reader

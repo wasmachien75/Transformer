@@ -129,7 +129,6 @@
             this.scintilla3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scintilla3.Location = new System.Drawing.Point(3, 3);
             this.scintilla3.Name = "scintilla3";
-            this.scintilla3.ReadOnly = true;
             this.scintilla3.ScrollWidth = 1354;
             this.scintilla3.Size = new System.Drawing.Size(821, 468);
             this.scintilla3.TabIndex = 1;
@@ -204,7 +203,7 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.optionsToolStripMenuItem.Text = "Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
