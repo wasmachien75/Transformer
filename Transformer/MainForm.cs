@@ -14,9 +14,9 @@ using ScintillaNET;
 
 namespace Transformer
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -165,7 +165,7 @@ namespace Transformer
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form2 about = new Form2();
+            AboutForm about = new AboutForm();
             about.Show();
         }
 
