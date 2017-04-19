@@ -12,9 +12,18 @@ namespace Transformer
 {
     public partial class Options : Form
     {
-        public Options()
+        private MainForm form;
+
+        public Options(MainForm form)
         {
             InitializeComponent();
+            this.form = form;
+            
+        }
+
+        private void EvaluateOptions()
+        {
+            Properties.Settings.Default.wrap = checkBoxTextWrap.Checked;
         }
 
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
@@ -25,7 +34,11 @@ namespace Transformer
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
-            //EvaluateOptions();
+            EvaluateOptions();
+            form.Refresh();
+            form.setScintillaStyle(form.scintillaSource);
+            MainForm.options = null;
+
         }
     }
 }

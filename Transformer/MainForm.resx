@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="scintilla2.Text" xml:space="preserve">
+  <data name="scintillaSource.Text" xml:space="preserve">
     <value>&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;continuitydays&gt;
   &lt;ES_CONTINUITYDAY&gt;
@@ -826,7 +826,7 @@
   &lt;/ES_CONTINUITYDAY&gt;
 &lt;/continuitydays&gt;</value>
   </data>
-  <data name="scintilla1.Text" xml:space="preserve">
+  <data name="scintillaXSL.Text" xml:space="preserve">
     <value>&lt;?xml version="1.0"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"&gt;
 &lt;xsl:output method="xml" encoding="utf-8"/&gt;

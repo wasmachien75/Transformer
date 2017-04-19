@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Xsl;
+using System.Data;
 
 namespace Transformer
 {
     public class Transformer
     {
 
-        public bool Transform(XmlReader source, XmlReader xsl, StreamWriter writer)
+        public bool Transform(XmlReader source, XmlReader xsl, StreamWriter writer, MainForm form)
         {
             XslCompiledTransform transformer = new XslCompiledTransform();
 
@@ -23,26 +24,15 @@ namespace Transformer
                 transformer.Transform(source, new XsltArgumentList(), writer);
 
             }
-            catch (IOException)
-            {
 
-                MessageBox.Show("I/O Exception :-(", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (XsltException)
+            {
+                form.toolStripStatusLabel1.Text = "☹️ XSLT Compile Exception. Check your stylesheet for mistakes.";
                 return false;
-            }
-
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("I don't want badly formed XML, for now", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString(), "XSL Load Exception", MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Error);
             }
 
             //close writer and reader
-      
+            form.toolStripStatusLabel1.Text = "😃 Transformation succeeded";
             return true;
         }
 
