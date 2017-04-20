@@ -142,8 +142,6 @@ namespace Transformer
             {
                 printOutput(stream, scintillaOutput); // print output to tabpage
                 scintillaOutput.ReadOnly = true; // Set output back to read-only
-
-                tabControl1.SelectTab(2); // Show output
                 toolStripStatusLabel1.Text = "😃 Transformation succeeded";
             }
             

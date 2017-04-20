@@ -30,9 +30,7 @@ namespace Transformer
                 form.toolStripStatusLabel1.Text = "☹️ XSLT Compile Exception. Check your stylesheet for mistakes.";
                 return false;
             }
-
-            //close writer and reader
-            form.toolStripStatusLabel1.Text = "😃 Transformation succeeded";
+            
             return true;
         }
 
