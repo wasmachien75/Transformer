@@ -76,7 +76,6 @@ namespace Transformer
 
             // Set the Styles
             scintilla.StyleResetDefault();
-            // I like fixed font for XML
             scintilla.Styles[Style.Default].Font = "Consolas";
             scintilla.Styles[Style.Default].Size = 10;
             scintilla.StyleClearAll();
@@ -113,11 +112,6 @@ namespace Transformer
             }
         }
 
-        private void scintilla2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(scintillaSource.WrapMode.ToString());
-        }
-
         private void printOutput(MemoryStream stream, Scintilla sc)
         {
             stream.Position = 0;
@@ -128,6 +122,7 @@ namespace Transformer
 
         private void Transform()
         {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             scintillaOutput.ReadOnly = false; // Remove read-only status from output so we can write to it
 
             TextReader source = new StringReader(scintillaSource.Text);
@@ -142,14 +137,24 @@ namespace Transformer
             {
                 printOutput(stream, scintillaOutput); // print output to tabpage
                 scintillaOutput.ReadOnly = true; // Set output back to read-only
-                toolStripStatusLabel1.Text = "😃 Transformation succeeded";
+                watch.Stop();
+                string elapsedSecs = ((double) watch.ElapsedMilliseconds / 1000).ToString("0.00");
+                updateStatusBar("😃 Transformation succeeded in " + elapsedSecs + " s");
             }
             
         }
 
         private void transformToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
             Transform();
+            
+
+        }
+
+        public void updateStatusBar(string str)
+        {
+            statusLabel.Text = str;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -186,9 +191,9 @@ namespace Transformer
                 options.Show();
                 setScintillaStyle(scintillaXSL);
             }
-            
 
         }
+
     }
 
 }

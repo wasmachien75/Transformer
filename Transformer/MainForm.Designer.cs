@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.scintillaSource = new ScintillaNET.Scintilla();
-            this.scintillaXSL = new ScintillaNET.Scintilla();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadSourceXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,39 +41,23 @@
             this.wrapLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.somethingElseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.scintillaSource = new ScintillaNET.Scintilla();
+            this.scintillaXSL = new ScintillaNET.Scintilla();
             this.scintillaOutput = new ScintillaNET.Scintilla();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // scintillaSource
-            // 
-            this.scintillaSource.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.scintillaSource.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scintillaSource.Location = new System.Drawing.Point(3, 3);
-            this.scintillaSource.Name = "scintillaSource";
-            this.scintillaSource.ScrollWidth = 7409;
-            this.scintillaSource.Size = new System.Drawing.Size(648, 246);
-            this.scintillaSource.TabIndex = 1;
-            this.scintillaSource.Text = resources.GetString("scintillaSource.Text");
-            this.scintillaSource.WrapMode = ScintillaNET.WrapMode.Word;
-            this.scintillaSource.Click += new System.EventHandler(this.scintilla2_Click);
-            // 
-            // scintillaXSL
-            // 
-            this.scintillaXSL.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.scintillaXSL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scintillaXSL.Location = new System.Drawing.Point(657, 3);
-            this.scintillaXSL.Name = "scintillaXSL";
-            this.scintillaXSL.ScrollWidth = 1354;
-            this.scintillaXSL.Size = new System.Drawing.Size(648, 246);
-            this.scintillaXSL.TabIndex = 0;
-            this.scintillaXSL.Text = resources.GetString("scintillaXSL.Text");
             // 
             // menuStrip1
             // 
@@ -85,7 +67,7 @@
             this.toolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1314, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1371, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -171,70 +153,98 @@
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 544);
+            this.statusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 612);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1314, 25);
+            this.statusStrip1.Size = new System.Drawing.Size(1371, 25);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(333, 20);
-            this.toolStripStatusLabel1.Text = "Press \'Transform\' to transform the XML document";
+            this.statusLabel.Name = "toolStripStatusLabel1";
+            this.statusLabel.Size = new System.Drawing.Size(333, 20);
+            this.statusLabel.Text = "Press \'Transform\' to transform the XML document";
             // 
-            // tableLayoutPanel1
+            // splitContainer1
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.scintillaOutput, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1314, 516);
-            this.tableLayoutPanel1.TabIndex = 4;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 28);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // tableLayoutPanel2
+            // splitContainer1.Panel1
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.scintillaXSL, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.scintillaSource, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1308, 252);
-            this.tableLayoutPanel2.TabIndex = 2;
+            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.scintillaOutput);
+            this.splitContainer1.Size = new System.Drawing.Size(1371, 584);
+            this.splitContainer1.SplitterDistance = 380;
+            this.splitContainer1.TabIndex = 5;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.scintillaSource);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.scintillaXSL);
+            this.splitContainer2.Size = new System.Drawing.Size(1371, 380);
+            this.splitContainer2.SplitterDistance = 685;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // scintillaSource
+            // 
+            this.scintillaSource.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scintillaSource.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scintillaSource.Location = new System.Drawing.Point(0, 0);
+            this.scintillaSource.Name = "scintillaSource";
+            this.scintillaSource.ScrollWidth = 7409;
+            this.scintillaSource.Size = new System.Drawing.Size(685, 380);
+            this.scintillaSource.TabIndex = 2;
+            this.scintillaSource.Text = resources.GetString("scintillaSource.Text");
+            this.scintillaSource.WrapMode = ScintillaNET.WrapMode.Word;
+            // 
+            // scintillaXSL
+            // 
+            this.scintillaXSL.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scintillaXSL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scintillaXSL.Location = new System.Drawing.Point(0, 0);
+            this.scintillaXSL.Name = "scintillaXSL";
+            this.scintillaXSL.ScrollWidth = 1354;
+            this.scintillaXSL.Size = new System.Drawing.Size(682, 380);
+            this.scintillaXSL.TabIndex = 1;
+            this.scintillaXSL.Text = resources.GetString("scintillaXSL.Text");
             // 
             // scintillaOutput
             // 
             this.scintillaOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.scintillaOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scintillaOutput.Location = new System.Drawing.Point(3, 261);
+            this.scintillaOutput.Location = new System.Drawing.Point(0, 0);
             this.scintillaOutput.Name = "scintillaOutput";
+            this.scintillaOutput.ReadOnly = true;
             this.scintillaOutput.ScrollWidth = 1354;
-            this.scintillaOutput.Size = new System.Drawing.Size(1308, 252);
-            this.scintillaOutput.TabIndex = 3;
+            this.scintillaOutput.Size = new System.Drawing.Size(1371, 200);
+            this.scintillaOutput.TabIndex = 4;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1314, 569);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(1371, 637);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
+            this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(853, 600);
             this.Name = "MainForm";
             this.Text = "Transformer";
@@ -243,15 +253,20 @@
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private ScintillaNET.Scintilla scintillaXSL;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadSourceXMLToolStripMenuItem;
@@ -261,13 +276,14 @@
         private System.Windows.Forms.ToolStripMenuItem transformToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        public ScintillaNET.Scintilla scintillaSource;
         private System.Windows.Forms.ToolStripMenuItem wrapLinesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem somethingElseToolStripMenuItem;
         public System.Windows.Forms.StatusStrip statusStrip1;
-        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        public System.Windows.Forms.ToolStripStatusLabel statusLabel;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        public ScintillaNET.Scintilla scintillaSource;
+        private ScintillaNET.Scintilla scintillaXSL;
         private ScintillaNET.Scintilla scintillaOutput;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }

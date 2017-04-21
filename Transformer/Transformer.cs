@@ -27,7 +27,7 @@ namespace Transformer
 
             catch (XsltException)
             {
-                form.toolStripStatusLabel1.Text = "☹️ XSLT Compile Exception. Check your stylesheet for mistakes.";
+                form.statusLabel.Text = "☹️ XSLT Compile Exception. Check your stylesheet for mistakes.";
                 return false;
             }
             
