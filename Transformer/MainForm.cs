@@ -194,6 +194,15 @@ namespace Transformer
 
         }
 
+        private void somethingElseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void openTestFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TestForm testform = new TestForm();
+            testform.Show();
+        }
     }
 
 }

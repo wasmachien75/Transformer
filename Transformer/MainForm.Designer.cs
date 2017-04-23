@@ -33,6 +33,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadSourceXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadStylesheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveOutputAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,6 +41,8 @@
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wrapLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.somethingElseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetPositionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openTestFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -47,6 +50,7 @@
             this.scintillaSource = new ScintillaNET.Scintilla();
             this.scintillaXSL = new ScintillaNET.Scintilla();
             this.scintillaOutput = new ScintillaNET.Scintilla();
+            this.preloadSourceAndStylesheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -74,8 +78,10 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.preloadSourceAndStylesheetToolStripMenuItem,
             this.loadSourceXMLToolStripMenuItem,
             this.loadStylesheetToolStripMenuItem,
+            this.saveOutputAsToolStripMenuItem,
             this.aboutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -85,28 +91,34 @@
             // loadSourceXMLToolStripMenuItem
             // 
             this.loadSourceXMLToolStripMenuItem.Name = "loadSourceXMLToolStripMenuItem";
-            this.loadSourceXMLToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.loadSourceXMLToolStripMenuItem.Size = new System.Drawing.Size(284, 26);
             this.loadSourceXMLToolStripMenuItem.Text = "Load Source XML";
             this.loadSourceXMLToolStripMenuItem.Click += new System.EventHandler(this.loadSourceXMLToolStripMenuItem_Click);
             // 
             // loadStylesheetToolStripMenuItem
             // 
             this.loadStylesheetToolStripMenuItem.Name = "loadStylesheetToolStripMenuItem";
-            this.loadStylesheetToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.loadStylesheetToolStripMenuItem.Size = new System.Drawing.Size(284, 26);
             this.loadStylesheetToolStripMenuItem.Text = "Load Stylesheet";
             this.loadStylesheetToolStripMenuItem.Click += new System.EventHandler(this.loadStylesheetToolStripMenuItem_Click);
+            // 
+            // saveOutputAsToolStripMenuItem
+            // 
+            this.saveOutputAsToolStripMenuItem.Name = "saveOutputAsToolStripMenuItem";
+            this.saveOutputAsToolStripMenuItem.Size = new System.Drawing.Size(284, 26);
+            this.saveOutputAsToolStripMenuItem.Text = "Save Output As";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(284, 26);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(284, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -130,7 +142,9 @@
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.wrapLinesToolStripMenuItem,
-            this.somethingElseToolStripMenuItem});
+            this.somethingElseToolStripMenuItem,
+            this.resetPositionToolStripMenuItem,
+            this.openTestFormToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.optionsToolStripMenuItem.Text = "Options";
@@ -140,14 +154,28 @@
             // 
             this.wrapLinesToolStripMenuItem.CheckOnClick = true;
             this.wrapLinesToolStripMenuItem.Name = "wrapLinesToolStripMenuItem";
-            this.wrapLinesToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
+            this.wrapLinesToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
             this.wrapLinesToolStripMenuItem.Text = "Wrap Lines";
             // 
             // somethingElseToolStripMenuItem
             // 
             this.somethingElseToolStripMenuItem.Name = "somethingElseToolStripMenuItem";
-            this.somethingElseToolStripMenuItem.Size = new System.Drawing.Size(186, 26);
-            this.somethingElseToolStripMenuItem.Text = "Something Else";
+            this.somethingElseToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.somethingElseToolStripMenuItem.Text = "Dark Mode";
+            this.somethingElseToolStripMenuItem.Click += new System.EventHandler(this.somethingElseToolStripMenuItem_Click);
+            // 
+            // resetPositionToolStripMenuItem
+            // 
+            this.resetPositionToolStripMenuItem.Name = "resetPositionToolStripMenuItem";
+            this.resetPositionToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.resetPositionToolStripMenuItem.Text = "Reset Position";
+            // 
+            // openTestFormToolStripMenuItem
+            // 
+            this.openTestFormToolStripMenuItem.Name = "openTestFormToolStripMenuItem";
+            this.openTestFormToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.openTestFormToolStripMenuItem.Text = "Open Test Form";
+            this.openTestFormToolStripMenuItem.Click += new System.EventHandler(this.openTestFormToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -160,9 +188,9 @@
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // statusLabel
             // 
-            this.statusLabel.Name = "toolStripStatusLabel1";
+            this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(333, 20);
             this.statusLabel.Text = "Press \'Transform\' to transform the XML document";
             // 
@@ -235,6 +263,12 @@
             this.scintillaOutput.Size = new System.Drawing.Size(1371, 200);
             this.scintillaOutput.TabIndex = 4;
             // 
+            // preloadSourceAndStylesheetToolStripMenuItem
+            // 
+            this.preloadSourceAndStylesheetToolStripMenuItem.Name = "preloadSourceAndStylesheetToolStripMenuItem";
+            this.preloadSourceAndStylesheetToolStripMenuItem.Size = new System.Drawing.Size(284, 26);
+            this.preloadSourceAndStylesheetToolStripMenuItem.Text = "Preload Source and Stylesheet";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -285,5 +319,9 @@
         public ScintillaNET.Scintilla scintillaSource;
         private ScintillaNET.Scintilla scintillaXSL;
         private ScintillaNET.Scintilla scintillaOutput;
+        private System.Windows.Forms.ToolStripMenuItem resetPositionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openTestFormToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveOutputAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem preloadSourceAndStylesheetToolStripMenuItem;
     }
 }
