@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TransformerApp.Properties {
+namespace Transformer.Properties {
     using System;
     
     

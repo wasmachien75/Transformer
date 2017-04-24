@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Xsl;
 using ScintillaNET;
+using Transformer.tests;
 
 namespace TransformerApp
 {
@@ -127,7 +128,6 @@ namespace TransformerApp
 
             TextReader source = new StringReader(scintillaSource.Text);
             TextReader xsl = new StringReader(scintillaXSL.Text);
-            Console.Write(source.ToString(), xsl.ToString());
             Transformer xformer = new Transformer();
           
                 MemoryStream stream = new MemoryStream();
@@ -145,11 +145,8 @@ namespace TransformerApp
         }
 
         private void transformToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
+        { 
             Transform();
-            
-
         }
 
         public void updateStatusBar(string str)
@@ -203,6 +200,12 @@ namespace TransformerApp
             TestForm testform = new TestForm();
             testform.Show();
         }
+
+        private void runButton_Click(object sender, EventArgs e)
+        {
+            Transform();
+        }
+
     }
 
 }

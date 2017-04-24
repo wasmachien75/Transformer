@@ -48,6 +48,10 @@
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.runButton = new System.Windows.Forms.ToolStripButton();
+            this.saveButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.scintillaSource = new TransformerApp.ScintillaXml();
             this.scintillaXSL = new TransformerApp.ScintillaXml();
             this.scintillaOutput = new TransformerApp.ScintillaXml();
@@ -61,6 +65,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -140,7 +145,7 @@
             // transformToolStripMenuItem
             // 
             this.transformToolStripMenuItem.Name = "transformToolStripMenuItem";
-            this.transformToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
+            this.transformToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.transformToolStripMenuItem.Text = "Transform";
             this.transformToolStripMenuItem.Click += new System.EventHandler(this.transformToolStripMenuItem_Click);
             // 
@@ -152,7 +157,7 @@
             this.resetPositionToolStripMenuItem,
             this.openTestFormToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.optionsToolStripMenuItem.Text = "Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
@@ -203,7 +208,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 28);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 58);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -214,8 +219,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.scintillaOutput);
-            this.splitContainer1.Size = new System.Drawing.Size(1371, 584);
-            this.splitContainer1.SplitterDistance = 380;
+            this.splitContainer1.Size = new System.Drawing.Size(1371, 554);
+            this.splitContainer1.SplitterDistance = 360;
             this.splitContainer1.TabIndex = 5;
             // 
             // splitContainer2
@@ -231,9 +236,56 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.scintillaXSL);
-            this.splitContainer2.Size = new System.Drawing.Size(1371, 380);
+            this.splitContainer2.Size = new System.Drawing.Size(1371, 360);
             this.splitContainer2.SplitterDistance = 685;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.runButton,
+            this.saveButton,
+            this.toolStripButton3});
+            this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(1371, 30);
+            this.toolStrip1.TabIndex = 6;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // runButton
+            // 
+            this.runButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.runButton.Image = ((System.Drawing.Image)(resources.GetObject("runButton.Image")));
+            this.runButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.runButton.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.runButton.Name = "runButton";
+            this.runButton.Size = new System.Drawing.Size(24, 24);
+            this.runButton.Text = "toolStripButton1";
+            this.runButton.ToolTipText = "Transform";
+            this.runButton.Click += new System.EventHandler(this.runButton_Click);
+            // 
+            // saveButton
+            // 
+            this.saveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveButton.Image = ((System.Drawing.Image)(resources.GetObject("saveButton.Image")));
+            this.saveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveButton.Margin = new System.Windows.Forms.Padding(10, 1, 10, 2);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(24, 24);
+            this.saveButton.Text = "toolStripButton2";
+            this.saveButton.ToolTipText = "Save Output";
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton3.Text = "toolStripButton3";
             // 
             // scintillaSource
             // 
@@ -244,7 +296,7 @@
             this.scintillaSource.Location = new System.Drawing.Point(0, 0);
             this.scintillaSource.Name = "scintillaSource";
             this.scintillaSource.ScrollWidth = 585;
-            this.scintillaSource.Size = new System.Drawing.Size(685, 380);
+            this.scintillaSource.Size = new System.Drawing.Size(685, 360);
             this.scintillaSource.TabIndex = 0;
             this.scintillaSource.Text = resources.GetString("scintillaSource.Text");
             // 
@@ -257,7 +309,7 @@
             this.scintillaXSL.Location = new System.Drawing.Point(0, 0);
             this.scintillaXSL.Name = "scintillaXSL";
             this.scintillaXSL.ScrollWidth = 711;
-            this.scintillaXSL.Size = new System.Drawing.Size(682, 380);
+            this.scintillaXSL.Size = new System.Drawing.Size(682, 360);
             this.scintillaXSL.TabIndex = 0;
             this.scintillaXSL.Text = resources.GetString("scintillaXSL.Text");
             // 
@@ -269,7 +321,7 @@
             this.scintillaOutput.Lexer = ScintillaNET.Lexer.Xml;
             this.scintillaOutput.Location = new System.Drawing.Point(0, 0);
             this.scintillaOutput.Name = "scintillaOutput";
-            this.scintillaOutput.Size = new System.Drawing.Size(1371, 200);
+            this.scintillaOutput.Size = new System.Drawing.Size(1371, 190);
             this.scintillaOutput.TabIndex = 0;
             // 
             // MainForm
@@ -278,6 +330,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1371, 637);
             this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -298,6 +351,8 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,5 +381,9 @@
         private ScintillaXml scintillaXSL;
         private ScintillaXml scintillaOutput;
         public ScintillaXml scintillaSource;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton runButton;
+        private System.Windows.Forms.ToolStripButton saveButton;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }
