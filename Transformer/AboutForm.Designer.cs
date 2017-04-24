@@ -1,4 +1,4 @@
-﻿namespace Transformer
+﻿namespace TransformerApp
 {
     partial class AboutForm
     {

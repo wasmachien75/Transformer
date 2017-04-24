@@ -9,7 +9,7 @@ using System.Xml;
 using System.Xml.Xsl;
 using System.Data;
 
-namespace Transformer
+namespace TransformerApp
 {
     public class Transformer
     {

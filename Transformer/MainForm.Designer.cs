@@ -1,4 +1,4 @@
-﻿namespace Transformer
+﻿namespace TransformerApp
 {
     partial class MainForm
     {
@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.preloadSourceAndStylesheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadSourceXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadStylesheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveOutputAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,10 +48,9 @@
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.scintillaSource = new ScintillaNET.Scintilla();
-            this.scintillaXSL = new ScintillaNET.Scintilla();
-            this.scintillaOutput = new ScintillaNET.Scintilla();
-            this.preloadSourceAndStylesheetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scintillaSource = new TransformerApp.ScintillaXml();
+            this.scintillaXSL = new TransformerApp.ScintillaXml();
+            this.scintillaOutput = new TransformerApp.ScintillaXml();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -87,6 +87,12 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // preloadSourceAndStylesheetToolStripMenuItem
+            // 
+            this.preloadSourceAndStylesheetToolStripMenuItem.Name = "preloadSourceAndStylesheetToolStripMenuItem";
+            this.preloadSourceAndStylesheetToolStripMenuItem.Size = new System.Drawing.Size(284, 26);
+            this.preloadSourceAndStylesheetToolStripMenuItem.Text = "Preload Source and Stylesheet";
             // 
             // loadSourceXMLToolStripMenuItem
             // 
@@ -231,43 +237,40 @@
             // 
             // scintillaSource
             // 
-            this.scintillaSource.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scintillaSource.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
+            | ScintillaNET.AutomaticFold.Change)));
             this.scintillaSource.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scintillaSource.Lexer = ScintillaNET.Lexer.Xml;
             this.scintillaSource.Location = new System.Drawing.Point(0, 0);
             this.scintillaSource.Name = "scintillaSource";
-            this.scintillaSource.ScrollWidth = 7409;
+            this.scintillaSource.ScrollWidth = 585;
             this.scintillaSource.Size = new System.Drawing.Size(685, 380);
-            this.scintillaSource.TabIndex = 2;
+            this.scintillaSource.TabIndex = 0;
             this.scintillaSource.Text = resources.GetString("scintillaSource.Text");
-            this.scintillaSource.WrapMode = ScintillaNET.WrapMode.Word;
             // 
             // scintillaXSL
             // 
-            this.scintillaXSL.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scintillaXSL.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
+            | ScintillaNET.AutomaticFold.Change)));
             this.scintillaXSL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scintillaXSL.Lexer = ScintillaNET.Lexer.Xml;
             this.scintillaXSL.Location = new System.Drawing.Point(0, 0);
             this.scintillaXSL.Name = "scintillaXSL";
-            this.scintillaXSL.ScrollWidth = 1354;
+            this.scintillaXSL.ScrollWidth = 711;
             this.scintillaXSL.Size = new System.Drawing.Size(682, 380);
-            this.scintillaXSL.TabIndex = 1;
+            this.scintillaXSL.TabIndex = 0;
             this.scintillaXSL.Text = resources.GetString("scintillaXSL.Text");
             // 
             // scintillaOutput
             // 
-            this.scintillaOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scintillaOutput.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
+            | ScintillaNET.AutomaticFold.Change)));
             this.scintillaOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scintillaOutput.Lexer = ScintillaNET.Lexer.Xml;
             this.scintillaOutput.Location = new System.Drawing.Point(0, 0);
             this.scintillaOutput.Name = "scintillaOutput";
-            this.scintillaOutput.ReadOnly = true;
-            this.scintillaOutput.ScrollWidth = 1354;
             this.scintillaOutput.Size = new System.Drawing.Size(1371, 200);
-            this.scintillaOutput.TabIndex = 4;
-            // 
-            // preloadSourceAndStylesheetToolStripMenuItem
-            // 
-            this.preloadSourceAndStylesheetToolStripMenuItem.Name = "preloadSourceAndStylesheetToolStripMenuItem";
-            this.preloadSourceAndStylesheetToolStripMenuItem.Size = new System.Drawing.Size(284, 26);
-            this.preloadSourceAndStylesheetToolStripMenuItem.Text = "Preload Source and Stylesheet";
+            this.scintillaOutput.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -316,12 +319,12 @@
         public System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        public ScintillaNET.Scintilla scintillaSource;
-        private ScintillaNET.Scintilla scintillaXSL;
-        private ScintillaNET.Scintilla scintillaOutput;
         private System.Windows.Forms.ToolStripMenuItem resetPositionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openTestFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveOutputAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem preloadSourceAndStylesheetToolStripMenuItem;
+        private ScintillaXml scintillaXSL;
+        private ScintillaXml scintillaOutput;
+        public ScintillaXml scintillaSource;
     }
 }

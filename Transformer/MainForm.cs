@@ -18,7 +18,7 @@ using System.Xml;
 using System.Xml.Xsl;
 using ScintillaNET;
 
-namespace Transformer
+namespace TransformerApp
 {
     public partial class MainForm : Form
     {

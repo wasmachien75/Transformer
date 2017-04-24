@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Transformer
+namespace TransformerApp
 {
     public partial class Options : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace Transformer
+﻿namespace TransformerApp
 {
     public partial class ScintillaXml
     {
