@@ -145,7 +145,7 @@
             // transformToolStripMenuItem
             // 
             this.transformToolStripMenuItem.Name = "transformToolStripMenuItem";
-            this.transformToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.transformToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.transformToolStripMenuItem.Text = "Transform";
             this.transformToolStripMenuItem.Click += new System.EventHandler(this.transformToolStripMenuItem_Click);
             // 
@@ -157,9 +157,8 @@
             this.resetPositionToolStripMenuItem,
             this.openTestFormToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.optionsToolStripMenuItem.Text = "Options";
-            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // wrapLinesToolStripMenuItem
             // 
@@ -167,6 +166,7 @@
             this.wrapLinesToolStripMenuItem.Name = "wrapLinesToolStripMenuItem";
             this.wrapLinesToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
             this.wrapLinesToolStripMenuItem.Text = "Wrap Lines";
+            this.wrapLinesToolStripMenuItem.Click += new System.EventHandler(this.wrapLinesToolStripMenuItem_Click);
             // 
             // somethingElseToolStripMenuItem
             // 
@@ -277,6 +277,7 @@
             this.saveButton.Size = new System.Drawing.Size(24, 24);
             this.saveButton.Text = "toolStripButton2";
             this.saveButton.ToolTipText = "Save Output";
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // toolStripButton3
             // 
@@ -291,6 +292,7 @@
             // 
             this.scintillaSource.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
             | ScintillaNET.AutomaticFold.Change)));
+            this.scintillaSource.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.scintillaSource.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scintillaSource.Lexer = ScintillaNET.Lexer.Xml;
             this.scintillaSource.Location = new System.Drawing.Point(0, 0);
@@ -304,6 +306,7 @@
             // 
             this.scintillaXSL.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
             | ScintillaNET.AutomaticFold.Change)));
+            this.scintillaXSL.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.scintillaXSL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scintillaXSL.Lexer = ScintillaNET.Lexer.Xml;
             this.scintillaXSL.Location = new System.Drawing.Point(0, 0);

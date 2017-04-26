@@ -36,9 +36,6 @@ namespace TransformerApp
             Close();
             EvaluateOptions();
             form.Refresh();
-            form.setScintillaStyle(form.scintillaSource);
-            MainForm.options = null;
-
         }
     }
 }

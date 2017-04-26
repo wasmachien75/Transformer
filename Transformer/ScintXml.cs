@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ScintillaNET;
+using System.IO;
+using System.Xml;
 
 namespace TransformerApp
 {
@@ -15,6 +17,9 @@ namespace TransformerApp
     {
         public ScintillaXml()
         {
+            //No wrapping by default
+            this.WrapMode = WrapMode.None;
+
             // Set the XML Lexer
             this.Lexer = Lexer.Xml;
 
@@ -67,6 +72,53 @@ namespace TransformerApp
             this.Styles[Style.Xml.DoubleString].ForeColor = Color.DeepPink;
             this.Styles[Style.Xml.SingleString].ForeColor = Color.DeepPink;
             InitializeComponent();
+        }
+
+        public void ToggleWrap()
+        {
+            if (this.WrapMode == WrapMode.Word)
+            {
+                this.WrapMode = WrapMode.None;
+            }
+            else
+            {
+                this.WrapMode = WrapMode.Word;
+            }
+        }
+
+        public void SaveOutput()
+        {
+            string content = this.Text;
+            SaveFileDialog dialog = new SaveFileDialog();
+            if (this.ContentIsXml()) dialog.Filter = "XML Document|*.xml|Text Document|*.txt|All Files|*.*";
+            else dialog.Filter = "Text Document|*.txt|All Files|*.*";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string loc = dialog.FileName;
+                using(StreamWriter file = new StreamWriter(loc))
+                {
+                    file.Write(content);
+                }
+
+            }
+        }
+
+        private bool ContentIsXml()
+        {
+            string content = this.Text;
+            byte[] byteArray = Encoding.UTF8.GetBytes(content);
+            MemoryStream stream = new MemoryStream(byteArray);
+            XmlDocument doc = new XmlDocument();
+            try
+            {
+                doc.LoadXml(content);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
         }
 
         protected override void OnPaint(PaintEventArgs pe)
