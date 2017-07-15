@@ -74,6 +74,21 @@ namespace TransformerApp
             InitializeComponent();
         }
 
+        private int maxLineNumberCharLength;
+
+        private void ScintillaXml_TextChanged(object sender, EventArgs e)
+        {
+            var maxLineNumberCharLength = this.Lines.Count.ToString().Length;
+            if (maxLineNumberCharLength == this.maxLineNumberCharLength)
+            {
+                return;
+            }
+
+            const int padding = 2;
+            this.Margins[0].Width = this.TextWidth(Style.LineNumber, new string('9', maxLineNumberCharLength + 1)) + padding;
+            this.maxLineNumberCharLength = maxLineNumberCharLength;
+        }
+
         public void ToggleWrap()
         {
             if (this.WrapMode == WrapMode.Word)
@@ -89,22 +104,41 @@ namespace TransformerApp
         public void SaveOutput()
         {
             string content = this.Text;
-            SaveFileDialog dialog = new SaveFileDialog();
-            if (this.ContentIsXml()) dialog.Filter = "XML Document|*.xml|Text Document|*.txt|All Files|*.*";
-            else dialog.Filter = "Text Document|*.txt|All Files|*.*";
-
-            if (dialog.ShowDialog() == DialogResult.OK)
+            if (content == "")
             {
-                string loc = dialog.FileName;
-                using(StreamWriter file = new StreamWriter(loc))
-                {
-                    file.Write(content);
-                }
+                MessageBox.Show("Empty output, will not save.");
+            }
+            else
+            {
+                SaveFileDialog dialog = new SaveFileDialog();
+                if (this.ContentIsXml()) dialog.Filter = "XML Document|*.xml|Text Document|*.txt|All Files|*.*";
+                else dialog.Filter = "Text Document|*.txt|All Files|*.*";
 
+                if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string loc = dialog.FileName;
+                        using(StreamWriter file = new StreamWriter(loc))
+                        {
+                            file.Write(content);
+                        }
+
+                    }
+            }
+            
+            
+        }
+
+        public void Indent()
+        {
+            XmlIndenter indenter = new XmlIndenter();
+            if (indenter.LoadXml(this.Text))
+            {
+                string indentedXML = indenter.Indent();
+                this.Text = indentedXML;
             }
         }
 
-        private bool ContentIsXml()
+        public bool ContentIsXml()
         {
             string content = this.Text;
             byte[] byteArray = Encoding.UTF8.GetBytes(content);

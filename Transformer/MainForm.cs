@@ -1,10 +1,4 @@
-﻿//TODO: 
-//- Status bar
-//- Auto XML tag closing
-//- Buttons
-//- Options (Wrap)
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +11,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Xsl;
 using ScintillaNET;
-using Transformer.tests;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TransformerApp
 {
@@ -28,6 +22,13 @@ namespace TransformerApp
             InitializeComponent();
         }
 
+        public void printPosition(object sender, EventArgs e)
+        {
+            ScintillaXml sc = sender as ScintillaXml;
+            int pos = sc.GetColumn(sc.CurrentPosition) + 1;
+            int line = sc.CurrentLine + 1;
+            posLabel.Text = "Line " + line.ToString() + ", Col " + pos.ToString();
+        }
        
 
         public string chooseFile(string filter)
@@ -72,11 +73,12 @@ namespace TransformerApp
 
             if (xformer.Transform(XmlReader.Create(source), XmlReader.Create(xsl), writer, this))
             {
-                printOutput(stream, scintillaOutput); // print output to tabpage
-                scintillaOutput.ReadOnly = true; // Set output back to read-only
+                printOutput(stream, scintillaOutput);
+                scintillaOutput.ReadOnly = true;
                 watch.Stop();
                 string elapsedSecs = ((double) watch.ElapsedMilliseconds / 1000).ToString("0.00");
                 updateStatusBar("😃 Transformation succeeded in " + elapsedSecs + " s");
+                writer = null;
             }
             
         }
@@ -86,7 +88,7 @@ namespace TransformerApp
             Transform();
         }
 
-        public void updateStatusBar(string str)
+        private void updateStatusBar(string str)
         {
             statusLabel.Text = str;
         }
@@ -102,14 +104,38 @@ namespace TransformerApp
             about.Show();
         }
 
+        private void loadAndPrintFile(string filename, ScintillaXml scintilla)
+        {
+            if (filename != "")
+            {
+                using (StreamReader sr = new StreamReader(filename))
+                {
+                    try
+                    {
+                        // Read the stream to a string, and write the string to the console.
+                        string line = sr.ReadToEnd();
+                        scintilla.Text = line;
+                    }
+
+                    catch(Exception e)
+                    {
+                        statusLabel.Text = e.Message;
+                    }
+                }
+            }
+        }
+
         private void loadStylesheetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            chooseFile("XSLT Stylesheets (*.xsl;*.xslt)|*.xsl;*.xslt") ;
+            string filename = chooseFile("XSLT Stylesheets (*.xsl;*.xslt)|*.xsl;*.xslt");
+            loadAndPrintFile(filename, scintillaXSL);
+            
         }
 
         private void loadSourceXMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            chooseFile("XML Documents (*.xml)|*.xml");
+            string filename = chooseFile("XML Documents (*.xml)|*.xml");
+            loadAndPrintFile(filename, scintillaSource);
         }
 
         private void somethingElseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -138,6 +164,33 @@ namespace TransformerApp
         {
             scintillaOutput.SaveOutput();
         }
-    }
 
+        private void saveOutputAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            scintillaOutput.SaveOutput();
+        }
+
+        private void xSLTutorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.w3schools.com/xml/xsl_intro.asp");
+        }
+
+        private void reportDevWikiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://wiki.mediagenix.tv/display/Webdev"); 
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            scintillaSource.Indent();
+            scintillaXSL.Indent();
+            System.Diagnostics.Debug.Write(scintillaOutput.ContentIsXml());
+            if (scintillaOutput.ContentIsXml())
+            {
+                scintillaOutput.ReadOnly = false;
+                scintillaOutput.Indent();
+                scintillaOutput.ReadOnly = true;
+            }
+        }
+    }
 }

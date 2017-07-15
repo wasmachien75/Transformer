@@ -17,7 +17,6 @@ namespace TransformerApp
         public bool Transform(XmlReader source, XmlReader xsl, StreamWriter writer, MainForm form)
         {
             XslCompiledTransform transformer = new XslCompiledTransform();
-
             try
             {
                 transformer.Load(xsl);
@@ -25,10 +24,29 @@ namespace TransformerApp
 
             }
 
-            catch (XsltException)
+            catch (System.OutOfMemoryException)
             {
-                form.statusLabel.Text = "☹️ XSLT Compile Exception. Check your stylesheet for mistakes.";
+                MessageBox.Show("Out of memory! The source XML is either too big, or there's a mistake in the XSL.", "Out of Memory", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                source = null;
+                GC.Collect();
                 return false;
+            }
+
+            catch (XmlException e)
+            {
+                form.statusLabel.Text = "☹️ There's a mistake in the source XML: " + e.Message;
+                return false;
+           } 
+
+            catch (XsltException e)
+            {
+                form.statusLabel.Text = "☹️ XSLT Compile Exception. Check your stylesheet for mistakes. (" + e.Message + " Line " + e.LineNumber + ", col " + e.LinePosition + ")";
+                return false;
+            }
+
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
             
             return true;
