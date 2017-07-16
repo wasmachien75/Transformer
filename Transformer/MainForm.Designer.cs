@@ -43,6 +43,7 @@
             this.setProcessorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nETToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saxonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saxonToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xSLTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportDevWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +60,6 @@
             this.runButton = new System.Windows.Forms.ToolStripButton();
             this.saveButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.saxonToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -138,7 +138,7 @@
             // transformToolStripMenuItem
             // 
             this.transformToolStripMenuItem.Name = "transformToolStripMenuItem";
-            this.transformToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.transformToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.transformToolStripMenuItem.Text = "Transform";
             this.transformToolStripMenuItem.Click += new System.EventHandler(this.transformToolStripMenuItem_Click);
             // 
@@ -149,7 +149,7 @@
             this.openTestFormToolStripMenuItem,
             this.setProcessorToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
             // wrapLinesToolStripMenuItem
@@ -191,6 +191,13 @@
             this.saxonToolStripMenuItem.Name = "saxonToolStripMenuItem";
             this.saxonToolStripMenuItem.Size = new System.Drawing.Size(124, 26);
             this.saxonToolStripMenuItem.Text = "Saxon";
+            // 
+            // saxonToolStripMenuItem1
+            // 
+            this.saxonToolStripMenuItem1.Name = "saxonToolStripMenuItem1";
+            this.saxonToolStripMenuItem1.Size = new System.Drawing.Size(150, 26);
+            this.saxonToolStripMenuItem1.Text = "Saxon";
+            this.saxonToolStripMenuItem1.Click += new System.EventHandler(this.saxonToolStripMenuItem1_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -374,13 +381,6 @@
             this.toolStripButton1.Text = "Indent";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
-            // saxonToolStripMenuItem1
-            // 
-            this.saxonToolStripMenuItem1.Name = "saxonToolStripMenuItem1";
-            this.saxonToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
-            this.saxonToolStripMenuItem1.Text = "Saxon";
-            this.saxonToolStripMenuItem1.Click += new System.EventHandler(this.saxonToolStripMenuItem1_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -395,7 +395,6 @@
             this.MinimumSize = new System.Drawing.Size(853, 600);
             this.Name = "MainForm";
             this.Text = "Transformer";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);

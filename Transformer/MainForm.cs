@@ -25,7 +25,7 @@ namespace TransformerApp
             scintillaXSL.TextChanged += ScintillaSource_TextChanged;
         }
 
-        public void printPosition(object sender, EventArgs e)
+        private void printPosition(object sender, EventArgs e)
         {
             ScintillaXml sc = sender as ScintillaXml;
             int pos = sc.GetColumn(sc.CurrentPosition) + 1;
@@ -34,7 +34,7 @@ namespace TransformerApp
         }
        
 
-        public string chooseFile(string filter)
+        private string chooseFile(string filter)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = filter;
@@ -47,11 +47,6 @@ namespace TransformerApp
             }
 
             return "";
-        }
-
-        public void Form1_Load(object sender, EventArgs e)
-        {
-           
         }
 
         private void printOutput(Stream stream, Scintilla sc)
@@ -102,8 +97,6 @@ namespace TransformerApp
         }
         private void netTransform()
         {
-            
-
             TextReader source = new StringReader(scintillaSource.Text);
             TextReader xsl = new StringReader(scintillaXSL.Text);
             Transformer xformer = new Transformer();
@@ -173,10 +166,6 @@ namespace TransformerApp
         {
             string filename = chooseFile("XML Documents (*.xml)|*.xml");
             loadAndPrintFile(filename, scintillaSource);
-        }
-
-        private void somethingElseToolStripMenuItem_Click(object sender, EventArgs e)
-        {
         }
 
         private void openTestFormToolStripMenuItem_Click(object sender, EventArgs e)
