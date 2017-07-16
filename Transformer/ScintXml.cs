@@ -74,21 +74,6 @@ namespace TransformerApp
             InitializeComponent();
         }
 
-        private int maxLineNumberCharLength;
-
-        private void ScintillaXml_TextChanged(object sender, EventArgs e)
-        {
-            var maxLineNumberCharLength = this.Lines.Count.ToString().Length;
-            if (maxLineNumberCharLength == this.maxLineNumberCharLength)
-            {
-                return;
-            }
-
-            const int padding = 2;
-            this.Margins[0].Width = this.TextWidth(Style.LineNumber, new string('9', maxLineNumberCharLength + 1)) + padding;
-            this.maxLineNumberCharLength = maxLineNumberCharLength;
-        }
-
         public void ToggleWrap()
         {
             if (this.WrapMode == WrapMode.Word)

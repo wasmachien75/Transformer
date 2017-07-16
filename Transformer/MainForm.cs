@@ -20,6 +20,9 @@ namespace TransformerApp
         public MainForm()
         {
             InitializeComponent();
+            scintillaSource.TextChanged += ScintillaSource_TextChanged;
+            scintillaOutput.TextChanged += ScintillaSource_TextChanged;
+            scintillaXSL.TextChanged += ScintillaSource_TextChanged;
         }
 
         public void printPosition(object sender, EventArgs e)
@@ -63,7 +66,6 @@ namespace TransformerApp
 
         private void Transform(Boolean saxon = false)
         {
-
             var watch = System.Diagnostics.Stopwatch.StartNew();
             if (saxon == true)
             {
@@ -193,6 +195,24 @@ namespace TransformerApp
             scintillaSource.ToggleWrap();
             scintillaXSL.ToggleWrap();
             scintillaOutput.ToggleWrap();
+            
+        }
+        private int maxLineNumberCharLength;
+
+        private void ScintillaSource_TextChanged(object sender, EventArgs e)
+        {
+            // Did the number of characters in the line number display change?
+            // i.e. nnn VS nn, or nnnn VS nn, etc...
+            var scintilla = sender as ScintillaXml;
+            var maxLineNumberCharLength = scintilla.Lines.Count.ToString().Length;
+            if (maxLineNumberCharLength == this.maxLineNumberCharLength)
+                return;
+
+            // Calculate the width required to display the last line number
+            // and include some padding for good measure.
+            const int padding = 2;
+            scintilla.Margins[0].Width = scintilla.TextWidth(Style.LineNumber, new string('9', maxLineNumberCharLength + 1)) + padding;
+            this.maxLineNumberCharLength = maxLineNumberCharLength;
         }
 
         private void saveButton_Click(object sender, EventArgs e)
