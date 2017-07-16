@@ -51,22 +51,45 @@ namespace TransformerApp
            
         }
 
-        private void printOutput(MemoryStream stream, Scintilla sc)
+        private void printOutput(Stream stream, Scintilla sc)
         {
+            sc.ReadOnly = false;
             stream.Position = 0;
             StreamReader reader = new StreamReader(stream);
             string output = reader.ReadToEnd();
+            MessageBox.Show(output);
             sc.Text = output;
+            sc.ReadOnly = true;
         }
 
+        public void saxonTransform()
+        {
+            SaxonTransformer saxon = new SaxonTransformer();
+            MemoryStream ms = new MemoryStream();
+            StreamWriter sw = new StreamWriter(ms);
+            sw.Write(scintillaSource.Text);
+            sw.Flush();
+            ms.Position = 0;
+
+            MemoryStream res = new MemoryStream();
+            StreamWriter writer = new StreamWriter(res);
+
+            TextReader tr = new StringReader(scintillaXSL.Text);
+            XmlReader xsl = XmlReader.Create(tr);
+
+
+            saxon.Transform(ms, xsl, writer, this);
+            printOutput(writer.BaseStream, scintillaOutput);
+
+        }
         private void Transform()
         {
             var watch = System.Diagnostics.Stopwatch.StartNew();
-            scintillaOutput.ReadOnly = false; // Remove read-only status from output so we can write to it
 
             TextReader source = new StringReader(scintillaSource.Text);
             TextReader xsl = new StringReader(scintillaXSL.Text);
             Transformer xformer = new Transformer();
+            //SaxonTransformer xformer = new SaxonTransformer();
           
                 MemoryStream stream = new MemoryStream();
                 StreamWriter writer =  xformer.createWriter(stream); // writer will write to the stream
@@ -74,7 +97,6 @@ namespace TransformerApp
             if (xformer.Transform(XmlReader.Create(source), XmlReader.Create(xsl), writer, this))
             {
                 printOutput(stream, scintillaOutput);
-                scintillaOutput.ReadOnly = true;
                 watch.Stop();
                 string elapsedSecs = ((double) watch.ElapsedMilliseconds / 1000).ToString("0.00");
                 updateStatusBar("😃 Transformation succeeded in " + elapsedSecs + " s");
@@ -191,6 +213,11 @@ namespace TransformerApp
                 scintillaOutput.Indent();
                 scintillaOutput.ReadOnly = true;
             }
+        }
+
+        private void saxonToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            saxonTransform();
         }
     }
 }

@@ -150,6 +150,7 @@ namespace TransformerApp
             }
             catch (Exception)
             {
+                System.Diagnostics.Debug.WriteLine("Exception thrown => not XML");
                 return false;
             }
             return true;

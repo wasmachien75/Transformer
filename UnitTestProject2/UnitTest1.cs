@@ -2,28 +2,38 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TransformerApp;
 using System.Linq;
+using System.Xml;
+using System.IO;
 
 namespace UnitTestProject2
 {
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
-        public void isValid()
-        {
-            XmlValidator validator = new XmlValidator();
-            validator.Load("<?xml version='1.0'?><xsl:stylesheet version='1.0' xmlns:xsl='http://www.w3.org/1999/XSL/Transform'><xsl:output method='xml' encoding='UTF-8'/><xsl:template match='/'><MgXParameters><ReportResultFileName><xsl:value-of select='domainModelAttributes/ES_WONDOMAINMODELATTRIBUTE/concept/ES_WONDOMAINMODELCONCEPT/@xmlTag'/>.html</ReportResultFileName></MgXParameters></xsl:template></xsl:stylesheet>");
-            Assert.IsTrue(validator.isValid());
-        }
 
         [TestMethod]
-        public void IndentXML()
+        public void doesSaxonWork()
         {
-            string xml = "<root><someothernode/></root>";
-            XmlIndenter indenter = new XmlIndenter();
-            indenter.Load(xml);
-            string indentedXML = indenter.Indent();
-            Assert.IsTrue(indentedXML.Contains((char)13));
+            SaxonTransformer t = new SaxonTransformer();
+
+            MemoryStream stream = new MemoryStream();
+            StreamWriter sw = new StreamWriter(stream);
+            sw.Write("<hello>Michael</hello>");
+
+            sw.Flush();
+            stream.Position = 0;
+
+            XmlReader xsl = XmlReader.Create("file://C:/Temp/transform.xsl");
+
+            MainForm form = new MainForm();
+            MemoryStream result = new MemoryStream();
+            StreamWriter writer = new StreamWriter(result);
+            writer.Flush();
+            result.Position = 0;
+            t.Transform(stream, xsl, writer, form);
+            Assert.IsTrue(writer.BaseStream.Length != 0);
+            writer.BaseStream.Position = 0;
+            Console.WriteLine(new StreamReader(writer.BaseStream).ReadToEnd());
         }
     }
 }

@@ -40,6 +40,9 @@
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wrapLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openTestFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setProcessorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nETToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saxonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xSLTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportDevWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,13 +52,14 @@
             this.posLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.scintillaSource = new TransformerApp.ScintillaXml();
+            this.scintillaXSL = new TransformerApp.ScintillaXml();
+            this.scintillaOutput = new TransformerApp.ScintillaXml();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.runButton = new System.Windows.Forms.ToolStripButton();
             this.saveButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.scintillaSource = new TransformerApp.ScintillaXml();
-            this.scintillaXSL = new TransformerApp.ScintillaXml();
-            this.scintillaOutput = new TransformerApp.ScintillaXml();
+            this.saxonToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -125,7 +129,8 @@
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.transformToolStripMenuItem,
-            this.optionsToolStripMenuItem});
+            this.optionsToolStripMenuItem,
+            this.saxonToolStripMenuItem1});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -133,7 +138,7 @@
             // transformToolStripMenuItem
             // 
             this.transformToolStripMenuItem.Name = "transformToolStripMenuItem";
-            this.transformToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
+            this.transformToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.transformToolStripMenuItem.Text = "Transform";
             this.transformToolStripMenuItem.Click += new System.EventHandler(this.transformToolStripMenuItem_Click);
             // 
@@ -141,9 +146,10 @@
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.wrapLinesToolStripMenuItem,
-            this.openTestFormToolStripMenuItem});
+            this.openTestFormToolStripMenuItem,
+            this.setProcessorToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.optionsToolStripMenuItem.Text = "Options";
             // 
             // wrapLinesToolStripMenuItem
@@ -160,6 +166,31 @@
             this.openTestFormToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
             this.openTestFormToolStripMenuItem.Text = "Open Test Form";
             this.openTestFormToolStripMenuItem.Click += new System.EventHandler(this.openTestFormToolStripMenuItem_Click);
+            // 
+            // setProcessorToolStripMenuItem
+            // 
+            this.setProcessorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.nETToolStripMenuItem,
+            this.saxonToolStripMenuItem});
+            this.setProcessorToolStripMenuItem.Name = "setProcessorToolStripMenuItem";
+            this.setProcessorToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
+            this.setProcessorToolStripMenuItem.Text = "Set Processor";
+            // 
+            // nETToolStripMenuItem
+            // 
+            this.nETToolStripMenuItem.Checked = true;
+            this.nETToolStripMenuItem.CheckOnClick = true;
+            this.nETToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.nETToolStripMenuItem.Name = "nETToolStripMenuItem";
+            this.nETToolStripMenuItem.Size = new System.Drawing.Size(124, 26);
+            this.nETToolStripMenuItem.Text = ".NET";
+            // 
+            // saxonToolStripMenuItem
+            // 
+            this.saxonToolStripMenuItem.CheckOnClick = true;
+            this.saxonToolStripMenuItem.Name = "saxonToolStripMenuItem";
+            this.saxonToolStripMenuItem.Size = new System.Drawing.Size(124, 26);
+            this.saxonToolStripMenuItem.Text = "Saxon";
             // 
             // helpToolStripMenuItem
             // 
@@ -252,55 +283,6 @@
             this.splitContainer2.SplitterDistance = 685;
             this.splitContainer2.TabIndex = 0;
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.runButton,
-            this.saveButton,
-            this.toolStripButton1});
-            this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1371, 30);
-            this.toolStrip1.TabIndex = 6;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // runButton
-            // 
-            this.runButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.runButton.Image = ((System.Drawing.Image)(resources.GetObject("runButton.Image")));
-            this.runButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.runButton.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            this.runButton.Name = "runButton";
-            this.runButton.Size = new System.Drawing.Size(24, 24);
-            this.runButton.Text = "toolStripButton1";
-            this.runButton.ToolTipText = "Transform";
-            this.runButton.Click += new System.EventHandler(this.runButton_Click);
-            // 
-            // saveButton
-            // 
-            this.saveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.saveButton.Image = ((System.Drawing.Image)(resources.GetObject("saveButton.Image")));
-            this.saveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveButton.Margin = new System.Windows.Forms.Padding(10, 1, 10, 2);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(24, 24);
-            this.saveButton.Text = "toolStripButton2";
-            this.saveButton.ToolTipText = "Save Output";
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
             // scintillaSource
             // 
             this.scintillaSource.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
@@ -342,6 +324,62 @@
             this.scintillaOutput.Size = new System.Drawing.Size(1371, 190);
             this.scintillaOutput.TabIndex = 0;
             this.scintillaOutput.Click += new System.EventHandler(this.printPosition);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.runButton,
+            this.saveButton,
+            this.toolStripButton1});
+            this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(1371, 30);
+            this.toolStrip1.TabIndex = 6;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // runButton
+            // 
+            this.runButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.runButton.Image = ((System.Drawing.Image)(resources.GetObject("runButton.Image")));
+            this.runButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.runButton.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.runButton.Name = "runButton";
+            this.runButton.Size = new System.Drawing.Size(24, 24);
+            this.runButton.Text = "toolStripButton1";
+            this.runButton.ToolTipText = "Transform";
+            this.runButton.Click += new System.EventHandler(this.runButton_Click);
+            // 
+            // saveButton
+            // 
+            this.saveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveButton.Image = ((System.Drawing.Image)(resources.GetObject("saveButton.Image")));
+            this.saveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveButton.Margin = new System.Windows.Forms.Padding(10, 1, 10, 2);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(24, 24);
+            this.saveButton.Text = "toolStripButton2";
+            this.saveButton.ToolTipText = "Save Output...";
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton1.Text = "Indent";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // saxonToolStripMenuItem1
+            // 
+            this.saxonToolStripMenuItem1.Name = "saxonToolStripMenuItem1";
+            this.saxonToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
+            this.saxonToolStripMenuItem1.Text = "Saxon";
+            this.saxonToolStripMenuItem1.Click += new System.EventHandler(this.saxonToolStripMenuItem1_Click);
             // 
             // MainForm
             // 
@@ -405,5 +443,9 @@
         private System.Windows.Forms.ToolStripMenuItem reportDevWikiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripMenuItem setProcessorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nETToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saxonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saxonToolStripMenuItem1;
     }
 }

@@ -14,7 +14,7 @@ namespace TransformerApp
     public class Transformer
     {
 
-        public bool Transform(XmlReader source, XmlReader xsl, StreamWriter writer, MainForm form)
+        public virtual bool Transform(XmlReader source, XmlReader xsl, StreamWriter writer, MainForm form)
         {
             XslCompiledTransform transformer = new XslCompiledTransform();
             try
