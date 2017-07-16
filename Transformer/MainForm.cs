@@ -57,12 +57,31 @@ namespace TransformerApp
             stream.Position = 0;
             StreamReader reader = new StreamReader(stream);
             string output = reader.ReadToEnd();
-            MessageBox.Show(output);
             sc.Text = output;
             sc.ReadOnly = true;
         }
 
-        public void saxonTransform()
+        private void Transform(Boolean saxon = false)
+        {
+
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            if (saxon == true)
+            {
+                saxonTransform();
+            }
+
+            else
+            {
+                netTransform();
+            }
+
+            watch.Stop();
+            string elapsedSecs = ((double)watch.ElapsedMilliseconds / 1000).ToString("0.00");
+            updateStatusBar("😃 Transformation succeeded in " + elapsedSecs + " s");
+
+        }
+
+        private void saxonTransform()
         {
             SaxonTransformer saxon = new SaxonTransformer();
             MemoryStream ms = new MemoryStream();
@@ -76,15 +95,12 @@ namespace TransformerApp
 
             TextReader tr = new StringReader(scintillaXSL.Text);
             XmlReader xsl = XmlReader.Create(tr);
-
-
-            saxon.Transform(ms, xsl, writer, this);
-            printOutput(writer.BaseStream, scintillaOutput);
+            printOutput(saxon.Transform(ms, xsl, this), scintillaOutput);
 
         }
-        private void Transform()
+        private void netTransform()
         {
-            var watch = System.Diagnostics.Stopwatch.StartNew();
+            
 
             TextReader source = new StringReader(scintillaSource.Text);
             TextReader xsl = new StringReader(scintillaXSL.Text);
@@ -97,9 +113,6 @@ namespace TransformerApp
             if (xformer.Transform(XmlReader.Create(source), XmlReader.Create(xsl), writer, this))
             {
                 printOutput(stream, scintillaOutput);
-                watch.Stop();
-                string elapsedSecs = ((double) watch.ElapsedMilliseconds / 1000).ToString("0.00");
-                updateStatusBar("😃 Transformation succeeded in " + elapsedSecs + " s");
                 writer = null;
             }
             
@@ -217,7 +230,7 @@ namespace TransformerApp
 
         private void saxonToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            saxonTransform();
+            Transform(true);
         }
     }
 }

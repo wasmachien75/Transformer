@@ -16,8 +16,9 @@ namespace TransformerApp
         ///Performs a Saxon transformation.
         /// </summary>
         /// 
-        public bool Transform(Stream source, XmlReader xsl, StreamWriter destination, MainForm form)
+        public Stream Transform(Stream source, XmlReader xsl, MainForm form)
         {
+            MemoryStream result = new MemoryStream();
 
             try
             {
@@ -31,21 +32,20 @@ namespace TransformerApp
                 XsltTransformer t = e.Load();
 
                 //set output
-                XmlWriter w = XmlWriter.Create(destination.BaseStream);
-                XmlDestination d = new TextWriterDestination(w);
-
-                source.Position = 0;
+                
+                var destination = new Serializer();
+                destination.SetOutputStream(result);
+                
                 t.SetInputStream(source, uri);
-                t.Run(d);
-                source.Flush();
+                t.Run(destination);
  
-                return true;
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
-                return false;
+                form.statusLabel.Text = e.Message;
             }
+
+            return result;
         }
 
     }
