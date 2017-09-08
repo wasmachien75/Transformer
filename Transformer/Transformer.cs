@@ -9,6 +9,13 @@ using TransformerApp;
 
 namespace TransformerApp
 {
+
+    public enum XslProcessor
+    {
+        Saxon = 0,
+        DotNet = 1
+    }
+
     public class XslTransformer
     {
         ScintillaXml source;
@@ -26,10 +33,10 @@ namespace TransformerApp
             output = form.scintillaOutput;
         }
 
-        public void TransformIt(Boolean saxon = false)
+        public void TransformIt(XslProcessor processor)
         {
             var watch = System.Diagnostics.Stopwatch.StartNew();
-            if (saxon == true)
+            if (processor == XslProcessor.Saxon)
             {
                 Result = SaxonTransform();
             }

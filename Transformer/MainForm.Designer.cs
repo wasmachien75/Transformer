@@ -57,10 +57,10 @@
             this.runButton = new System.Windows.Forms.ToolStripButton();
             this.saveButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.dotNetTransformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scintillaSource = new TransformerApp.ScintillaXml();
             this.scintillaXSL = new TransformerApp.ScintillaXml();
             this.scintillaOutput = new TransformerApp.ScintillaXml();
-            this.dotNetTransformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -341,6 +341,13 @@
             this.toolStripButton1.Text = "Indent";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
+            // dotNetTransformToolStripMenuItem
+            // 
+            this.dotNetTransformToolStripMenuItem.Name = "dotNetTransformToolStripMenuItem";
+            this.dotNetTransformToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
+            this.dotNetTransformToolStripMenuItem.Text = "DotNetTransform";
+            this.dotNetTransformToolStripMenuItem.Click += new System.EventHandler(this.dotNetTransformToolStripMenuItem_Click);
+            // 
             // scintillaSource
             // 
             this.scintillaSource.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
@@ -382,13 +389,6 @@
             this.scintillaOutput.Size = new System.Drawing.Size(1371, 190);
             this.scintillaOutput.TabIndex = 0;
             this.scintillaOutput.Click += new System.EventHandler(this.printPosition);
-            // 
-            // dotNetTransformToolStripMenuItem
-            // 
-            this.dotNetTransformToolStripMenuItem.Name = "dotNetTransformToolStripMenuItem";
-            this.dotNetTransformToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
-            this.dotNetTransformToolStripMenuItem.Text = "DotNetTransform";
-            this.dotNetTransformToolStripMenuItem.Click += new System.EventHandler(this.dotNetTransformToolStripMenuItem_Click);
             // 
             // MainForm
             // 

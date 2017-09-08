@@ -134,6 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="kabouter_plop_eD8_icon.ico" />
+    <None Include="Resources\gcm.png" />
+    <None Include="Resources\rc.bmp" />
+    <None Include="Resources\rfc.png" />
     <Content Include="transformers_autobots_03_hcq_icon.ico" />
   </ItemGroup>
   <ItemGroup>

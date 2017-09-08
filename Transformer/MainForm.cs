@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Xsl;
 using ScintillaNET;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TransformerApp
 {
@@ -59,12 +49,20 @@ namespace TransformerApp
             sc.ReadOnly = true;
         }
 
-        private void Transform(bool saxon = true)
+        private void Transform(XslProcessor processor = XslProcessor.Saxon)
         {
             XslTransformer transformer = new XslTransformer(this);
-            transformer.TransformIt(saxon);
-            scintillaOutput.Text = transformer.Result;
-            MessageBox.Show(transformer.ElapsedSecs);
+            try
+            {
+                transformer.TransformIt(processor);
+                scintillaOutput.Text = transformer.Result;
+                updateStatusBar(String.Format("Transformation succeeded in {0} s", transformer.ElapsedSecs));
+            }
+
+            catch(Exception e)
+            {
+                updateStatusBar(String.Format("Transformation failed: {0}", e.Message));
+            }
         }
 
         private void transformToolStripMenuItem_Click(object sender, EventArgs e)
@@ -193,12 +191,12 @@ namespace TransformerApp
 
         private void saxonToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Transform(true);
+            Transform(XslProcessor.Saxon);
         }
 
         private void dotNetTransformToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Transform(false);
+            Transform(XslProcessor.DotNet);
         }
     }
 }

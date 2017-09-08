@@ -28,7 +28,7 @@ namespace TransformerApp
 
             }
 
-            catch (System.OutOfMemoryException)
+            catch (OutOfMemoryException)
             {
                 MessageBox.Show("Out of memory! The source XML is either too big, or there's a mistake in the XSL.", "Out of Memory", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 source = null;
@@ -38,12 +38,12 @@ namespace TransformerApp
 
             catch (XmlException e)
             {
-                throw new Exception("☹️ There's a mistake in the source XML: (" + e.Message + " Line " + e.LineNumber + ", col " + e.LinePosition + ")") ;
+                throw new Exception("There's a mistake in the source XML: (" + e.Message + " Line " + e.LineNumber + ", col " + e.LinePosition + ")") ;
            } 
 
             catch (XsltException e)
             {
-                throw new Exception("☹️ XSLT Compile Exception. Check your stylesheet for mistakes. (" + e.Message + " Line " + e.LineNumber + ", col " + e.LinePosition + ")");
+                throw new Exception("XSLT Compile Exception. Check your stylesheet for mistakes. (" + e.Message + " Line " + e.LineNumber + ", col " + e.LinePosition + ")");
             }
 
             catch(Exception)
