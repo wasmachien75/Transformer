@@ -57,11 +57,13 @@ namespace TransformerApp
                 transformer.TransformIt(processor);
                 scintillaOutput.Text = transformer.Result;
                 updateStatusBar(String.Format("Transformation succeeded in {0} s", transformer.ElapsedSecs));
+                statusLabel.Image =  Transformer.Properties.Resources.GreenCheckMark;
             }
 
             catch(Exception e)
             {
                 updateStatusBar(String.Format("Transformation failed: {0}", e.Message));
+                statusLabel.Image = Transformer.Properties.Resources.RedCross;
             }
         }
 
