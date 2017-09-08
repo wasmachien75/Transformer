@@ -7,6 +7,8 @@ namespace TransformerApp
 {
     public partial class MainForm : Form
     {
+        static XslProcessor processor = XslProcessor.Saxon; //default XSLT processor
+
         public MainForm()
         {
             InitializeComponent();
@@ -49,7 +51,7 @@ namespace TransformerApp
             sc.ReadOnly = true;
         }
 
-        private void Transform(XslProcessor processor = XslProcessor.Saxon)
+        private void Transform()
         {
             XslTransformer transformer = new XslTransformer(this);
             try
@@ -62,7 +64,7 @@ namespace TransformerApp
 
             catch(Exception e)
             {
-                updateStatusBar(String.Format("Transformation failed: {0}", e.Message));
+                updateStatusBar(e.Message);
                 statusLabel.Image = Transformer.Properties.Resources.RedCross;
             }
         }
@@ -138,6 +140,7 @@ namespace TransformerApp
             scintillaSource.ToggleWrap();
             scintillaXSL.ToggleWrap();
             scintillaOutput.ToggleWrap();
+            wrapLinesToolStripMenuItem1.Checked = !wrapLinesToolStripMenuItem1.Checked;
             
         }
         private int maxLineNumberCharLength;
@@ -178,11 +181,10 @@ namespace TransformerApp
             System.Diagnostics.Process.Start("https://wiki.mediagenix.tv/display/Webdev"); 
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void indentClick(object sender, EventArgs e)
         {
             scintillaSource.Indent();
             scintillaXSL.Indent();
-            System.Diagnostics.Debug.Write(scintillaOutput.ContentIsXml());
             if (scintillaOutput.ContentIsXml())
             {
                 scintillaOutput.ReadOnly = false;
@@ -191,14 +193,16 @@ namespace TransformerApp
             }
         }
 
-        private void saxonToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void saxonOptionsClick(object sender, EventArgs e)
         {
-            Transform(XslProcessor.Saxon);
+            processor = XslProcessor.Saxon;
+            dotNetSelect.Checked = false;
         }
 
-        private void dotNetTransformToolStripMenuItem_Click(object sender, EventArgs e)
+        private void dotNetSelect_Click(object sender, EventArgs e)
         {
-            Transform(XslProcessor.DotNet);
+            processor = XslProcessor.DotNet;
+            saxonSelect.Checked = false;
         }
     }
 }
