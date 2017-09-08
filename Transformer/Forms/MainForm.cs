@@ -12,6 +12,7 @@ using System.Xml;
 using System.Xml.Xsl;
 using ScintillaNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Transformer.Transform;
 
 namespace TransformerApp
 {
@@ -59,13 +60,12 @@ namespace TransformerApp
             sc.ReadOnly = true;
         }
 
-        private void Transform(bool saxon = true)
+        private void Transform()
         {
-            XslTransformer transformer = new XslTransformer(this);
-            transformer.TransformIt(saxon);
-            scintillaOutput.Text = transformer.Result;
-            MessageBox.Show(transformer.ElapsedSecs);
+            Transform transformer = new Transform(this);
+            transformer.TransformIt();
         }
+
 
         private void transformToolStripMenuItem_Click(object sender, EventArgs e)
         { 
@@ -193,12 +193,7 @@ namespace TransformerApp
 
         private void saxonToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Transform(true);
-        }
-
-        private void dotNetTransformToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Transform(false);
+            Transform();
         }
     }
 }

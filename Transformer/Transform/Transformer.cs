@@ -7,23 +7,21 @@ using System.Threading.Tasks;
 using System.Xml;
 using TransformerApp;
 
-namespace TransformerApp
+namespace Transformer.Transform
 {
-    public class XslTransformer
+    public class Transform
     {
         ScintillaXml source;
         ScintillaXml xsl;
         ScintillaXml output;
         MainForm form;
-        public string ElapsedSecs;
-        public string Result;
 
-        public XslTransformer(MainForm mainForm)
+        public Transform(MainForm mainForm)
         {
-            form = mainForm;
             source = form.scintillaSource;
             xsl = form.scintillaXSL;
             output = form.scintillaOutput;
+            form = mainForm;
         }
 
         public void TransformIt(Boolean saxon = false)
@@ -31,20 +29,20 @@ namespace TransformerApp
             var watch = System.Diagnostics.Stopwatch.StartNew();
             if (saxon == true)
             {
-                Result = SaxonTransform();
+                SaxonTransform();
             }
 
             else
             {
-                Result = DotNetTransform();
+                DotNetTransform();
             }
 
             watch.Stop();
-            ElapsedSecs = ((double)watch.ElapsedMilliseconds / 1000).ToString("0.00");
+            string elapsedSecs = ((double)watch.ElapsedMilliseconds / 1000).ToString("0.00");
 
         }
 
-        private string SaxonTransform()
+        private void SaxonTransform()
         {
             SaxonTransformer saxon = new SaxonTransformer();
             MemoryStream ms = new MemoryStream();
@@ -58,22 +56,24 @@ namespace TransformerApp
 
             TextReader tr = new StringReader(xsl.Text);
             XmlReader xslReader = XmlReader.Create(tr);
-
-           return saxon.Transform(ms, xslReader);
-            
+            form.printOutput(saxon.Transform(ms, xslReader, form), output);
 
         }
 
-        private string DotNetTransform()
+        private void DotNetTransform()
         {
             TextReader sourceReader = new StringReader(source.Text);
             TextReader xslReader = new StringReader(xsl.Text);
             DotNetTransformer xformer = new DotNetTransformer();
 
             MemoryStream stream = new MemoryStream();
-            StreamWriter writer = xformer.CreateWriter(); // writer will write to the stream
-            return xformer.Transform(XmlReader.Create(sourceReader), XmlReader.Create(xslReader));
-            
+            StreamWriter writer = xformer.createWriter(stream); // writer will write to the stream
+
+            if (xformer.Transform(XmlReader.Create(sourceReader), XmlReader.Create(xslReader), writer, form))
+            {
+                form.printOutput(stream, output);
+                writer = null;
+            }
 
         }
     }

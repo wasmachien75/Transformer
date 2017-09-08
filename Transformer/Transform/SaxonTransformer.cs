@@ -16,10 +16,12 @@ namespace TransformerApp
         ///Performs a Saxon transformation.
         /// </summary>
         /// 
-        public string Transform(Stream source, XmlReader xsl)
+        public Stream Transform(Stream source, XmlReader xsl, MainForm form)
         {
             MemoryStream result = new MemoryStream();
 
+            try
+            {
                 Uri uri = new Uri("http://mediagenix.tv");
                 
                 //set XSLT stylesheet
@@ -36,9 +38,14 @@ namespace TransformerApp
                 
                 t.SetInputStream(source, uri);
                 t.Run(destination);
+ 
+            }
+            catch (Exception e)
+            {
+                form.statusLabel.Text = e.Message;
+            }
 
-            result.Position = 0;
-            return new StreamReader(result).ReadToEnd();
+            return result;
         }
 
     }
