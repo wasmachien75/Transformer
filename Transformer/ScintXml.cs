@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ScintillaNET;
 using System.IO;
@@ -15,8 +10,11 @@ namespace TransformerApp
 {
     public partial class ScintillaXml : Scintilla
     {
+
+       
         public ScintillaXml()
         {
+            this.TextChanged += new EventHandler(this.ScintillaTextChanged);
             //No wrapping by default
             this.WrapMode = WrapMode.None;
 
@@ -72,6 +70,24 @@ namespace TransformerApp
             this.Styles[Style.Xml.DoubleString].ForeColor = Color.DeepPink;
             this.Styles[Style.Xml.SingleString].ForeColor = Color.DeepPink;
             InitializeComponent();
+        }
+
+        private int maxLineNumberCharLength;
+
+        private void ScintillaTextChanged(object sender, EventArgs e)
+        {
+            // Did the number of characters in the line number display change?
+            // i.e. nnn VS nn, or nnnn VS nn, etc...
+            var scintilla = sender as ScintillaXml;
+            var maxLineNumberCharLength = scintilla.Lines.Count.ToString().Length;
+            if (maxLineNumberCharLength == this.maxLineNumberCharLength)
+                return;
+
+            // Calculate the width required to display the last line number
+            // and include some padding for good measure.
+            const int padding = 2;
+            scintilla.Margins[0].Width = scintilla.TextWidth(Style.LineNumber, new string('9', maxLineNumberCharLength + 1)) + padding;
+            this.maxLineNumberCharLength = maxLineNumberCharLength;
         }
 
         public void ToggleWrap()

@@ -286,7 +286,7 @@
             this.scintillaSource.Size = new System.Drawing.Size(685, 360);
             this.scintillaSource.TabIndex = 0;
             this.scintillaSource.Text = resources.GetString("scintillaSource.Text");
-            this.scintillaSource.Click += new System.EventHandler(this.printPosition);
+            this.scintillaSource.Click += new System.EventHandler(this.PrintPosition);
             // 
             // scintillaXSL
             // 
@@ -301,7 +301,7 @@
             this.scintillaXSL.Size = new System.Drawing.Size(682, 360);
             this.scintillaXSL.TabIndex = 0;
             this.scintillaXSL.Text = resources.GetString("scintillaXSL.Text");
-            this.scintillaXSL.Click += new System.EventHandler(this.printPosition);
+            this.scintillaXSL.Click += new System.EventHandler(this.PrintPosition);
             // 
             // scintillaOutput
             // 
@@ -313,7 +313,7 @@
             this.scintillaOutput.Name = "scintillaOutput";
             this.scintillaOutput.Size = new System.Drawing.Size(1371, 190);
             this.scintillaOutput.TabIndex = 0;
-            this.scintillaOutput.Click += new System.EventHandler(this.printPosition);
+            this.scintillaOutput.Click += new System.EventHandler(this.PrintPosition);
             // 
             // toolStrip1
             // 

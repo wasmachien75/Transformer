@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Xml;
-using TransformerApp;
 
 namespace TransformerApp
 {
-
-    public enum XslProcessor
-    {
-        Saxon = 0,
-        DotNet = 1
-    }
 
     public class XslTransformer
     {

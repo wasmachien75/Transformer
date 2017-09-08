@@ -7,17 +7,14 @@ namespace TransformerApp
 {
     public partial class MainForm : Form
     {
-        static XslProcessor processor = XslProcessor.Saxon; //default XSLT processor
+        static XslProcessor processor = XslProcessor.Saxon; //Saxon is our default XSLT processor
 
         public MainForm()
         {
             InitializeComponent();
-            scintillaSource.TextChanged += ScintillaSource_TextChanged;
-            scintillaOutput.TextChanged += ScintillaSource_TextChanged;
-            scintillaXSL.TextChanged += ScintillaSource_TextChanged;
         }
 
-        private void printPosition(object sender, EventArgs e)
+        private void PrintPosition(object sender, EventArgs e)
         {
             ScintillaXml sc = sender as ScintillaXml;
             int pos = sc.GetColumn(sc.CurrentPosition) + 1;
@@ -26,7 +23,7 @@ namespace TransformerApp
         }
        
 
-        private string chooseFile(string filter)
+        private string ChooseFile(string filter)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = filter;
@@ -41,7 +38,7 @@ namespace TransformerApp
             return "";
         }
 
-        public void printOutput(Stream stream, Scintilla sc)
+        public void PrintOutput(Stream stream, Scintilla sc)
         {
             sc.ReadOnly = false;
             stream.Position = 0;
@@ -58,13 +55,13 @@ namespace TransformerApp
             {
                 transformer.TransformIt(processor);
                 scintillaOutput.Text = transformer.Result;
-                updateStatusBar(String.Format("Transformation succeeded in {0} s", transformer.ElapsedSecs));
+                UpdateStatusBar(String.Format("Transformation succeeded in {0} s", transformer.ElapsedSecs));
                 statusLabel.Image =  Transformer.Properties.Resources.GreenCheckMark;
             }
 
             catch(Exception e)
             {
-                updateStatusBar(e.Message);
+                UpdateStatusBar(e.Message);
                 statusLabel.Image = Transformer.Properties.Resources.RedCross;
             }
         }
@@ -74,7 +71,7 @@ namespace TransformerApp
             Transform();
         }
 
-        private void updateStatusBar(string str)
+        private void UpdateStatusBar(string str)
         {
             statusLabel.Text = str;
         }
@@ -113,21 +110,14 @@ namespace TransformerApp
 
         private void loadStylesheetToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string filename = chooseFile("XSLT Stylesheets (*.xsl;*.xslt)|*.xsl;*.xslt");
+            string filename = ChooseFile("XSLT Stylesheets (*.xsl;*.xslt)|*.xsl;*.xslt");
             loadAndPrintFile(filename, scintillaXSL);
-            
         }
 
         private void loadSourceXMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string filename = chooseFile("XML Documents (*.xml)|*.xml");
+            string filename = ChooseFile("XML Documents (*.xml)|*.xml");
             loadAndPrintFile(filename, scintillaSource);
-        }
-
-        private void openTestFormToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TestForm testform = new TestForm();
-            testform.Show();
         }
 
         private void runButton_Click(object sender, EventArgs e)
@@ -142,23 +132,6 @@ namespace TransformerApp
             scintillaOutput.ToggleWrap();
             wrapLinesToolStripMenuItem1.Checked = !wrapLinesToolStripMenuItem1.Checked;
             
-        }
-        private int maxLineNumberCharLength;
-
-        private void ScintillaSource_TextChanged(object sender, EventArgs e)
-        {
-            // Did the number of characters in the line number display change?
-            // i.e. nnn VS nn, or nnnn VS nn, etc...
-            var scintilla = sender as ScintillaXml;
-            var maxLineNumberCharLength = scintilla.Lines.Count.ToString().Length;
-            if (maxLineNumberCharLength == this.maxLineNumberCharLength)
-                return;
-
-            // Calculate the width required to display the last line number
-            // and include some padding for good measure.
-            const int padding = 2;
-            scintilla.Margins[0].Width = scintilla.TextWidth(Style.LineNumber, new string('9', maxLineNumberCharLength + 1)) + padding;
-            this.maxLineNumberCharLength = maxLineNumberCharLength;
         }
 
         private void saveButton_Click(object sender, EventArgs e)
