@@ -37,13 +37,11 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wrapLinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openTestFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setProcessorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nETToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saxonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saxonToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.wrapLinesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.formatAndIndentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setProcessorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.saxonSelect = new System.Windows.Forms.ToolStripMenuItem();
+            this.dotNetSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xSLTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportDevWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -129,8 +127,9 @@
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.transformToolStripMenuItem,
-            this.optionsToolStripMenuItem,
-            this.saxonToolStripMenuItem1});
+            this.wrapLinesToolStripMenuItem1,
+            this.formatAndIndentToolStripMenuItem,
+            this.setProcessorToolStripMenuItem1});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -138,66 +137,50 @@
             // transformToolStripMenuItem
             // 
             this.transformToolStripMenuItem.Name = "transformToolStripMenuItem";
-            this.transformToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
+            this.transformToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.transformToolStripMenuItem.Text = "Transform";
             this.transformToolStripMenuItem.Click += new System.EventHandler(this.transformToolStripMenuItem_Click);
             // 
-            // optionsToolStripMenuItem
+            // wrapLinesToolStripMenuItem1
             // 
-            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.wrapLinesToolStripMenuItem,
-            this.openTestFormToolStripMenuItem,
-            this.setProcessorToolStripMenuItem});
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
-            this.optionsToolStripMenuItem.Text = "Options";
+            this.wrapLinesToolStripMenuItem1.Name = "wrapLinesToolStripMenuItem1";
+            this.wrapLinesToolStripMenuItem1.Size = new System.Drawing.Size(206, 26);
+            this.wrapLinesToolStripMenuItem1.Text = "Wrap Lines";
+            this.wrapLinesToolStripMenuItem1.Click += new System.EventHandler(this.wrapLinesToolStripMenuItem_Click);
             // 
-            // wrapLinesToolStripMenuItem
+            // formatAndIndentToolStripMenuItem
             // 
-            this.wrapLinesToolStripMenuItem.CheckOnClick = true;
-            this.wrapLinesToolStripMenuItem.Name = "wrapLinesToolStripMenuItem";
-            this.wrapLinesToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
-            this.wrapLinesToolStripMenuItem.Text = "Wrap Lines";
-            this.wrapLinesToolStripMenuItem.Click += new System.EventHandler(this.wrapLinesToolStripMenuItem_Click);
+            this.formatAndIndentToolStripMenuItem.Name = "formatAndIndentToolStripMenuItem";
+            this.formatAndIndentToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.formatAndIndentToolStripMenuItem.Text = "Format and Indent";
+            this.formatAndIndentToolStripMenuItem.Click += new System.EventHandler(this.indentClick);
             // 
-            // openTestFormToolStripMenuItem
+            // setProcessorToolStripMenuItem1
             // 
-            this.openTestFormToolStripMenuItem.Name = "openTestFormToolStripMenuItem";
-            this.openTestFormToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
-            this.openTestFormToolStripMenuItem.Text = "Open Test Form";
-            this.openTestFormToolStripMenuItem.Click += new System.EventHandler(this.openTestFormToolStripMenuItem_Click);
+            this.setProcessorToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saxonSelect,
+            this.dotNetSelect});
+            this.setProcessorToolStripMenuItem1.Name = "setProcessorToolStripMenuItem1";
+            this.setProcessorToolStripMenuItem1.Size = new System.Drawing.Size(206, 26);
+            this.setProcessorToolStripMenuItem1.Text = "Set Processor";
             // 
-            // setProcessorToolStripMenuItem
+            // saxonSelect
             // 
-            this.setProcessorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.nETToolStripMenuItem,
-            this.saxonToolStripMenuItem});
-            this.setProcessorToolStripMenuItem.Name = "setProcessorToolStripMenuItem";
-            this.setProcessorToolStripMenuItem.Size = new System.Drawing.Size(188, 26);
-            this.setProcessorToolStripMenuItem.Text = "Set Processor";
+            this.saxonSelect.Checked = true;
+            this.saxonSelect.CheckOnClick = true;
+            this.saxonSelect.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.saxonSelect.Name = "saxonSelect";
+            this.saxonSelect.Size = new System.Drawing.Size(124, 26);
+            this.saxonSelect.Text = "Saxon";
+            this.saxonSelect.Click += new System.EventHandler(this.saxonOptionsClick);
             // 
-            // nETToolStripMenuItem
+            // dotNetSelect
             // 
-            this.nETToolStripMenuItem.Checked = true;
-            this.nETToolStripMenuItem.CheckOnClick = true;
-            this.nETToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.nETToolStripMenuItem.Name = "nETToolStripMenuItem";
-            this.nETToolStripMenuItem.Size = new System.Drawing.Size(124, 26);
-            this.nETToolStripMenuItem.Text = ".NET";
-            // 
-            // saxonToolStripMenuItem
-            // 
-            this.saxonToolStripMenuItem.CheckOnClick = true;
-            this.saxonToolStripMenuItem.Name = "saxonToolStripMenuItem";
-            this.saxonToolStripMenuItem.Size = new System.Drawing.Size(124, 26);
-            this.saxonToolStripMenuItem.Text = "Saxon";
-            // 
-            // saxonToolStripMenuItem1
-            // 
-            this.saxonToolStripMenuItem1.Name = "saxonToolStripMenuItem1";
-            this.saxonToolStripMenuItem1.Size = new System.Drawing.Size(150, 26);
-            this.saxonToolStripMenuItem1.Text = "Saxon";
-            this.saxonToolStripMenuItem1.Click += new System.EventHandler(this.saxonToolStripMenuItem1_Click);
+            this.dotNetSelect.CheckOnClick = true;
+            this.dotNetSelect.Name = "dotNetSelect";
+            this.dotNetSelect.Size = new System.Drawing.Size(124, 26);
+            this.dotNetSelect.Text = ".NET";
+            this.dotNetSelect.Click += new System.EventHandler(this.dotNetSelect_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -303,7 +286,7 @@
             this.scintillaSource.Size = new System.Drawing.Size(685, 360);
             this.scintillaSource.TabIndex = 0;
             this.scintillaSource.Text = resources.GetString("scintillaSource.Text");
-            this.scintillaSource.Click += new System.EventHandler(this.printPosition);
+            this.scintillaSource.Click += new System.EventHandler(this.PrintPosition);
             // 
             // scintillaXSL
             // 
@@ -318,7 +301,7 @@
             this.scintillaXSL.Size = new System.Drawing.Size(682, 360);
             this.scintillaXSL.TabIndex = 0;
             this.scintillaXSL.Text = resources.GetString("scintillaXSL.Text");
-            this.scintillaXSL.Click += new System.EventHandler(this.printPosition);
+            this.scintillaXSL.Click += new System.EventHandler(this.PrintPosition);
             // 
             // scintillaOutput
             // 
@@ -330,7 +313,7 @@
             this.scintillaOutput.Name = "scintillaOutput";
             this.scintillaOutput.Size = new System.Drawing.Size(1371, 190);
             this.scintillaOutput.TabIndex = 0;
-            this.scintillaOutput.Click += new System.EventHandler(this.printPosition);
+            this.scintillaOutput.Click += new System.EventHandler(this.PrintPosition);
             // 
             // toolStrip1
             // 
@@ -379,7 +362,7 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton1.Text = "Indent";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.toolStripButton1.Click += new System.EventHandler(this.indentClick);
             // 
             // MainForm
             // 
@@ -422,13 +405,10 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transformToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem wrapLinesToolStripMenuItem;
         public System.Windows.Forms.StatusStrip statusStrip1;
         public System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.ToolStripMenuItem openTestFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveOutputAsToolStripMenuItem;
         public ScintillaXml scintillaSource;
         private System.Windows.Forms.ToolStrip toolStrip1;
@@ -440,11 +420,12 @@
         private System.Windows.Forms.ToolStripMenuItem reportDevWikiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripMenuItem setProcessorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem nETToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saxonToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saxonToolStripMenuItem1;
         public ScintillaXml scintillaXSL;
         public ScintillaXml scintillaOutput;
+        private System.Windows.Forms.ToolStripMenuItem wrapLinesToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem formatAndIndentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setProcessorToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem saxonSelect;
+        private System.Windows.Forms.ToolStripMenuItem dotNetSelect;
     }
 }
