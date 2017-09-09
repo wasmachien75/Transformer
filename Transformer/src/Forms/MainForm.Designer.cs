@@ -1,4 +1,6 @@
-﻿namespace TransformerApp
+﻿using ScintillaNET;
+
+namespace TransformerApp
 {
     partial class MainForm
     {
@@ -241,7 +243,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 58);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 55);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -252,8 +254,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.scintillaOutput);
-            this.splitContainer1.Size = new System.Drawing.Size(1371, 554);
-            this.splitContainer1.SplitterDistance = 360;
+            this.splitContainer1.Size = new System.Drawing.Size(1371, 557);
+            this.splitContainer1.SplitterDistance = 361;
             this.splitContainer1.TabIndex = 5;
             // 
             // splitContainer2
@@ -269,7 +271,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.scintillaXSL);
-            this.splitContainer2.Size = new System.Drawing.Size(1371, 360);
+            this.splitContainer2.Size = new System.Drawing.Size(1371, 361);
             this.splitContainer2.SplitterDistance = 685;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -283,10 +285,10 @@
             this.scintillaSource.Location = new System.Drawing.Point(0, 0);
             this.scintillaSource.Name = "scintillaSource";
             this.scintillaSource.ScrollWidth = 585;
-            this.scintillaSource.Size = new System.Drawing.Size(685, 360);
+            this.scintillaSource.Size = new System.Drawing.Size(685, 361);
             this.scintillaSource.TabIndex = 0;
             this.scintillaSource.Text = resources.GetString("scintillaSource.Text");
-            this.scintillaSource.Click += new System.EventHandler(this.PrintPosition);
+            this.scintillaSource.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.PrintPosition);
             // 
             // scintillaXSL
             // 
@@ -298,10 +300,10 @@
             this.scintillaXSL.Location = new System.Drawing.Point(0, 0);
             this.scintillaXSL.Name = "scintillaXSL";
             this.scintillaXSL.ScrollWidth = 711;
-            this.scintillaXSL.Size = new System.Drawing.Size(682, 360);
+            this.scintillaXSL.Size = new System.Drawing.Size(682, 361);
             this.scintillaXSL.TabIndex = 0;
             this.scintillaXSL.Text = resources.GetString("scintillaXSL.Text");
-            this.scintillaXSL.Click += new System.EventHandler(this.PrintPosition);
+            this.scintillaXSL.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.PrintPosition);
             // 
             // scintillaOutput
             // 
@@ -311,9 +313,9 @@
             this.scintillaOutput.Lexer = ScintillaNET.Lexer.Xml;
             this.scintillaOutput.Location = new System.Drawing.Point(0, 0);
             this.scintillaOutput.Name = "scintillaOutput";
-            this.scintillaOutput.Size = new System.Drawing.Size(1371, 190);
+            this.scintillaOutput.Size = new System.Drawing.Size(1371, 192);
             this.scintillaOutput.TabIndex = 0;
-            this.scintillaOutput.Click += new System.EventHandler(this.PrintPosition);
+            this.scintillaOutput.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.PrintPosition);
             // 
             // toolStrip1
             // 
@@ -326,16 +328,15 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 28);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1371, 30);
+            this.toolStrip1.Size = new System.Drawing.Size(1371, 27);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // runButton
             // 
             this.runButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.runButton.Image = ((System.Drawing.Image)(resources.GetObject("runButton.Image")));
+            this.runButton.Image = global::Transformer.Properties.Resources.icons8_Circled_Play_96;
             this.runButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.runButton.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(24, 24);
             this.runButton.Text = "toolStripButton1";
@@ -345,7 +346,7 @@
             // saveButton
             // 
             this.saveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.saveButton.Image = ((System.Drawing.Image)(resources.GetObject("saveButton.Image")));
+            this.saveButton.Image = global::Transformer.Properties.Resources.icons8_Save_96;
             this.saveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveButton.Margin = new System.Windows.Forms.Padding(10, 1, 10, 2);
             this.saveButton.Name = "saveButton";

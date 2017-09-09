@@ -12,6 +12,9 @@ namespace TransformerApp
         public MainForm()
         {
             InitializeComponent();
+            this.scintillaSource.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
+            this.scintillaXSL.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
+            this.scintillaOutput.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
         }
 
         private void PrintPosition(object sender, EventArgs e)
