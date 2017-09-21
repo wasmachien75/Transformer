@@ -22,7 +22,7 @@ namespace TransformerApp
             ScintillaXml sc = sender as ScintillaXml;
             int pos = sc.GetColumn(sc.CurrentPosition) + 1;
             int line = sc.CurrentLine + 1;
-            posLabel.Text = "Line " + line.ToString() + ", Col " + pos.ToString();
+            posLabel.Text = "| Line " + line.ToString() + ", Col " + pos.ToString();
         }
        
 

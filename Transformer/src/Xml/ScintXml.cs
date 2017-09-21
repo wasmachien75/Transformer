@@ -15,6 +15,7 @@ namespace TransformerApp
         public ScintillaXml()
         {
             this.TextChanged += new EventHandler(this.ScintillaTextChanged);
+            this.KeyPress += new KeyPressEventHandler(this.OnReturnPress);
             //No wrapping by default
             this.WrapMode = WrapMode.None;
 
@@ -70,6 +71,20 @@ namespace TransformerApp
             this.Styles[Style.Xml.DoubleString].ForeColor = Color.DeepPink;
             this.Styles[Style.Xml.SingleString].ForeColor = Color.DeepPink;
             InitializeComponent();
+        }
+
+        private void OnReturnPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                FileStream ms = new FileStream(@"C:\Users\WVL\AppData\Roaming\Pro Cycling Manager 2016\History\2.xml", FileMode.Open, FileAccess.Read,FileShare.Read);
+                XmlReader reader = XmlReader.Create(ms);
+                while (reader.Read())
+                {
+                    System.Diagnostics.Debug.Write(reader.Depth);
+                }
+            }
+
         }
 
         private int maxLineNumberCharLength;
@@ -138,6 +153,8 @@ namespace TransformerApp
                 this.Text = indentedXML;
             }
         }
+
+
 
         public bool ContentIsXml()
         {

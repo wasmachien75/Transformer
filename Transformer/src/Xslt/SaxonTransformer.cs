@@ -20,7 +20,7 @@ namespace TransformerApp
         {
             MemoryStream result = new MemoryStream();
 
-                Uri uri = new Uri("http://mediagenix.tv");
+                Uri uri = new Uri("file://C:/");
                 
                 //set XSLT stylesheet
                 Processor p = new Processor();
