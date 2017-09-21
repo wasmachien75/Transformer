@@ -41,12 +41,9 @@ namespace TransformerApp
             return "";
         }
 
-        public void PrintOutput(Stream stream, Scintilla sc)
+        public void PrintOutput(string output, Scintilla sc)
         {
             sc.ReadOnly = false;
-            stream.Position = 0;
-            StreamReader reader = new StreamReader(stream);
-            string output = reader.ReadToEnd();
             sc.Text = output;
             sc.ReadOnly = true;
         }
@@ -57,7 +54,7 @@ namespace TransformerApp
             try
             {
                 transformer.TransformIt(processor);
-                scintillaOutput.Text = transformer.Result;
+                PrintOutput(transformer.Result, scintillaOutput);
                 UpdateStatusBar(String.Format("Transformation succeeded in {0} s", transformer.ElapsedSecs));
                 statusLabel.Image =  Transformer.Properties.Resources.GreenCheckMark;
             }

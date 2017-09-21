@@ -69,9 +69,7 @@
     <Compile Include="src\Forms\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Xml\Class1.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="src\Xml\XmlFragmentReader.cs" />
     <Compile Include="src\Xslt\XslProcessor.cs" />
     <Compile Include="src\Xslt\DotNetTransformer.cs" />
     <Compile Include="src\Xslt\SaxonTransformer.cs" />
