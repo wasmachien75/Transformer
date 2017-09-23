@@ -10,12 +10,22 @@ namespace TransformerApp
 {
     public partial class ScintillaXml : Scintilla
     {
-
+        private void OnCharAdded(object sender, InsertCheckEventArgs e)
+        {
+            if ((e.Text.EndsWith("\r") || e.Text.EndsWith("\n")))
+            {
+                string fragment = this.Text.Substring(0, this.CurrentPosition);
+                XmlDepthFinder depthfinder = new XmlDepthFinder();
+                int tabs = depthfinder.GetDepth(fragment);
+                e.Text += new string('\t', tabs);
+            }
+        }
        
         public ScintillaXml()
         {
             this.TextChanged += new EventHandler(this.ScintillaTextChanged);
-            this.KeyPress += new KeyPressEventHandler(this.OnReturnPress);
+            this.InsertCheck += new EventHandler<InsertCheckEventArgs>(OnCharAdded);
+            //this.KeyPress += new KeyPressEventHandler(this.OnReturnPress);
             //No wrapping by default
             this.WrapMode = WrapMode.None;
 
@@ -75,16 +85,11 @@ namespace TransformerApp
 
         private void OnReturnPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == (char)Keys.Enter)
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                string fragment = this.Text.Substring(0, this.CurrentPosition);
-                XmlDepthFinder depthfinder = new XmlDepthFinder();
-                int tabs = depthfinder.GetDepth(fragment);
-                while (tabs > 0)
-                {
-                    ExecuteCmd(Command.Tab);
-                    tabs--;
-                }
+               
+                
+
             }
 
         }

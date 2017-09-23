@@ -17,15 +17,6 @@ namespace TransformerApp
             this.scintillaOutput.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
         }
 
-        private void PrintPosition(object sender, EventArgs e)
-        {
-            ScintillaXml sc = sender as ScintillaXml;
-            int pos = sc.GetColumn(sc.CurrentPosition) + 1;
-            int line = sc.CurrentLine + 1;
-            posLabel.Text = "| Line " + line.ToString() + ", Col " + pos.ToString();
-        }
-       
-
         private string ChooseFile(string filter)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -176,6 +167,14 @@ namespace TransformerApp
         {
             processor = XslProcessor.DotNet;
             saxonSelect.Checked = false;
+        }
+
+        private void PrintPosition(object sender, UpdateUIEventArgs e)
+        {
+            ScintillaXml sc = sender as ScintillaXml;
+            int pos = sc.GetColumn(sc.CurrentPosition) + 1;
+            int line = sc.CurrentLine + 1;
+            posLabel.Text = "| Line " + line.ToString() + ", Col " + pos.ToString();
         }
     }
 }
