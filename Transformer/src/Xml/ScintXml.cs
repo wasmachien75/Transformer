@@ -13,12 +13,18 @@ namespace TransformerApp
 
         private void scintilla_DragDrop(object sender, DragEventArgs e)
         {
-            MessageBox.Show(e.Data.GetDataPresent(typeof(File)).ToString());
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, true))
+            {
+                object x = e.Data.GetData(DataFormats.FileDrop);
+                string filename = ((string[])x)[0];
+                LoadContent(filename);
+            }
+
         }
 
         private void scintilla_DragEnter(object sender, DragEventArgs e)
         {
-            e.Effect = DragDropEffects.Link;
+            e.Effect = DragDropEffects.Move;
         }
        
         public ScintillaXml()
