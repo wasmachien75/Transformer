@@ -69,7 +69,7 @@
     <Compile Include="src\Forms\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Xml\XmlFragmentReader.cs" />
+    <Compile Include="src\Xml\XmlDepthFinder.cs" />
     <Compile Include="src\Xslt\XslProcessor.cs" />
     <Compile Include="src\Xslt\DotNetTransformer.cs" />
     <Compile Include="src\Xslt\SaxonTransformer.cs" />

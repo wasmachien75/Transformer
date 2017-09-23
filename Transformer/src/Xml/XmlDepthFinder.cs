@@ -9,18 +9,24 @@ using System.Xml;
 
 namespace TransformerApp
 {
-    public class XmlFragmentReader
+    public class XmlDepthFinder
     {
-        private string fragment;
 
-        public void ReadIncompleteXml()
+        public XmlDepthFinder()
+        {
+
+        }
+
+        public void ReadXmlString()
         {
             System.Diagnostics.Debug.Write(GetDepth(@"<books><book>"));
         }
 
         public int GetDepth(string frag)
         {
-            return Regex.Matches(frag, "/<[a-z0-9]*>/g").Count;
+            int openedNodes =  Regex.Matches(frag, @"<[^</?]*>").Count;
+            int closedNodes = Regex.Matches(frag, @"<\/.*>").Count;
+            return Math.Max(openedNodes - closedNodes, 0);
         }
 
     }

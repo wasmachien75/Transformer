@@ -77,11 +77,13 @@ namespace TransformerApp
         {
             if(e.KeyChar == (char)Keys.Enter)
             {
-                FileStream ms = new FileStream(@"C:\Users\WVL\AppData\Roaming\Pro Cycling Manager 2016\History\2.xml", FileMode.Open, FileAccess.Read,FileShare.Read);
-                XmlReader reader = XmlReader.Create(ms);
-                while (reader.Read())
+                string fragment = this.Text.Substring(0, this.CurrentPosition);
+                XmlDepthFinder depthfinder = new XmlDepthFinder();
+                int tabs = depthfinder.GetDepth(fragment);
+                while (tabs > 0)
                 {
-                    System.Diagnostics.Debug.Write(reader.Depth);
+                    ExecuteCmd(Command.Tab);
+                    tabs--;
                 }
             }
 
