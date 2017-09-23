@@ -335,6 +335,7 @@ namespace TransformerApp
             this.scintillaSource.ScrollWidth = 585;
             this.scintillaSource.Size = new System.Drawing.Size(685, 361);
             this.scintillaSource.TabIndex = 0;
+            this.scintillaSource.TabWidth = 2;
             this.scintillaSource.Text = resources.GetString("scintillaSource.Text");
             this.scintillaSource.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.PrintPosition);
             // 
@@ -344,14 +345,13 @@ namespace TransformerApp
             | ScintillaNET.AutomaticFold.Change)));
             this.scintillaXSL.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.scintillaXSL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scintillaXSL.IndentationGuides = ScintillaNET.IndentView.Real;
-            this.scintillaXSL.IndentWidth = 222;
             this.scintillaXSL.Lexer = ScintillaNET.Lexer.Xml;
             this.scintillaXSL.Location = new System.Drawing.Point(0, 0);
             this.scintillaXSL.Name = "scintillaXSL";
             this.scintillaXSL.ScrollWidth = 711;
             this.scintillaXSL.Size = new System.Drawing.Size(682, 361);
             this.scintillaXSL.TabIndex = 0;
+            this.scintillaXSL.TabWidth = 2;
             this.scintillaXSL.Text = resources.GetString("scintillaXSL.Text");
             this.scintillaXSL.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.PrintPosition);
             // 
@@ -365,6 +365,7 @@ namespace TransformerApp
             this.scintillaOutput.Name = "scintillaOutput";
             this.scintillaOutput.Size = new System.Drawing.Size(1371, 192);
             this.scintillaOutput.TabIndex = 0;
+            this.scintillaOutput.TabWidth = 2;
             this.scintillaOutput.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.PrintPosition);
             // 
             // MainForm

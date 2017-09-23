@@ -25,6 +25,7 @@ namespace TransformerApp
         {
             this.TextChanged += new EventHandler(this.ScintillaTextChanged);
             this.InsertCheck += new EventHandler<InsertCheckEventArgs>(OnCharAdded);
+            this.TabWidth = 2;
             //this.KeyPress += new KeyPressEventHandler(this.OnReturnPress);
             //No wrapping by default
             this.WrapMode = WrapMode.None;
@@ -55,13 +56,13 @@ namespace TransformerApp
             }
 
             // Style the folder markers
-            this.Markers[Marker.Folder].Symbol = MarkerSymbol.BoxPlus;
+            this.Markers[Marker.Folder].Symbol = MarkerSymbol.Arrow;
             this.Markers[Marker.Folder].SetBackColor(SystemColors.ControlText);
-            this.Markers[Marker.FolderOpen].Symbol = MarkerSymbol.BoxMinus;
-            this.Markers[Marker.FolderEnd].Symbol = MarkerSymbol.BoxPlusConnected;
+            this.Markers[Marker.FolderOpen].Symbol = MarkerSymbol.ArrowDown;
+            this.Markers[Marker.FolderEnd].Symbol = MarkerSymbol.Arrow;
             this.Markers[Marker.FolderEnd].SetBackColor(SystemColors.ControlText);
             this.Markers[Marker.FolderMidTail].Symbol = MarkerSymbol.TCorner;
-            this.Markers[Marker.FolderOpenMid].Symbol = MarkerSymbol.BoxMinusConnected;
+            this.Markers[Marker.FolderOpenMid].Symbol = MarkerSymbol.ArrowDown;
             this.Markers[Marker.FolderSub].Symbol = MarkerSymbol.VLine;
             this.Markers[Marker.FolderTail].Symbol = MarkerSymbol.LCorner;
 
@@ -71,15 +72,15 @@ namespace TransformerApp
             // Set the Styles
             this.StyleResetDefault();
             this.Styles[Style.Default].Font = "Consolas";
-            this.Styles[Style.Default].Size = 10;
+            this.Styles[Style.Default].Size = 9;
             this.StyleClearAll();
             this.Styles[Style.Xml.Attribute].ForeColor = Color.Red;
             this.Styles[Style.Xml.Entity].ForeColor = Color.Red;
             this.Styles[Style.Xml.Comment].ForeColor = Color.Green;
-            this.Styles[Style.Xml.Tag].ForeColor = Color.Blue;
-            this.Styles[Style.Xml.TagEnd].ForeColor = Color.Blue;
-            this.Styles[Style.Xml.DoubleString].ForeColor = Color.DeepPink;
-            this.Styles[Style.Xml.SingleString].ForeColor = Color.DeepPink;
+            this.Styles[Style.Xml.Tag].ForeColor = Color.Tomato;
+            this.Styles[Style.Xml.TagEnd].ForeColor = Color.Tomato;
+            this.Styles[Style.Xml.DoubleString].ForeColor = Color.YellowGreen;
+            this.Styles[Style.Xml.SingleString].ForeColor = Color.YellowGreen;
             InitializeComponent();
         }
 
