@@ -10,23 +10,26 @@ namespace TransformerApp
 {
     public partial class ScintillaXml : Scintilla
     {
-        private void OnCharAdded(object sender, InsertCheckEventArgs e)
+
+        private void scintilla_DragDrop(object sender, DragEventArgs e)
         {
-            if ((e.Text.EndsWith("\r") || e.Text.EndsWith("\n")))
-            {
-                string fragment = this.Text.Substring(0, this.CurrentPosition);
-                XmlDepthFinder depthfinder = new XmlDepthFinder();
-                int tabs = depthfinder.GetDepth(fragment);
-                e.Text += new string('\t', tabs);
-            }
+            MessageBox.Show(e.Data.GetDataPresent(typeof(File)).ToString());
+        }
+
+        private void scintilla_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Link;
         }
        
         public ScintillaXml()
         {
+            this.AllowDrop = true;
+            this.DragDrop += new DragEventHandler(scintilla_DragDrop);
+            this.DragEnter += new DragEventHandler(scintilla_DragEnter);
             this.TextChanged += new EventHandler(this.ScintillaTextChanged);
-            this.InsertCheck += new EventHandler<InsertCheckEventArgs>(OnCharAdded);
+            this.InsertCheck += new EventHandler<InsertCheckEventArgs>(OnInsertCheck);
             this.TabWidth = 2;
-            //this.KeyPress += new KeyPressEventHandler(this.OnReturnPress);
+
             //No wrapping by default
             this.WrapMode = WrapMode.None;
 
@@ -34,7 +37,7 @@ namespace TransformerApp
             this.Lexer = Lexer.Xml;
 
             // Show line numbers
-            this.Margins[0].Width = 30;
+            this.Margins[0].Width = 10;
 
             // Enable folding
             this.SetProperty("fold", "1");
@@ -74,25 +77,16 @@ namespace TransformerApp
             this.Styles[Style.Default].Font = "Consolas";
             this.Styles[Style.Default].Size = 9;
             this.StyleClearAll();
-            this.Styles[Style.Xml.Attribute].ForeColor = Color.Red;
-            this.Styles[Style.Xml.Entity].ForeColor = Color.Red;
+            this.Styles[Style.Xml.Attribute].ForeColor = Color.FromArgb(1, 232, 98, 101);
+            this.Styles[Style.Xml.Entity].ForeColor = Color.FromArgb(1, 232, 98, 101);
             this.Styles[Style.Xml.Comment].ForeColor = Color.Green;
-            this.Styles[Style.Xml.Tag].ForeColor = Color.Tomato;
-            this.Styles[Style.Xml.TagEnd].ForeColor = Color.Tomato;
-            this.Styles[Style.Xml.DoubleString].ForeColor = Color.YellowGreen;
-            this.Styles[Style.Xml.SingleString].ForeColor = Color.YellowGreen;
+            this.Styles[Style.Xml.Tag].ForeColor = Color.FromArgb(1, 11, 102, 204);
+            this.Styles[Style.Xml.TagEnd].ForeColor = Color.FromArgb(1, 11, 102, 204);
+            this.Styles[Style.Xml.DoubleString].ForeColor = Color.FromArgb(1, 214, 32, 171);
+            this.Styles[Style.Xml.SingleString].ForeColor = Color.FromArgb(1, 214, 32, 171);
+            this.Styles[Style.LineNumber].Size = 9;
+            this.Styles[Style.LineNumber].Font = "Consolas";
             InitializeComponent();
-        }
-
-        private void OnReturnPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-               
-                
-
-            }
-
         }
 
         private int maxLineNumberCharLength;
@@ -162,7 +156,12 @@ namespace TransformerApp
             }
         }
 
-
+        public void LoadContent(string path)
+        {
+            FileStream fs = File.OpenRead(path);
+            StreamReader sr = new StreamReader(fs);
+            Text = sr.ReadToEnd();
+        }
 
         public bool ContentIsXml()
         {
@@ -180,6 +179,17 @@ namespace TransformerApp
                 return false;
             }
             return true;
+        }
+
+        private void OnInsertCheck(object sender, InsertCheckEventArgs e)
+        {
+            if ((e.Text.EndsWith("\r") || e.Text.EndsWith("\n")))
+            {
+                string fragment = this.Text.Substring(0, this.CurrentPosition);
+                XmlDepthFinder depthfinder = new XmlDepthFinder();
+                int tabs = depthfinder.GetDepth(fragment);
+                e.Text += new string('\t', tabs);
+            }
         }
 
         protected override void OnPaint(PaintEventArgs pe)

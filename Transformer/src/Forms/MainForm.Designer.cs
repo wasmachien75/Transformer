@@ -75,6 +75,7 @@ namespace TransformerApp
             // 
             // menuStrip1
             // 
+            this.menuStrip1.AllowDrop = true;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
@@ -244,6 +245,7 @@ namespace TransformerApp
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 55);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(1);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -325,6 +327,7 @@ namespace TransformerApp
             // 
             // scintillaSource
             // 
+            this.scintillaSource.AllowDrop = true;
             this.scintillaSource.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
             | ScintillaNET.AutomaticFold.Change)));
             this.scintillaSource.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -336,11 +339,11 @@ namespace TransformerApp
             this.scintillaSource.Size = new System.Drawing.Size(685, 361);
             this.scintillaSource.TabIndex = 0;
             this.scintillaSource.TabWidth = 2;
-            this.scintillaSource.Text = resources.GetString("scintillaSource.Text");
             this.scintillaSource.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.PrintPosition);
             // 
             // scintillaXSL
             // 
+            this.scintillaXSL.AllowDrop = true;
             this.scintillaXSL.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
             | ScintillaNET.AutomaticFold.Change)));
             this.scintillaXSL.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -359,6 +362,7 @@ namespace TransformerApp
             // 
             this.scintillaOutput.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
             | ScintillaNET.AutomaticFold.Change)));
+            this.scintillaOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.scintillaOutput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scintillaOutput.Lexer = ScintillaNET.Lexer.Xml;
             this.scintillaOutput.Location = new System.Drawing.Point(0, 0);

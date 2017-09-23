@@ -11,6 +11,8 @@ namespace TransformerApp
 {
     public class XmlDepthFinder
     {
+        private string openedNodesRegex = @"<[^/][^<?]*[^/]";
+        private string closedNodesRegex = @"<\/.*>";
 
         public XmlDepthFinder()
         {
@@ -24,8 +26,8 @@ namespace TransformerApp
 
         public int GetDepth(string frag)
         {
-            int openedNodes =  Regex.Matches(frag, @"<[^</?]*>").Count;
-            int closedNodes = Regex.Matches(frag, @"<\/.*>").Count;
+            int openedNodes =  Regex.Matches(frag, openedNodesRegex).Count;
+            int closedNodes = Regex.Matches(frag, closedNodesRegex).Count;
             return Math.Max(openedNodes - closedNodes, 0);
         }
 

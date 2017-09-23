@@ -12,9 +12,17 @@ namespace TransformerApp
         public MainForm()
         {
             InitializeComponent();
+            Setup();
+
+        }
+
+        private void Setup()
+        {
             this.scintillaSource.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
             this.scintillaXSL.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
             this.scintillaOutput.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
+
+            scintillaSource.LoadContent(@"C:\Users\WVL\Documents\Dev\Transformer\Transformer\Transformer\templates\xml\book_catalog.xml");
         }
 
         private string ChooseFile(string filter)
