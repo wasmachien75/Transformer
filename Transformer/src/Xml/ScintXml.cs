@@ -10,6 +10,7 @@ namespace TransformerApp
 {
     public partial class ScintillaXml : Scintilla
     {
+        private TransformerMainForm form;
 
         private void scintilla_DragDrop(object sender, DragEventArgs e)
         {
@@ -24,11 +25,12 @@ namespace TransformerApp
 
         private void scintilla_DragEnter(object sender, DragEventArgs e)
         {
-            e.Effect = DragDropEffects.Move;
+            e.Effect = DragDropEffects.Copy;
         }
        
-        public ScintillaXml()
+        public ScintillaXml(TransformerMainForm form)
         {
+            this.form = form;
             this.AllowDrop = true;
             this.DragDrop += new DragEventHandler(scintilla_DragDrop);
             this.DragEnter += new DragEventHandler(scintilla_DragEnter);
@@ -155,11 +157,18 @@ namespace TransformerApp
         public void Indent()
         {
             XmlIndenter indenter = new XmlIndenter();
-            if (indenter.LoadXml(this.Text))
+            try
             {
+                indenter.LoadXml(this.Text);
                 string indentedXML = indenter.Indent();
                 this.Text = indentedXML;
             }
+            catch (Exception e)
+            {
+
+                form.UpdateStatusBar(String.Format("Could not indent {0}: {1}", this.Name, e.Message), Result.Warning);
+            }
+            
         }
 
         public void LoadContent(string path)

@@ -2,7 +2,7 @@
 
 namespace TransformerApp
 {
-    partial class MainForm
+    partial class TransformerMainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace TransformerApp
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TransformerMainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadSourceXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,9 +57,9 @@ namespace TransformerApp
             this.runButton = new System.Windows.Forms.ToolStripButton();
             this.saveButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.scintillaSource = new TransformerApp.ScintillaXml();
-            this.scintillaXSL = new TransformerApp.ScintillaXml();
-            this.scintillaOutput = new TransformerApp.ScintillaXml();
+            this.scintillaSource = new TransformerApp.ScintillaXml(this);
+            this.scintillaXSL = new TransformerApp.ScintillaXml(this);
+            this.scintillaOutput = new TransformerApp.ScintillaXml(this);
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -372,7 +372,7 @@ namespace TransformerApp
             this.scintillaOutput.TabWidth = 2;
             this.scintillaOutput.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.PrintPosition);
             // 
-            // MainForm
+            // TransformerMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -384,7 +384,7 @@ namespace TransformerApp
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(853, 600);
-            this.Name = "MainForm";
+            this.Name = "TransformerMainForm";
             this.Text = "Transformer";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

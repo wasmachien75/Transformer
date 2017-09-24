@@ -69,6 +69,7 @@
     <Compile Include="src\Forms\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Icons.cs" />
     <Compile Include="src\Xml\XmlDepthFinder.cs" />
     <Compile Include="src\Xslt\XslProcessor.cs" />
     <Compile Include="src\Xslt\DotNetTransformer.cs" />
@@ -79,12 +80,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="src\Forms\TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\Forms\TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Xml\ScintXml.cs">
       <SubType>Component</SubType>
@@ -120,9 +115,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Forms\TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\Xml\ScintXml.resx">
       <DependentUpon>ScintXml.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +128,7 @@
   <ItemGroup>
     <Content Include="kabouter_plop_eD8_icon.ico" />
     <Content Include="plop.ico" />
+    <None Include="Resources\warning.png" />
     <None Include="Resources\OpenXml.png" />
     <None Include="Resources\icons8-Save-96.png" />
     <None Include="Resources\icons8-Save-104.png" />
