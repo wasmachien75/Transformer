@@ -15,7 +15,7 @@ namespace TransformerApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            TransformerMainForm mainform = new TransformerMainForm();
+            MainForm mainform = new MainForm();
 
 
             Application.Run(mainform);
