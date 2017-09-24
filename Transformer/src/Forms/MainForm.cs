@@ -184,5 +184,11 @@ namespace TransformerApp
             int line = sc.CurrentLine + 1;
             posLabel.Text = "| Line " + line.ToString() + ", Col " + pos.ToString();
         }
+
+        private void openTreeFormToolStripMenuItem_Click(object sender, EventArgs e)
+        { 
+            TreeViewForm tvf = new TreeViewForm(scintillaSource.Text);
+            tvf.Show();
+        }
     }
 }

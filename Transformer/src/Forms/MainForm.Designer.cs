@@ -53,13 +53,14 @@ namespace TransformerApp
             this.posLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.scintillaSource = new TransformerApp.ScintillaXml();
+            this.scintillaXSL = new TransformerApp.ScintillaXml();
+            this.scintillaOutput = new TransformerApp.ScintillaXml();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.runButton = new System.Windows.Forms.ToolStripButton();
             this.saveButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.scintillaSource = new TransformerApp.ScintillaXml();
-            this.scintillaXSL = new TransformerApp.ScintillaXml();
-            this.scintillaOutput = new TransformerApp.ScintillaXml();
+            this.openTreeFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -132,7 +133,8 @@ namespace TransformerApp
             this.transformToolStripMenuItem,
             this.wrapLinesToolStripMenuItem1,
             this.formatAndIndentToolStripMenuItem,
-            this.setProcessorToolStripMenuItem1});
+            this.setProcessorToolStripMenuItem1,
+            this.openTreeFormToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -277,6 +279,54 @@ namespace TransformerApp
             this.splitContainer2.SplitterDistance = 685;
             this.splitContainer2.TabIndex = 0;
             // 
+            // scintillaSource
+            // 
+            this.scintillaSource.AllowDrop = true;
+            this.scintillaSource.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
+            | ScintillaNET.AutomaticFold.Change)));
+            this.scintillaSource.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scintillaSource.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scintillaSource.Lexer = ScintillaNET.Lexer.Xml;
+            this.scintillaSource.Location = new System.Drawing.Point(0, 0);
+            this.scintillaSource.Name = "scintillaSource";
+            this.scintillaSource.ScrollWidth = 585;
+            this.scintillaSource.Size = new System.Drawing.Size(685, 361);
+            this.scintillaSource.TabIndex = 0;
+            this.scintillaSource.TabWidth = 2;
+            this.scintillaSource.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.PrintPosition);
+            // 
+            // scintillaXSL
+            // 
+            this.scintillaXSL.AllowDrop = true;
+            this.scintillaXSL.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
+            | ScintillaNET.AutomaticFold.Change)));
+            this.scintillaXSL.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scintillaXSL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scintillaXSL.Lexer = ScintillaNET.Lexer.Xml;
+            this.scintillaXSL.Location = new System.Drawing.Point(0, 0);
+            this.scintillaXSL.Name = "scintillaXSL";
+            this.scintillaXSL.ScrollWidth = 711;
+            this.scintillaXSL.Size = new System.Drawing.Size(682, 361);
+            this.scintillaXSL.TabIndex = 0;
+            this.scintillaXSL.TabWidth = 2;
+            this.scintillaXSL.Text = resources.GetString("scintillaXSL.Text");
+            this.scintillaXSL.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.PrintPosition);
+            // 
+            // scintillaOutput
+            // 
+            this.scintillaOutput.AllowDrop = true;
+            this.scintillaOutput.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
+            | ScintillaNET.AutomaticFold.Change)));
+            this.scintillaOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scintillaOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scintillaOutput.Lexer = ScintillaNET.Lexer.Xml;
+            this.scintillaOutput.Location = new System.Drawing.Point(0, 0);
+            this.scintillaOutput.Name = "scintillaOutput";
+            this.scintillaOutput.Size = new System.Drawing.Size(1371, 192);
+            this.scintillaOutput.TabIndex = 0;
+            this.scintillaOutput.TabWidth = 2;
+            this.scintillaOutput.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.PrintPosition);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -325,52 +375,12 @@ namespace TransformerApp
             this.toolStripButton1.Text = "Indent";
             this.toolStripButton1.Click += new System.EventHandler(this.indentClick);
             // 
-            // scintillaSource
+            // openTreeFormToolStripMenuItem
             // 
-            this.scintillaSource.AllowDrop = true;
-            this.scintillaSource.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
-            | ScintillaNET.AutomaticFold.Change)));
-            this.scintillaSource.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.scintillaSource.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scintillaSource.Lexer = ScintillaNET.Lexer.Xml;
-            this.scintillaSource.Location = new System.Drawing.Point(0, 0);
-            this.scintillaSource.Name = "scintillaSource";
-            this.scintillaSource.ScrollWidth = 585;
-            this.scintillaSource.Size = new System.Drawing.Size(685, 361);
-            this.scintillaSource.TabIndex = 0;
-            this.scintillaSource.TabWidth = 2;
-            this.scintillaSource.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.PrintPosition);
-            // 
-            // scintillaXSL
-            // 
-            this.scintillaXSL.AllowDrop = true;
-            this.scintillaXSL.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
-            | ScintillaNET.AutomaticFold.Change)));
-            this.scintillaXSL.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.scintillaXSL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scintillaXSL.Lexer = ScintillaNET.Lexer.Xml;
-            this.scintillaXSL.Location = new System.Drawing.Point(0, 0);
-            this.scintillaXSL.Name = "scintillaXSL";
-            this.scintillaXSL.ScrollWidth = 711;
-            this.scintillaXSL.Size = new System.Drawing.Size(682, 361);
-            this.scintillaXSL.TabIndex = 0;
-            this.scintillaXSL.TabWidth = 2;
-            this.scintillaXSL.Text = resources.GetString("scintillaXSL.Text");
-            this.scintillaXSL.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.PrintPosition);
-            // 
-            // scintillaOutput
-            // 
-            this.scintillaOutput.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
-            | ScintillaNET.AutomaticFold.Change)));
-            this.scintillaOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.scintillaOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scintillaOutput.Lexer = ScintillaNET.Lexer.Xml;
-            this.scintillaOutput.Location = new System.Drawing.Point(0, 0);
-            this.scintillaOutput.Name = "scintillaOutput";
-            this.scintillaOutput.Size = new System.Drawing.Size(1371, 192);
-            this.scintillaOutput.TabIndex = 0;
-            this.scintillaOutput.TabWidth = 2;
-            this.scintillaOutput.UpdateUI += new System.EventHandler<ScintillaNET.UpdateUIEventArgs>(this.PrintPosition);
+            this.openTreeFormToolStripMenuItem.Name = "openTreeFormToolStripMenuItem";
+            this.openTreeFormToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.openTreeFormToolStripMenuItem.Text = "OpenTreeForm";
+            this.openTreeFormToolStripMenuItem.Click += new System.EventHandler(this.openTreeFormToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -435,5 +445,6 @@ namespace TransformerApp
         private System.Windows.Forms.ToolStripMenuItem setProcessorToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem saxonSelect;
         private System.Windows.Forms.ToolStripMenuItem dotNetSelect;
+        private System.Windows.Forms.ToolStripMenuItem openTreeFormToolStripMenuItem;
     }
 }
