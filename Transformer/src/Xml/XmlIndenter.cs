@@ -16,9 +16,34 @@ namespace TransformerApp
         public bool LoadXml(string XmlString)
         {
             StringReader sr = new StringReader(XmlString);
-            xmlDoc.Load(sr);
+            try
+            {
+                xmlDoc.Load(sr);
+            }
+            catch (XmlException e)
+            {
+
+                MessageBox.Show(String.Format("Source XML is not well-formed, please check ({0})", e.Message), "Invalid XML", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
             return true;
 
+        }
+        public bool LoadXml(XmlReader xmlReader)
+        {
+            try
+            {
+                xmlDoc.Load(xmlReader);
+                return true;
+            }
+
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+            
         }
     }
 

@@ -5,18 +5,18 @@ using ScintillaNET;
 
 namespace TransformerApp
 {
-    public partial class TransformerMainForm : Form
+    public partial class MainForm : Form
     {
         static XslProcessor processor = XslProcessor.Saxon; //Saxon is our default XSLT processor
 
-        public TransformerMainForm()
+        public MainForm()
         {
             InitializeComponent();
-            ScintillaSetup();
+            Setup();
 
         }
 
-        private void ScintillaSetup()
+        private void Setup()
         {
             this.scintillaSource.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
             this.scintillaXSL.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
@@ -54,13 +54,14 @@ namespace TransformerApp
             {
                 transformer.TransformIt(processor);
                 PrintOutput(transformer.Result, scintillaOutput);
-                UpdateStatusBar(String.Format("Transformation succeeded in {0} s", transformer.ElapsedSecs), Result.Success);
+                UpdateStatusBar(String.Format("Transformation succeeded in {0} s", transformer.ElapsedSecs));
                 statusLabel.Image =  Transformer.Properties.Resources.GreenCheckMark;
             }
 
             catch(Exception e)
             {
-                UpdateStatusBar(e.Message, Result.Error);
+                UpdateStatusBar(e.Message);
+                statusLabel.Image = Transformer.Properties.Resources.RedCross;
             }
         }
 
@@ -68,23 +69,10 @@ namespace TransformerApp
         { 
             Transform();
         }
-        public void UpdateStatusBar(string str, Result result)
+
+        private void UpdateStatusBar(string str)
         {
             statusLabel.Text = str;
-
-            if (result == Result.Success)
-            {
-                statusLabel.Image = StatusIcons.GreenCheckMark;
-            }
-            if (result == Result.Error)
-            {
-                statusLabel.Image = StatusIcons.RedCross;
-            }
-            if (result == Result.Warning)
-            {
-                statusLabel.Image = StatusIcons.Warning;
-            }
-           
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

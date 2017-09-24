@@ -9,11 +9,11 @@ namespace TransformerApp
         ScintillaXml source;
         ScintillaXml xsl;
         ScintillaXml output;
-        TransformerMainForm form;
+        MainForm form;
         public string ElapsedSecs;
         public string Result;
 
-        public XslTransformer(TransformerMainForm mainForm)
+        public XslTransformer(MainForm mainForm)
         {
             form = mainForm;
             source = form.scintillaSource;
