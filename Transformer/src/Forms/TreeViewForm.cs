@@ -22,7 +22,7 @@ namespace TransformerApp
             InitializeComponent();
             this.xml = xml;
             XmlReader reader = LoadXml();
-            AddNodes(reader);
+            AddNodes();
         }
 
         public XmlReader LoadXml()
@@ -36,15 +36,39 @@ namespace TransformerApp
             return xreader;
         }
 
-        public void AddNodes(XmlReader reader)
+        public void AddNodes()
         {
-            while (reader.Read())
+            XmlDocument dom = new XmlDocument();
+            dom.LoadXml(xml);
+            treeView1.Nodes.Add(new TreeNode(dom.DocumentElement.Name));
+            TreeNode tnode = new TreeNode();
+            tnode = treeView1.Nodes[0];
+            AddNode(dom.DocumentElement, tnode);
+        }
+
+        private void AddNode(XmlNode inXmlNode, TreeNode inTreeNode)
+        {
+            XmlNode xNode;
+            TreeNode tNode;
+            XmlNodeList nodeList;
+            int i;
+
+            if (inXmlNode.HasChildNodes)
             {
-                treeView1.Nodes.Add(reader.Value);
-               
+                nodeList = inXmlNode.ChildNodes;
+                for (i = 0; i < nodeList.Count; i++)
+                {
+                    xNode = inXmlNode.ChildNodes[i];
+                    inTreeNode.Nodes.Add(new TreeNode(xNode.Name));
+                    tNode = inTreeNode.Nodes[i];
+                    AddNode(xNode, tNode);
+                }
             }
-            System.Diagnostics.Debug.Write(treeView1.Nodes.Count);
-            this._nodeCount = treeView1.Nodes.Count;
+
+            else
+            {
+                inTreeNode.Text = (inXmlNode.OuterXml).Trim();
+            }
         }
 
     }
