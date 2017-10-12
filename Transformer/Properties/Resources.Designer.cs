@@ -129,5 +129,20 @@ namespace Transformer.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;
+        ///&lt;transmissions&gt;
+        ///    &lt;exportinformation username=&quot;psi developer&quot; reportname=&quot;back loading report&quot; reportNumberOfTimesExecuted=&quot;128&quot;&gt;
+        ///        &lt;timestamp&gt;
+        ///            &lt;ESP_TIMEINSTANT time=&quot;11:37:37.680&quot; tvdayhours=&quot;11&quot; hours=&quot;11&quot; minutes=&quot;37&quot; seconds=&quot;37&quot; frames=&quot;17&quot;
+        ///                duration=&quot;697:37.680&quot; durationinminutes=&quot;697&quot; durationinseconds=&quot;41857&quot; durationintimeframes=&quot;1046442&quot;
+        ///                date=&quot;2016-03-03&quot; year=&quot;2016&quot; month=&quot;3&quot; day=&quot;3&quot; dayname=&quot;Thursda [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string transmissions {
+            get {
+                return ResourceManager.GetString("transmissions", resourceCulture);
+            }
+        }
     }
 }

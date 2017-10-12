@@ -14,9 +14,7 @@ namespace TransformerApp
 {
     public partial class TreeViewForm : Form
     {
-        private int _nodeCount;
         private string xml;
-        public int NodeCount { get { return _nodeCount; } set { } }
         public TreeViewForm(string xml)
         {
             InitializeComponent();

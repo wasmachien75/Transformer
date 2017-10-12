@@ -7,7 +7,7 @@ namespace TransformerApp
 {
     public partial class MainForm : Form
     {
-        static XslProcessor processor = XslProcessor.Saxon; //Saxon is our default XSLT processor
+        static XslProcessor processor = XslProcessor.DotNet; //.NET is our default XSLT processor
 
         public MainForm()
         {
@@ -21,8 +21,7 @@ namespace TransformerApp
             this.scintillaSource.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
             this.scintillaXSL.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
             this.scintillaOutput.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
-
-            scintillaSource.LoadContent(@"C:\Users\WVL\Documents\Dev\Transformer\Transformer\Transformer\templates\xml\book_catalog.xml");
+  
         }
 
         private string ChooseFile(string filter)

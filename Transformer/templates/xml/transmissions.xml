@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding = "UTF-8"?>
+<transmissions>
+  <exportinformation username="psi developer" reportname="back loading report" reportNumberOfTimesExecuted="128">
+    <timestamp>
+      <ESP_TIMEINSTANT time="11:37:37.680" tvdayhours="11" hours="11" minutes="37" seconds="37" frames="17"
+        duration="697:37.680" durationinminutes="697" durationinseconds="41857" durationintimeframes="1046442" date="2016-03-03"
+        year="2016" month="3" day="3" dayname="Thursday" weekdaynumber="4" weeknumber="9" monthname="March" dateindays="42065"
+        broadcasttime="11:37:37.680" broadcasttvdayhours="11" broadcasthours="11" broadcastminutes="37" broadcastseconds="37"
+        broadcastframes="17" broadcastduration="697:37.680" broadcastdurationinminutes="697" broadcastdurationinseconds="41857"
+        broadcastdurationintimeframes="1046442" broadcastdate="2016-03-03" broadcastyear="2016" broadcastmonth="3"
+        broadcastday="3" broadcastdayname="Thursday" broadcastweekdaynumber="4" broadcastweeknumber="9"
+        broadcastmonthname="March" broadcastdateindays="42065" fullbroadcast="2016-03-03T11:37:37.680"
+        full="2016-03-03T11:37:37.680" fullgmt="2016-03-03T10:37:37.680"
+        fullwithtimezoneinformation="2016-03-03T11:37:37.680+01:00"/>
+    </timestamp>
+  </exportinformation>
+  <icon_directory><![CDATA[\\oops\dataroot\OrganisationalNG\Support\Implementors\Reports\MgXReport\icons]]></icon_directory>
+  <ES_TRANSMISSION tx_runnumberwithincontract="4">
+    <tx_channel>
+      <ESP_CHANNEL name="TV3 Norway">
+        <popupLookups>
+          <POPUPLOOKUP interface="Reports" attribute="Channel" translation1="TV3 Norway" translation2="TV3 Norway"
+            translation3="2"/>
+        </popupLookups>
+        <region>
+          <ESP_REGION name="Norway"/>
+        </region>
+      </ESP_CHANNEL>
+    </tx_channel>
+    <tx_date>
+      <ESP_DATE date="2015-11-03" year="2015" month="11" day="3" dayname="Tuesday" weekdaynumber="2" weeknumber="45"
+        productionweeknumber="45" monthname="November" dateindays="41944"/>
+    </tx_date>
+    <tx_starttime>
+      <ESP_TIMEDURATION time="11:10:00.000" tvdayhours="11" hours="11" minutes="10" seconds="00" frames="00" milliseconds="000"
+        duration="670:00.000" durationinminutes="670" durationinseconds="40200" durationintimeframes="1005000"/>
+    </tx_starttime>
+    <tx_duration>
+      <ESP_TIMEDURATION time="00:55:00.000" tvdayhours="0" hours="0" minutes="55" seconds="00" frames="00" milliseconds="000"
+        duration="55:00.000" durationinminutes="55" durationinseconds="3300" durationintimeframes="82500"/>
+    </tx_duration>
+    <contractSnapshotCost>
+      <ESP_COSTPRICE normalizedamount="0,00" amount="0,00" anglosaxon_normalizedamount="0.00" anglosaxon_amount="0.00">
+        <currency>
+          <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+            <popupLookups/>
+          </ESP_CURRENCY>
+        </currency>
+      </ESP_COSTPRICE>
+    </contractSnapshotCost>
+    <tx_actualcost>
+      <ESP_COSTPRICE normalizedamount="0,00" amount="0,00" anglosaxon_normalizedamount="0.00" anglosaxon_amount="0.00">
+        <currency>
+          <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+            <popupLookups/>
+          </ESP_CURRENCY>
+        </currency>
+      </ESP_COSTPRICE>
+    </tx_actualcost>
+    <contractSnapshot>
+      <ES_TXCONTRACTSNAPSHOT maxNumberOfRuns="5" playRunNumber="2">
+        <contract>
+          <ES_CMContract contractNumber="10846">
+            <distributor>
+              <ES_FIRM f_name="CBS PARAMOUNT INTERNATIONAL - Do Not Use"/>
+            </distributor>
+          </ES_CMContract>
+        </contract>
+        <cost>
+          <ESP_COSTPRICE normalizedamount="0,00" amount="0,00" anglosaxon_normalizedamount="0.00" anglosaxon_amount="0.00">
+            <currency>
+              <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+                <popupLookups/>
+              </ESP_CURRENCY>
+            </currency>
+          </ESP_COSTPRICE>
+        </cost>
+        <startDate>
+          <ESP_DATE date="2014-03-01" year="2014" month="3" day="1" dayname="Saturday" weekdaynumber="6" weeknumber="9"
+            productionweeknumber="9" monthname="March" dateindays="41332"/>
+        </startDate>
+        <endDate>
+          <ESP_DATE date="2016-02-29" year="2016" month="2" day="29" dayname="Monday" weekdaynumber="1" weeknumber="9"
+            productionweeknumber="9" monthname="February" dateindays="42062"/>
+        </endDate>
+        <totalCostObject>
+          <ES_COSTOBJECT amount="180737.92">
+            <currency>
+              <ESP_CURRENCY printcode="1"/>
+            </currency>
+            <co_costprice>
+              <ESP_COSTPRICE normalizedamount="180.737,92" amount="180.737,92" anglosaxon_normalizedamount="180737.92"
+                anglosaxon_amount="180737.92">
+                <currency>
+                  <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+                    <popupLookups/>
+                  </ESP_CURRENCY>
+                </currency>
+              </ESP_COSTPRICE>
+            </co_costprice>
+            <co_localcostprice>
+              <ESP_COSTPRICE normalizedamount="180.737,92" amount="180.737,92" anglosaxon_normalizedamount="180737.92"
+                anglosaxon_amount="180737.92">
+                <currency>
+                  <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+                    <popupLookups/>
+                  </ESP_CURRENCY>
+                </currency>
+              </ESP_COSTPRICE>
+            </co_localcostprice>
+          </ES_COSTOBJECT>
+        </totalCostObject>
+        <productInContract>
+          <ES_CMProductInContract bssTitleCode="104123"/>
+        </productInContract>
+      </ES_TXCONTRACTSNAPSHOT>
+    </contractSnapshot>
+    <linearExplicitProductRun>
+      <ES_LINEAREXPLICITPRODUCTRUN>
+        <backLoadedDate>
+          <ESP_DATE date="2015-12-31" year="2015" month="12" day="31" dayname="Thursday" weekdaynumber="4" weeknumber="53"
+            productionweeknumber="53" monthname="December" dateindays="42002"/>
+        </backLoadedDate>
+        <transmissionCost>
+          <ESP_COSTPRICE normalizedamount="0,00" amount="0,00" anglosaxon_normalizedamount="0.00" anglosaxon_amount="0.00">
+            <currency>
+              <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+                <popupLookups/>
+              </ESP_CURRENCY>
+            </currency>
+          </ESP_COSTPRICE>
+        </transmissionCost>
+      </ES_LINEAREXPLICITPRODUCTRUN>
+    </linearExplicitProductRun>
+    <tx_product>
+      <ES_PRODUCT p_series_nrofepisodes="16" p_product_type="Episode"
+        p_product_title="AMERICA&apos;S NEXT TOP MODEL YR 20 16:9 HD :Ep 2001" p_episode_internalepisodenumber="2001">
+        <p_program_nature>
+          <ESP_NATURE>
+            <popupLookups>
+              <POPUPLOOKUP interface="Reports" attribute="ProductionType" translation1="Acquired" translation2="Acquired"
+                translation3="Acquired"/>
+            </popupLookups>
+          </ESP_NATURE>
+        </p_program_nature>
+        <p_product_expectedduration>
+          <ESP_TIMEDURATION time="00:45:00.000" tvdayhours="0" hours="0" minutes="45" seconds="00" frames="00"
+            milliseconds="000" duration="45:00.000" durationinminutes="45" durationinseconds="2700" durationintimeframes="67500"
+          />
+        </p_product_expectedduration>
+        <p_product_contents>
+          <ESP_CONTENTS>
+            <popupLookups>
+              <POPUPLOOKUP interface="Reports" attribute="Subgenre" translation1="Not Specified" translation2="Not Specified"
+                translation3="Not Specified"/>
+            </popupLookups>
+          </ESP_CONTENTS>
+        </p_product_contents>
+      </ES_PRODUCT>
+    </tx_product>
+    <tx_typeofrun>
+      <ESP_RUNTYPE predefined="Run"/>
+    </tx_typeofrun>
+  </ES_TRANSMISSION>
+  <ES_TRANSMISSION tx_runnumberwithincontract="2" repeatSettingsTextInSlotLayout="FFR">
+    <tx_channel>
+      <ESP_CHANNEL name="TV3 Norway">
+        <popupLookups>
+          <POPUPLOOKUP interface="Reports" attribute="Channel" translation1="TV3 Norway" translation2="TV3 Norway"
+            translation3="2"/>
+        </popupLookups>
+        <region>
+          <ESP_REGION name="Norway"/>
+        </region>
+      </ESP_CHANNEL>
+    </tx_channel>
+    <tx_date>
+      <ESP_DATE date="2015-11-03" year="2015" month="11" day="3" dayname="Tuesday" weekdaynumber="2" weeknumber="45"
+        productionweeknumber="45" monthname="November" dateindays="41944"/>
+    </tx_date>
+    <tx_starttime>
+      <ESP_TIMEDURATION time="29:05:00.000" tvdayhours="29" hours="5" minutes="05" seconds="00" frames="00" milliseconds="000"
+        duration="1745:00.000" durationinminutes="1745" durationinseconds="104700" durationintimeframes="2617500"/>
+    </tx_starttime>
+    <tx_duration>
+      <ESP_TIMEDURATION time="00:46:00.000" tvdayhours="0" hours="0" minutes="46" seconds="00" frames="00" milliseconds="000"
+        duration="46:00.000" durationinminutes="46" durationinseconds="2760" durationintimeframes="69000"/>
+    </tx_duration>
+    <contractSnapshotCost>
+      <ESP_COSTPRICE normalizedamount="0,00" amount="0,00" anglosaxon_normalizedamount="0.00" anglosaxon_amount="0.00">
+        <currency>
+          <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+            <popupLookups/>
+          </ESP_CURRENCY>
+        </currency>
+      </ESP_COSTPRICE>
+    </contractSnapshotCost>
+    <tx_actualcost>
+      <ESP_COSTPRICE normalizedamount="0,00" amount="0,00" anglosaxon_normalizedamount="0.00" anglosaxon_amount="0.00">
+        <currency>
+          <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+            <popupLookups/>
+          </ESP_CURRENCY>
+        </currency>
+      </ESP_COSTPRICE>
+    </tx_actualcost>
+    <contractSnapshot>
+      <ES_TXCONTRACTSNAPSHOT maxNumberOfRuns="5" playRunNumber="3">
+        <contract>
+          <ES_CMContract contractNumber="10846">
+            <distributor>
+              <ES_FIRM f_name="CBS PARAMOUNT INTERNATIONAL - Do Not Use"/>
+            </distributor>
+          </ES_CMContract>
+        </contract>
+        <cost>
+          <ESP_COSTPRICE normalizedamount="0,00" amount="0,00" anglosaxon_normalizedamount="0.00" anglosaxon_amount="0.00">
+            <currency>
+              <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+                <popupLookups/>
+              </ESP_CURRENCY>
+            </currency>
+          </ESP_COSTPRICE>
+        </cost>
+        <startDate>
+          <ESP_DATE date="2014-03-01" year="2014" month="3" day="1" dayname="Saturday" weekdaynumber="6" weeknumber="9"
+            productionweeknumber="9" monthname="March" dateindays="41332"/>
+        </startDate>
+        <endDate>
+          <ESP_DATE date="2016-02-29" year="2016" month="2" day="29" dayname="Monday" weekdaynumber="1" weeknumber="9"
+            productionweeknumber="9" monthname="February" dateindays="42062"/>
+        </endDate>
+        <totalCostObject>
+          <ES_COSTOBJECT amount="180737.92">
+            <currency>
+              <ESP_CURRENCY printcode="1"/>
+            </currency>
+            <co_costprice>
+              <ESP_COSTPRICE normalizedamount="180.737,92" amount="180.737,92" anglosaxon_normalizedamount="180737.92"
+                anglosaxon_amount="180737.92">
+                <currency>
+                  <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+                    <popupLookups/>
+                  </ESP_CURRENCY>
+                </currency>
+              </ESP_COSTPRICE>
+            </co_costprice>
+            <co_localcostprice>
+              <ESP_COSTPRICE normalizedamount="180.737,92" amount="180.737,92" anglosaxon_normalizedamount="180737.92"
+                anglosaxon_amount="180737.92">
+                <currency>
+                  <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+                    <popupLookups/>
+                  </ESP_CURRENCY>
+                </currency>
+              </ESP_COSTPRICE>
+            </co_localcostprice>
+          </ES_COSTOBJECT>
+        </totalCostObject>
+        <productInContract>
+          <ES_CMProductInContract bssTitleCode="104123"/>
+        </productInContract>
+      </ES_TXCONTRACTSNAPSHOT>
+    </contractSnapshot>
+    <linearExplicitProductRun>
+      <ES_LINEAREXPLICITPRODUCTRUN>
+        <transmissionCost>
+          <ESP_COSTPRICE normalizedamount="0,00" amount="0,00" anglosaxon_normalizedamount="0.00" anglosaxon_amount="0.00">
+            <currency>
+              <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+                <popupLookups/>
+              </ESP_CURRENCY>
+            </currency>
+          </ESP_COSTPRICE>
+        </transmissionCost>
+      </ES_LINEAREXPLICITPRODUCTRUN>
+    </linearExplicitProductRun>
+    <tx_product>
+      <ES_PRODUCT p_series_nrofepisodes="16" p_product_type="Episode"
+        p_product_title="AMERICA&apos;S NEXT TOP MODEL YR 20 16:9 HD :Ep 2001" p_episode_internalepisodenumber="2001">
+        <p_program_nature>
+          <ESP_NATURE>
+            <popupLookups>
+              <POPUPLOOKUP interface="Reports" attribute="ProductionType" translation1="Acquired" translation2="Acquired"
+                translation3="Acquired"/>
+            </popupLookups>
+          </ESP_NATURE>
+        </p_program_nature>
+        <p_product_expectedduration>
+          <ESP_TIMEDURATION time="00:45:00.000" tvdayhours="0" hours="0" minutes="45" seconds="00" frames="00"
+            milliseconds="000" duration="45:00.000" durationinminutes="45" durationinseconds="2700" durationintimeframes="67500"
+          />
+        </p_product_expectedduration>
+        <p_product_contents>
+          <ESP_CONTENTS>
+            <popupLookups>
+              <POPUPLOOKUP interface="Reports" attribute="Subgenre" translation1="Not Specified" translation2="Not Specified"
+                translation3="Not Specified"/>
+            </popupLookups>
+          </ESP_CONTENTS>
+        </p_product_contents>
+      </ES_PRODUCT>
+    </tx_product>
+    <tx_typeofrun>
+      <ESP_RUNTYPE predefined="Snap"/>
+    </tx_typeofrun>
+  </ES_TRANSMISSION>
+  <ES_TRANSMISSION tx_runnumberwithincontract="3">
+    <tx_channel>
+      <ESP_CHANNEL name="TV3 Norway">
+        <popupLookups>
+          <POPUPLOOKUP interface="Reports" attribute="Channel" translation1="TV3 Norway" translation2="TV3 Norway"
+            translation3="2"/>
+        </popupLookups>
+        <region>
+          <ESP_REGION name="Norway"/>
+        </region>
+      </ESP_CHANNEL>
+    </tx_channel>
+    <tx_date>
+      <ESP_DATE date="2015-07-31" year="2015" month="7" day="31" dayname="Friday" weekdaynumber="5" weeknumber="31"
+        productionweeknumber="31" monthname="July" dateindays="41849"/>
+    </tx_date>
+    <tx_starttime>
+      <ESP_TIMEDURATION time="13:00:00.000" tvdayhours="13" hours="13" minutes="00" seconds="00" frames="00" milliseconds="000"
+        duration="780:00.000" durationinminutes="780" durationinseconds="46800" durationintimeframes="1170000"/>
+    </tx_starttime>
+    <tx_duration>
+      <ESP_TIMEDURATION time="01:00:00.000" tvdayhours="1" hours="1" minutes="00" seconds="00" frames="00" milliseconds="000"
+        duration="60:00.000" durationinminutes="60" durationinseconds="3600" durationintimeframes="90000"/>
+    </tx_duration>
+    <contractSnapshotCost>
+      <ESP_COSTPRICE normalizedamount="0,00" amount="0,00" anglosaxon_normalizedamount="0.00" anglosaxon_amount="0.00">
+        <currency>
+          <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+            <popupLookups/>
+          </ESP_CURRENCY>
+        </currency>
+      </ESP_COSTPRICE>
+    </contractSnapshotCost>
+    <tx_actualcost>
+      <ESP_COSTPRICE normalizedamount="0,00" amount="0,00" anglosaxon_normalizedamount="0.00" anglosaxon_amount="0.00">
+        <currency>
+          <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+            <popupLookups/>
+          </ESP_CURRENCY>
+        </currency>
+      </ESP_COSTPRICE>
+    </tx_actualcost>
+    <contractSnapshot>
+      <ES_TXCONTRACTSNAPSHOT maxNumberOfRuns="5" playRunNumber="1">
+        <contract>
+          <ES_CMContract contractNumber="10846">
+            <distributor>
+              <ES_FIRM f_name="CBS PARAMOUNT INTERNATIONAL - Do Not Use"/>
+            </distributor>
+          </ES_CMContract>
+        </contract>
+        <cost>
+          <ESP_COSTPRICE normalizedamount="0,00" amount="0,00" anglosaxon_normalizedamount="0.00" anglosaxon_amount="0.00">
+            <currency>
+              <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+                <popupLookups/>
+              </ESP_CURRENCY>
+            </currency>
+          </ESP_COSTPRICE>
+        </cost>
+        <startDate>
+          <ESP_DATE date="2014-03-01" year="2014" month="3" day="1" dayname="Saturday" weekdaynumber="6" weeknumber="9"
+            productionweeknumber="9" monthname="March" dateindays="41332"/>
+        </startDate>
+        <endDate>
+          <ESP_DATE date="2016-02-29" year="2016" month="2" day="29" dayname="Monday" weekdaynumber="1" weeknumber="9"
+            productionweeknumber="9" monthname="February" dateindays="42062"/>
+        </endDate>
+        <totalCostObject>
+          <ES_COSTOBJECT amount="180737.92">
+            <currency>
+              <ESP_CURRENCY printcode="1"/>
+            </currency>
+            <co_costprice>
+              <ESP_COSTPRICE normalizedamount="180.737,92" amount="180.737,92" anglosaxon_normalizedamount="180737.92"
+                anglosaxon_amount="180737.92">
+                <currency>
+                  <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+                    <popupLookups/>
+                  </ESP_CURRENCY>
+                </currency>
+              </ESP_COSTPRICE>
+            </co_costprice>
+            <co_localcostprice>
+              <ESP_COSTPRICE normalizedamount="180.737,92" amount="180.737,92" anglosaxon_normalizedamount="180737.92"
+                anglosaxon_amount="180737.92">
+                <currency>
+                  <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+                    <popupLookups/>
+                  </ESP_CURRENCY>
+                </currency>
+              </ESP_COSTPRICE>
+            </co_localcostprice>
+          </ES_COSTOBJECT>
+        </totalCostObject>
+        <productInContract>
+          <ES_CMProductInContract bssTitleCode="104123"/>
+        </productInContract>
+      </ES_TXCONTRACTSNAPSHOT>
+    </contractSnapshot>
+    <linearExplicitProductRun>
+      <ES_LINEAREXPLICITPRODUCTRUN>
+        <backLoadedDate>
+          <ESP_DATE date="2015-12-31" year="2015" month="12" day="31" dayname="Thursday" weekdaynumber="4" weeknumber="53"
+            productionweeknumber="53" monthname="December" dateindays="42002"/>
+        </backLoadedDate>
+        <transmissionCost>
+          <ESP_COSTPRICE normalizedamount="0,00" amount="0,00" anglosaxon_normalizedamount="0.00" anglosaxon_amount="0.00">
+            <currency>
+              <ESP_CURRENCY oid="101542520" lot_external_reference="101542520" name="USD" ordernr="2" printcode="1">
+                <popupLookups/>
+              </ESP_CURRENCY>
+            </currency>
+          </ESP_COSTPRICE>
+        </transmissionCost>
+      </ES_LINEAREXPLICITPRODUCTRUN>
+    </linearExplicitProductRun>
+    <tx_product>
+      <ES_PRODUCT p_series_nrofepisodes="16" p_product_type="Episode"
+        p_product_title="AMERICA&apos;S NEXT TOP MODEL YR 20 16:9 HD :Ep 2001" p_episode_internalepisodenumber="2001">
+        <p_program_nature>
+          <ESP_NATURE>
+            <popupLookups>
+              <POPUPLOOKUP interface="Reports" attribute="ProductionType" translation1="Acquired" translation2="Acquired"
+                translation3="Acquired"/>
+            </popupLookups>
+          </ESP_NATURE>
+        </p_program_nature>
+        <p_product_expectedduration>
+          <ESP_TIMEDURATION time="00:45:00.000" tvdayhours="0" hours="0" minutes="45" seconds="00" frames="00"
+            milliseconds="000" duration="45:00.000" durationinminutes="45" durationinseconds="2700" durationintimeframes="67500"
+          />
+        </p_product_expectedduration>
+        <p_product_contents>
+          <ESP_CONTENTS>
+            <popupLookups>
+              <POPUPLOOKUP interface="Reports" attribute="Subgenre" translation1="Not Specified" translation2="Not Specified"
+                translation3="Not Specified"/>
+            </popupLookups>
+          </ESP_CONTENTS>
+        </p_product_contents>
+      </ES_PRODUCT>
+    </tx_product>
+    <tx_typeofrun>
+      <ESP_RUNTYPE predefined="Run"/>
+    </tx_typeofrun>
+  </ES_TRANSMISSION>
+  <ES_TRANSMISSION>
+    <tx_channel>
+      <ESP_CHANNEL name="TV3 Norway">
+        <popupLookups>
+          <POPUPLOOKUP interface="Reports" attribute="Channel" translation1="TV3 Norway" translation2="TV3 Norway"
+            translation3="2"/>
+        </popupLookups>
+        <region>
+          <ESP_REGION name="Norway"/>
+        </region>
+      </ESP_CHANNEL>
+    </tx_channel>
+    <tx_date>
+      <ESP_DATE date="2014-07-07" year="2014" month="7" day="7" dayname="Monday" weekdaynumber="1" weeknumber="28"
+        productionweeknumber="28" monthname="July" dateindays="41460"/>
+    </tx_date>
+    <tx_starttime>
+      <ESP_TIMEDURATION time="19:30:00.000" tvdayhours="19" hours="19" minutes="30" seconds="00" frames="00" milliseconds="000"
+        duration="1170:00.000" durationinminutes="1170" durationinseconds="70200" durationintimeframes="1755000"/>
+    </tx_starttime>
+    <tx_duration>
+      <ESP_TIMEDURATION time="00:59:40.400" tvdayhours="0" hours="0" minutes="59" seconds="40" frames="10" milliseconds="400"
+        duration="59:40.400" durationinminutes="59" durationinseconds="3580" durationintimeframes="89510"/>
+    </tx_duration>
+    <tx_product>
+      <ES_PRODUCT p_series_nrofepisodes="16" p_product_type="Episode"
+        p_product_title="AMERICA&apos;S NEXT TOP MODEL YR 20 16:9 HD :Ep 2001" p_episode_internalepisodenumber="2001">
+        <p_program_nature>
+          <ESP_NATURE>
+            <popupLookups>
+              <POPUPLOOKUP interface="Reports" attribute="ProductionType" translation1="Acquired" translation2="Acquired"
+                translation3="Acquired"/>
+            </popupLookups>
+          </ESP_NATURE>
+        </p_program_nature>
+        <p_product_expectedduration>
+          <ESP_TIMEDURATION time="00:45:00.000" tvdayhours="0" hours="0" minutes="45" seconds="00" frames="00"
+            milliseconds="000" duration="45:00.000" durationinminutes="45" durationinseconds="2700" durationintimeframes="67500"
+          />
+        </p_product_expectedduration>
+        <p_product_contents>
+          <ESP_CONTENTS>
+            <popupLookups>
+              <POPUPLOOKUP interface="Reports" attribute="Subgenre" translation1="Not Specified" translation2="Not Specified"
+                translation3="Not Specified"/>
+            </popupLookups>
+          </ESP_CONTENTS>
+        </p_product_contents>
+      </ES_PRODUCT>
+    </tx_product>
+  </ES_TRANSMISSION>
+  <ES_TRANSMISSION>
+    <tx_channel>
+      <ESP_CHANNEL name="TV3 Norway">
+        <popupLookups>
+          <POPUPLOOKUP interface="Reports" attribute="Channel" translation1="TV3 Norway" translation2="TV3 Norway"
+            translation3="2"/>
+        </popupLookups>
+        <region>
+          <ESP_REGION name="Norway"/>
+        </region>
+      </ESP_CHANNEL>
+    </tx_channel>
+    <tx_date>
+      <ESP_DATE date="2015-01-23" year="2015" month="1" day="23" dayname="Friday" weekdaynumber="5" weeknumber="4"
+        productionweeknumber="4" monthname="January" dateindays="41660"/>
+    </tx_date>
+    <tx_starttime>
+      <ESP_TIMEDURATION time="14:00:00.000" tvdayhours="14" hours="14" minutes="00" seconds="00" frames="00" milliseconds="000"
+        duration="840:00.000" durationinminutes="840" durationinseconds="50400" durationintimeframes="1260000"/>
+    </tx_starttime>
+    <tx_duration>
+      <ESP_TIMEDURATION time="00:59:52.400" tvdayhours="0" hours="0" minutes="59" seconds="52" frames="10" milliseconds="400"
+        duration="59:52.400" durationinminutes="59" durationinseconds="3592" durationintimeframes="89810"/>
+    </tx_duration>
+    <tx_product>
+      <ES_PRODUCT p_series_nrofepisodes="16" p_product_type="Episode"
+        p_product_title="AMERICA&apos;S NEXT TOP MODEL YR 20 16:9 HD :Ep 2001" p_episode_internalepisodenumber="2001">
+        <p_program_nature>
+          <ESP_NATURE>
+            <popupLookups>
+              <POPUPLOOKUP interface="Reports" attribute="ProductionType" translation1="Acquired" translation2="Acquired"
+                translation3="Acquired"/>
+            </popupLookups>
+          </ESP_NATURE>
+        </p_program_nature>
+        <p_product_expectedduration>
+          <ESP_TIMEDURATION time="00:45:00.000" tvdayhours="0" hours="0" minutes="45" seconds="00" frames="00"
+            milliseconds="000" duration="45:00.000" durationinminutes="45" durationinseconds="2700" durationintimeframes="67500"
+          />
+        </p_product_expectedduration>
+        <p_product_contents>
+          <ESP_CONTENTS>
+            <popupLookups>
+              <POPUPLOOKUP interface="Reports" attribute="Subgenre" translation1="Not Specified" translation2="Not Specified"
+                translation3="Not Specified"/>
+            </popupLookups>
+          </ESP_CONTENTS>
+        </p_product_contents>
+      </ES_PRODUCT>
+    </tx_product>
+  </ES_TRANSMISSION>
+  <ES_TRANSMISSION>
+    <tx_channel>
+      <ESP_CHANNEL name="TV3 Norway">
+        <popupLookups>
+          <POPUPLOOKUP interface="Reports" attribute="Channel" translation1="TV3 Norway" translation2="TV3 Norway"
+            translation3="2"/>
+        </popupLookups>
+        <region>
+          <ESP_REGION name="Norway"/>
+        </region>
+      </ESP_CHANNEL>
+    </tx_channel>
+    <tx_date>
+      <ESP_DATE date="2014-07-08" year="2014" month="7" day="8" dayname="Tuesday" weekdaynumber="2" weeknumber="28"
+        productionweeknumber="28" monthname="July" dateindays="41461"/>
+    </tx_date>
+    <tx_starttime>
+      <ESP_TIMEDURATION time="11:05:00.000" tvdayhours="11" hours="11" minutes="05" seconds="00" frames="00" milliseconds="000"
+        duration="665:00.000" durationinminutes="665" durationinseconds="39900" durationintimeframes="997500"/>
+    </tx_starttime>
+    <tx_duration>
+      <ESP_TIMEDURATION time="00:49:34.400" tvdayhours="0" hours="0" minutes="49" seconds="34" frames="10" milliseconds="400"
+        duration="49:34.400" durationinminutes="49" durationinseconds="2974" durationintimeframes="74360"/>
+    </tx_duration>
+    <tx_product>
+      <ES_PRODUCT p_series_nrofepisodes="16" p_product_type="Episode"
+        p_product_title="AMERICA&apos;S NEXT TOP MODEL YR 20 16:9 HD :Ep 2001" p_episode_internalepisodenumber="2001">
+        <p_program_nature>
+          <ESP_NATURE>
+            <popupLookups>
+              <POPUPLOOKUP interface="Reports" attribute="ProductionType" translation1="Acquired" translation2="Acquired"
+                translation3="Acquired"/>
+            </popupLookups>
+          </ESP_NATURE>
+        </p_program_nature>
+        <p_product_expectedduration>
+          <ESP_TIMEDURATION time="00:45:00.000" tvdayhours="0" hours="0" minutes="45" seconds="00" frames="00"
+            milliseconds="000" duration="45:00.000" durationinminutes="45" durationinseconds="2700" durationintimeframes="67500"
+          />
+        </p_product_expectedduration>
+        <p_product_contents>
+          <ESP_CONTENTS>
+            <popupLookups>
+              <POPUPLOOKUP interface="Reports" attribute="Subgenre" translation1="Not Specified" translation2="Not Specified"
+                translation3="Not Specified"/>
+            </popupLookups>
+          </ESP_CONTENTS>
+        </p_product_contents>
+      </ES_PRODUCT>
+    </tx_product>
+  </ES_TRANSMISSION>
+</transmissions>

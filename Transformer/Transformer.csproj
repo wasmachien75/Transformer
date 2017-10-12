@@ -145,6 +145,7 @@
   <ItemGroup>
     <Content Include="kabouter_plop_eD8_icon.ico" />
     <Content Include="plop.ico" />
+    <None Include="templates\xml\transmissions.xml" />
     <None Include="Resources\OpenXml.png" />
     <None Include="Resources\icons8-Save-96.png" />
     <None Include="Resources\icons8-Save-104.png" />
