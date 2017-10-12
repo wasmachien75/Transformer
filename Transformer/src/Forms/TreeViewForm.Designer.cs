@@ -34,9 +34,9 @@
             // treeView1
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Location = new System.Drawing.Point(5, 5);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(425, 348);
+            this.treeView1.Size = new System.Drawing.Size(415, 338);
             this.treeView1.TabIndex = 0;
             // 
             // TreeViewForm
@@ -45,8 +45,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(425, 348);
             this.Controls.Add(this.treeView1);
+            this.MaximizeBox = false;
             this.Name = "TreeViewForm";
-            this.Text = "TreeViewForm";
+            this.Padding = new System.Windows.Forms.Padding(5);
+            this.Text = "Source Tree";
             this.ResumeLayout(false);
 
         }

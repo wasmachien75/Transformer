@@ -49,12 +49,20 @@ namespace TransformerApp
             XmlNode xNode;
             TreeNode tNode;
             XmlNodeList nodeList;
+            if (inXmlNode.Attributes != null)
+            {
+                foreach (XmlAttribute attribute in inXmlNode.Attributes)
+                {
+                    inTreeNode.Nodes.Add(attribute.Name + " = " + attribute.Value);
+                }
+            }
+            
             int i;
 
             if (inXmlNode.HasChildNodes)
             {
                 nodeList = inXmlNode.ChildNodes;
-                for (i = 0; i < nodeList.Count; i++)
+                for (i = inXmlNode.Attributes.Count; i < nodeList.Count; i++)
                 {
                     xNode = inXmlNode.ChildNodes[i];
                     inTreeNode.Nodes.Add(new TreeNode(xNode.Name));
@@ -65,7 +73,7 @@ namespace TransformerApp
 
             else
             {
-                inTreeNode.Text = (inXmlNode.OuterXml).Trim();
+                inTreeNode.Text = (inXmlNode.Name).Trim();
             }
         }
 
