@@ -76,6 +76,7 @@
       <DependentUpon>TreeViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Xml\XmlDepthFinder.cs" />
+    <Compile Include="src\Xml\XmlUtilities.cs" />
     <Compile Include="src\Xslt\XslProcessor.cs" />
     <Compile Include="src\Xslt\DotNetTransformer.cs" />
     <Compile Include="src\Xslt\SaxonTransformer.cs" />

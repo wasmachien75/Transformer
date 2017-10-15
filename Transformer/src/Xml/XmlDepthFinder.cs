@@ -11,28 +11,11 @@ namespace TransformerApp
 {
     public class XmlDepthFinder
     {
-        private string openedNodesRegex = @"<[^/][^?<!]+[^/]>";
-        private string closedNodesRegex = @"<\/.*>";
-
-        public XmlDepthFinder()
-        {
-
-        }
-
-        public void ReadXmlString()
-        {
-            System.Diagnostics.Debug.Write(GetDepth(@"<books><book>"));
-        }
 
         public int GetDepth(string frag)
         {
-            int openedNodes =  Regex.Matches(frag, openedNodesRegex).Count;
-            int closedNodes = Regex.Matches(frag, closedNodesRegex).Count;
-            MatchCollection matches = Regex.Matches(frag, openedNodesRegex);
-            foreach (var match in Regex.Matches(frag, openedNodesRegex))
-            {
-                System.Diagnostics.Debug.Write(match.ToString() + " || ");
-            }
+            int openedNodes = Regex.Matches(frag, XmlUtilities.OpenXmlTagRegex).Count;
+            int closedNodes = Regex.Matches(frag, XmlUtilities.ClosedXmlTagRegex).Count;
             return Math.Max(openedNodes - closedNodes, 0);
         }
 

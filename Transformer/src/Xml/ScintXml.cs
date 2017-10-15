@@ -6,6 +6,7 @@ using ScintillaNET;
 using System.IO;
 using System.Xml;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace TransformerApp
 {
@@ -197,7 +198,10 @@ namespace TransformerApp
                 int tabs = depthfinder.GetDepth(fragment);
                 e.Text += new string('\t', tabs);
             }
+        
         }
+
+        
 
         protected override void OnPaint(PaintEventArgs pe)
         {

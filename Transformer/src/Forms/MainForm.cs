@@ -2,6 +2,8 @@
 using System.IO;
 using System.Windows.Forms;
 using ScintillaNET;
+using System.Linq;
+using System.Xml.Xsl;
 
 namespace TransformerApp
 {
@@ -9,10 +11,11 @@ namespace TransformerApp
     {
         static XslProcessor processor = XslProcessor.DotNet; //.NET is our default XSLT processor
 
-        public MainForm()
+        public MainForm(string [] args)
         {
             InitializeComponent();
             Setup();
+            EvaluateArgs(args);
 
         }
 
@@ -21,7 +24,25 @@ namespace TransformerApp
             this.scintillaSource.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
             this.scintillaXSL.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
             this.scintillaOutput.UpdateUI += new EventHandler<UpdateUIEventArgs>(PrintPosition);
-  
+            this.splitContainer2.SplitterWidth = 2;
+        }
+
+        private void EvaluateArgs(string [] args)
+        {
+            string[] xmlExt = new string[] { ".xml", String.Empty };
+            string[] xsltExt = new string[] { ".xsl", ".xslt" };
+            if (args != null && args.Length != 0)
+            {
+                if (xmlExt.Contains(Path.GetExtension(args[0])))
+                {
+                    loadAndPrintFile(args[0], scintillaSource);
+                }
+
+                else if (xsltExt.Contains(Path.GetExtension(args[0])))
+                {
+                    loadAndPrintFile(args[0], scintillaXSL);
+                }
+            }
         }
 
         private string ChooseFile(string filter)
@@ -57,9 +78,9 @@ namespace TransformerApp
                 statusLabel.Image =  Transformer.Properties.Resources.GreenCheckMark;
             }
 
-            catch(Exception e)
+            catch(XsltException e)
             {
-                UpdateStatusBar(e.Message);
+                UpdateStatusBar(e.Message, e.LineNumber, e.LinePosition);
                 statusLabel.Image = Transformer.Properties.Resources.RedCross;
             }
         }
@@ -70,6 +91,11 @@ namespace TransformerApp
         }
 
         private void UpdateStatusBar(string str)
+        {
+            statusLabel.Text = str;
+        }
+
+        private void UpdateStatusBar(string str, int line, int column)
         {
             statusLabel.Text = str;
         }
