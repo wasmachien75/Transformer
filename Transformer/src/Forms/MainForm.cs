@@ -224,5 +224,11 @@ namespace TransformerApp
             }
             
         }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            SearchForm sf = new SearchForm(this);
+            sf.Show();
+        }
     }
 }

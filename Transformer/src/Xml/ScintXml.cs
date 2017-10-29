@@ -97,6 +97,28 @@ namespace TransformerApp
             InitializeComponent();
         }
 
+        public void FindSomething(string text)
+        {
+            this.IndicatorCurrent = 8;
+            this.IndicatorClearRange(0, this.TextLength);
+
+            this.Indicators[8].Style = IndicatorStyle.RoundBox;
+            this.Indicators[8].Under = false;
+            this.Indicators[8].Alpha = 100;
+            this.Indicators[8].ForeColor = Color.LimeGreen;
+
+            this.TargetStart = 0;
+            this.TargetEnd = this.TextLength;
+            this.SearchFlags = SearchFlags.None;
+
+            while (this.SearchInTarget(text) != -1)
+            {
+                this.IndicatorFillRange(this.TargetStart, this.TargetEnd - this.TargetStart);
+                this.TargetStart = this.TargetEnd;
+                this.TargetEnd = this.TextLength;
+            }
+        }
+
         private int maxLineNumberCharLength;
 
         private void ScintillaTextChanged(object sender, EventArgs e)
