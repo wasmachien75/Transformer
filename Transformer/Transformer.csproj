@@ -146,6 +146,23 @@
   <ItemGroup>
     <Content Include="kabouter_plop_eD8_icon.ico" />
     <Content Include="plop.ico" />
+    <None Include="Resources\Exit_32x.png" />
+    <None Include="Resources\LinkedFolderOpen_16x.png" />
+    <None Include="Resources\FolderOpen_32x.png" />
+    <None Include="Resources\FilterFolderOpen_32x.png" />
+    <None Include="Resources\ProcessModel_32x.png" />
+    <None Include="Resources\WrapPanel_24x.png" />
+    <None Include="Resources\InformationSymbol_32xSM.png" />
+    <None Include="Resources\InformationSymbol_32xLG.png" />
+    <None Include="Resources\Exit_16x.png" />
+    <None Include="Resources\DependencyGraph_16x.png" />
+    <None Include="Resources\dot-icon.png" />
+    <None Include="Resources\SourceTree.ico" />
+    <None Include="Resources\TreeView_24x.png" />
+    <None Include="Resources\CollapseChevronUpGroup_24x.png" />
+    <None Include="Resources\CollapseChevronDownGroup_24x.png" />
+    <None Include="Resources\ExpandAll_32x.png" />
+    <None Include="Resources\ExpandAll_16x.png" />
     <None Include="templates\xml\transmissions.xml" />
     <None Include="Resources\OpenXml.png" />
     <None Include="Resources\icons8-Save-96.png" />

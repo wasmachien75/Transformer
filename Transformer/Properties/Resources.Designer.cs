@@ -19,7 +19,7 @@ namespace Transformer.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -57,6 +57,76 @@ namespace Transformer.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap CollapseChevronDownGroup_24x {
+            get {
+                object obj = ResourceManager.GetObject("CollapseChevronDownGroup_24x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap CollapseChevronUpGroup_24x {
+            get {
+                object obj = ResourceManager.GetObject("CollapseChevronUpGroup_24x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap DependencyGraph_16x {
+            get {
+                object obj = ResourceManager.GetObject("DependencyGraph_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Exit_32x {
+            get {
+                object obj = ResourceManager.GetObject("Exit_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ExpandAll_32x {
+            get {
+                object obj = ResourceManager.GetObject("ExpandAll_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap FilterFolderOpen_32x {
+            get {
+                object obj = ResourceManager.GetObject("FilterFolderOpen_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap FolderOpen_32x {
+            get {
+                object obj = ResourceManager.GetObject("FolderOpen_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -103,9 +173,49 @@ namespace Transformer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap InformationSymbol_32xLG {
+            get {
+                object obj = ResourceManager.GetObject("InformationSymbol_32xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap InformationSymbol_32xSM {
+            get {
+                object obj = ResourceManager.GetObject("InformationSymbol_32xSM", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap LinkedFolderOpen_16x {
+            get {
+                object obj = ResourceManager.GetObject("LinkedFolderOpen_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap OpenXml {
             get {
                 object obj = ResourceManager.GetObject("OpenXml", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap ProcessModel_32x {
+            get {
+                object obj = ResourceManager.GetObject("ProcessModel_32x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,15 +243,25 @@ namespace Transformer.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;
         ///&lt;transmissions&gt;
-        ///    &lt;exportinformation username=&quot;psi developer&quot; reportname=&quot;back loading report&quot; reportNumberOfTimesExecuted=&quot;128&quot;&gt;
-        ///        &lt;timestamp&gt;
-        ///            &lt;ESP_TIMEINSTANT time=&quot;11:37:37.680&quot; tvdayhours=&quot;11&quot; hours=&quot;11&quot; minutes=&quot;37&quot; seconds=&quot;37&quot; frames=&quot;17&quot;
-        ///                duration=&quot;697:37.680&quot; durationinminutes=&quot;697&quot; durationinseconds=&quot;41857&quot; durationintimeframes=&quot;1046442&quot;
-        ///                date=&quot;2016-03-03&quot; year=&quot;2016&quot; month=&quot;3&quot; day=&quot;3&quot; dayname=&quot;Thursda [rest of string was truncated]&quot;;.
+        ///  &lt;exportinformation username=&quot;psi developer&quot; reportname=&quot;back loading report&quot; reportNumberOfTimesExecuted=&quot;128&quot;&gt;
+        ///    &lt;timestamp&gt;
+        ///      &lt;ESP_TIMEINSTANT time=&quot;11:37:37.680&quot; tvdayhours=&quot;11&quot; hours=&quot;11&quot; minutes=&quot;37&quot; seconds=&quot;37&quot; frames=&quot;17&quot;
+        ///        duration=&quot;697:37.680&quot; durationinminutes=&quot;697&quot; durationinseconds=&quot;41857&quot; durationintimeframes=&quot;1046442&quot; date=&quot;2016-03-03&quot;
+        ///        year=&quot;2016&quot; month=&quot;3&quot; day=&quot;3&quot; dayname=&quot;Thursday&quot; weekdaynumber=&quot;4&quot; weeknum [rest of string was truncated]&quot;;.
         /// </summary>
         public static string transmissions {
             get {
                 return ResourceManager.GetString("transmissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap WrapPanel_24x {
+            get {
+                object obj = ResourceManager.GetObject("WrapPanel_24x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

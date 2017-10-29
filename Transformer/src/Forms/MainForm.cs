@@ -211,9 +211,18 @@ namespace TransformerApp
         }
 
         private void openTreeFormToolStripMenuItem_Click(object sender, EventArgs e)
-        { 
-            TreeViewForm tvf = new TreeViewForm(scintillaSource.Text);
-            tvf.Show();
+        {
+            if (scintillaSource.ContentIsXml())
+            {
+                TreeViewForm tvf = new TreeViewForm(scintillaSource.Text);
+                tvf.Show();
+            }
+
+            else
+            {
+                MessageBox.Show("Could not load source tree because the source view does not contain valid XML.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }

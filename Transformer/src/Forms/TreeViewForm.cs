@@ -37,7 +37,16 @@ namespace TransformerApp
         public void AddNodes()
         {
             XmlDocument dom = new XmlDocument();
-            dom.LoadXml(xml);
+            try
+            {
+                dom.LoadXml(xml);
+            }
+            catch (XmlException)
+            {
+                MessageBox.Show("Could not load source tree because of invalid XML.");
+                return;
+            }
+           
             treeView1.Nodes.Add(new TreeNode(dom.DocumentElement.Name));
             TreeNode tnode = new TreeNode();
             tnode = treeView1.Nodes[0];
@@ -49,7 +58,7 @@ namespace TransformerApp
             XmlNode xNode;
             TreeNode tNode;
             XmlNodeList nodeList;
-            if (inXmlNode.Attributes != null)
+            if(inXmlNode.Attributes != null && inXmlNode.Attributes.Count > 0)
             {
                 foreach (XmlAttribute attribute in inXmlNode.Attributes)
                 {
@@ -62,20 +71,36 @@ namespace TransformerApp
             if (inXmlNode.HasChildNodes)
             {
                 nodeList = inXmlNode.ChildNodes;
-                for (i = inXmlNode.Attributes.Count; i < nodeList.Count; i++)
+                for (i = 0; i < nodeList.Count;  i++)
                 {
                     xNode = inXmlNode.ChildNodes[i];
                     inTreeNode.Nodes.Add(new TreeNode(xNode.Name));
-                    tNode = inTreeNode.Nodes[i];
+                    tNode = inTreeNode.Nodes[i + inXmlNode.Attributes.Count];
                     AddNode(xNode, tNode);
                 }
             }
 
             else
             {
-                inTreeNode.Text = (inXmlNode.Name).Trim();
+                if (inXmlNode.HasChildNodes == false && inXmlNode.Value != null)
+                {
+                    inTreeNode.Text = (inXmlNode.OuterXml).Trim();
+                }
+                else
+                {
+                    inTreeNode.Text = (inXmlNode.Name).Trim();
+                }
             }
         }
 
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            treeView1.CollapseAll();
+        }
+
+        private void expandAllButton_Click(object sender, EventArgs e)
+        {
+            treeView1.ExpandAll();
+        }
     }
 }

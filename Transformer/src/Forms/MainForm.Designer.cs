@@ -101,6 +101,7 @@ namespace TransformerApp
             // 
             // loadSourceXMLToolStripMenuItem
             // 
+            this.loadSourceXMLToolStripMenuItem.Image = global::Transformer.Properties.Resources.FilterFolderOpen_32x;
             this.loadSourceXMLToolStripMenuItem.Name = "loadSourceXMLToolStripMenuItem";
             this.loadSourceXMLToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.loadSourceXMLToolStripMenuItem.Text = "Load Source XML";
@@ -108,6 +109,7 @@ namespace TransformerApp
             // 
             // loadStylesheetToolStripMenuItem
             // 
+            this.loadStylesheetToolStripMenuItem.Image = global::Transformer.Properties.Resources.LinkedFolderOpen_16x;
             this.loadStylesheetToolStripMenuItem.Name = "loadStylesheetToolStripMenuItem";
             this.loadStylesheetToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.loadStylesheetToolStripMenuItem.Text = "Load Stylesheet";
@@ -115,6 +117,7 @@ namespace TransformerApp
             // 
             // saveOutputAsToolStripMenuItem
             // 
+            this.saveOutputAsToolStripMenuItem.Image = global::Transformer.Properties.Resources.icons8_Save_96;
             this.saveOutputAsToolStripMenuItem.Name = "saveOutputAsToolStripMenuItem";
             this.saveOutputAsToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.saveOutputAsToolStripMenuItem.Text = "Save Output As";
@@ -122,6 +125,7 @@ namespace TransformerApp
             // 
             // exitToolStripMenuItem
             // 
+            this.exitToolStripMenuItem.Image = global::Transformer.Properties.Resources.Exit_32x;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.exitToolStripMenuItem.Text = "Exit";
@@ -141,6 +145,7 @@ namespace TransformerApp
             // 
             // transformToolStripMenuItem
             // 
+            this.transformToolStripMenuItem.Image = global::Transformer.Properties.Resources.icons8_Circled_Play_96;
             this.transformToolStripMenuItem.Name = "transformToolStripMenuItem";
             this.transformToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
             this.transformToolStripMenuItem.Text = "Transform";
@@ -148,6 +153,7 @@ namespace TransformerApp
             // 
             // wrapLinesToolStripMenuItem1
             // 
+            this.wrapLinesToolStripMenuItem1.Image = global::Transformer.Properties.Resources.WrapPanel_24x;
             this.wrapLinesToolStripMenuItem1.Name = "wrapLinesToolStripMenuItem1";
             this.wrapLinesToolStripMenuItem1.Size = new System.Drawing.Size(262, 26);
             this.wrapLinesToolStripMenuItem1.Text = "Wrap Lines";
@@ -155,6 +161,7 @@ namespace TransformerApp
             // 
             // formatAndIndentToolStripMenuItem
             // 
+            this.formatAndIndentToolStripMenuItem.Image = global::Transformer.Properties.Resources.icons8_Indent_Filled_100;
             this.formatAndIndentToolStripMenuItem.Name = "formatAndIndentToolStripMenuItem";
             this.formatAndIndentToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
             this.formatAndIndentToolStripMenuItem.Text = "Format and Indent";
@@ -165,6 +172,7 @@ namespace TransformerApp
             this.setProcessorToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saxonSelect,
             this.dotNetSelect});
+            this.setProcessorToolStripMenuItem1.Image = global::Transformer.Properties.Resources.ProcessModel_32x;
             this.setProcessorToolStripMenuItem1.Name = "setProcessorToolStripMenuItem1";
             this.setProcessorToolStripMenuItem1.Size = new System.Drawing.Size(262, 26);
             this.setProcessorToolStripMenuItem1.Text = "Set Processor";
@@ -189,6 +197,7 @@ namespace TransformerApp
             // 
             // openTreeFormToolStripMenuItem
             // 
+            this.openTreeFormToolStripMenuItem.Image = global::Transformer.Properties.Resources.DependencyGraph_16x;
             this.openTreeFormToolStripMenuItem.Name = "openTreeFormToolStripMenuItem";
             this.openTreeFormToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
             this.openTreeFormToolStripMenuItem.Text = "Source Tree (experimental)";
@@ -220,6 +229,7 @@ namespace TransformerApp
             // 
             // aboutToolStripMenuItem1
             // 
+            this.aboutToolStripMenuItem1.Image = global::Transformer.Properties.Resources.InformationSymbol_32xLG;
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
             this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(192, 26);
             this.aboutToolStripMenuItem1.Text = "About";
