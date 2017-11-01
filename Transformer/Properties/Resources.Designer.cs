@@ -203,16 +203,6 @@ namespace Transformer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap OpenXml {
-            get {
-                object obj = ResourceManager.GetObject("OpenXml", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap ProcessModel_32x {
             get {
                 object obj = ResourceManager.GetObject("ProcessModel_32x", resourceCulture);
@@ -233,9 +223,19 @@ namespace Transformer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap SaveIcon {
+        public static System.Drawing.Bitmap Search_256x {
             get {
-                object obj = ResourceManager.GetObject("SaveIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("Search_256x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Search_32x {
+            get {
+                object obj = ResourceManager.GetObject("Search_32x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

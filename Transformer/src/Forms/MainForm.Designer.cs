@@ -371,6 +371,7 @@ namespace TransformerApp
             this.runButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.runButton.Image = global::Transformer.Properties.Resources.icons8_Circled_Play_96;
             this.runButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.runButton.Margin = new System.Windows.Forms.Padding(0, 1, 8, 2);
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(24, 24);
             this.runButton.Text = "toolStripButton1";
@@ -382,7 +383,7 @@ namespace TransformerApp
             this.saveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.saveButton.Image = global::Transformer.Properties.Resources.icons8_Save_96;
             this.saveButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveButton.Margin = new System.Windows.Forms.Padding(10, 1, 10, 2);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(0, 1, 8, 2);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(24, 24);
             this.saveButton.Text = "toolStripButton2";
@@ -394,6 +395,7 @@ namespace TransformerApp
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(0, 1, 8, 2);
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton1.Text = "Indent";
@@ -402,8 +404,9 @@ namespace TransformerApp
             // toolStripButton2
             // 
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.Image = global::Transformer.Properties.Resources.Search_32x;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Margin = new System.Windows.Forms.Padding(0, 1, 8, 2);
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton2.Text = "toolStripButton2";

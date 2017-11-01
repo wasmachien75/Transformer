@@ -133,12 +133,6 @@
   <data name="RedCross" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rfc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SaveIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-Save-104.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="OpenXml" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OpenXml.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="transmissions" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\templates\xml\transmissions.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
@@ -177,5 +171,11 @@
   </data>
   <data name="WrapPanel_24x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WrapPanel_24x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Search_256x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Search_256x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Search_32x" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Search_32x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

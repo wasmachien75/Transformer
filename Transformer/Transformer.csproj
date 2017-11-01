@@ -155,6 +155,8 @@
   <ItemGroup>
     <Content Include="kabouter_plop_eD8_icon.ico" />
     <Content Include="plop.ico" />
+    <None Include="Resources\Search_32x.png" />
+    <None Include="Resources\Search_256x.png" />
     <None Include="Resources\Exit_32x.png" />
     <None Include="Resources\LinkedFolderOpen_16x.png" />
     <None Include="Resources\FolderOpen_32x.png" />

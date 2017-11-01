@@ -38,6 +38,12 @@ namespace TransformerApp
             this.InsertCheck += new EventHandler<InsertCheckEventArgs>(OnInsertCheck);
             this.TabWidth = 2;
 
+            //set style for search results
+            this.Indicators[8].Style = IndicatorStyle.RoundBox;
+            this.Indicators[8].Under = false;
+            this.Indicators[8].Alpha = 100;
+            this.Indicators[8].ForeColor = Color.LimeGreen;
+
             //No wrapping by default
             this.WrapMode = WrapMode.None;
 
@@ -96,26 +102,79 @@ namespace TransformerApp
             this.Styles[Style.LineNumber].Font = "Consolas";
             InitializeComponent();
         }
+        private List<int[]> SearchOccurences = new List<int[]> { };
 
-        public void FindSomething(string text)
+        private void AddResultToSearchOccurences(int start, int end)
+        {
+            SearchOccurences.Add(new int[] { start, end });
+        }
+
+        public int searchStart = 0;
+
+        public void ResetSearch()
+        {
+            searchStart = 0;
+            this.IndicatorCurrent = 8;
+            this.IndicatorClearRange(0, this.TextLength);
+        }
+
+        public int FindNext(string text, int searchStart)
         {
             this.IndicatorCurrent = 8;
             this.IndicatorClearRange(0, this.TextLength);
 
-            this.Indicators[8].Style = IndicatorStyle.RoundBox;
-            this.Indicators[8].Under = false;
-            this.Indicators[8].Alpha = 100;
-            this.Indicators[8].ForeColor = Color.LimeGreen;
+            this.TargetStart = searchStart;
+            this.TargetEnd = TextLength;
+
+            int nextSearchStart = 0;
+
+            if (this.SearchInTarget(text) == -1)
+            {
+                TargetStart = 0;
+            }
+            this.SearchInTarget(text);
+            this.IndicatorFillRange(TargetStart, TargetEnd - TargetStart);
+            this.ScrollRange(TargetStart, TargetEnd);
+            nextSearchStart = TargetEnd;
+            
+            return nextSearchStart;
+        }
+
+        public void FindAll(string text) //this will indicate all found occurrences of 'text'
+        {
+            this.IndicatorCurrent = 8;
+            this.IndicatorClearRange(0, this.TextLength);
 
             this.TargetStart = 0;
-            this.TargetEnd = this.TextLength;
+            this.TargetEnd = TextLength;
             this.SearchFlags = SearchFlags.None;
+
+            this.SearchInTarget(text);
 
             while (this.SearchInTarget(text) != -1)
             {
-                this.IndicatorFillRange(this.TargetStart, this.TargetEnd - this.TargetStart);
+                this.IndicatorFillRange(this.TargetStart, this.TargetEnd - TargetStart);
                 this.TargetStart = this.TargetEnd;
                 this.TargetEnd = this.TextLength;
+            }
+              
+        }
+
+        private int scrollCount = 0;
+
+        public void ScrollToNextResult()
+        {
+            int[] range = SearchOccurences[scrollCount];
+            int start = range[0];
+            int end = range[1];
+            ScrollRange(start, end);
+            if (scrollCount == SearchOccurences.Count)
+            {
+                scrollCount = 0;
+            }
+            else
+            {
+                scrollCount++;
             }
         }
 
