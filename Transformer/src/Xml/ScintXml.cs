@@ -12,6 +12,7 @@ namespace TransformerApp
 {
     public partial class ScintillaXml : Scintilla
     {
+        public string Description { get; set; }
 
         private void scintilla_DragDrop(object sender, DragEventArgs e)
         {
@@ -118,6 +119,29 @@ namespace TransformerApp
             this.IndicatorClearRange(0, this.TextLength);
         }
 
+        public int FindPrevious(string text, int searchStart)
+        {
+            this.IndicatorCurrent = 8;
+            this.IndicatorClearRange(0, this.TextLength);
+
+            this.TargetStart = searchStart;
+            this.TargetEnd = 0;
+
+            int nextSearchStart = TextLength;
+
+            if (this.SearchInTarget(text) == -1)
+            {
+                TargetStart = TextLength; //start over
+            }
+
+            this.SearchInTarget(text);
+            this.IndicatorFillRange(TargetStart, TargetEnd - TargetStart);
+            this.ScrollRange(TargetStart, TargetEnd);
+            nextSearchStart = TargetStart;
+
+            return nextSearchStart;
+        }
+
         public int FindNext(string text, int searchStart)
         {
             this.IndicatorCurrent = 8;
@@ -130,13 +154,13 @@ namespace TransformerApp
 
             if (this.SearchInTarget(text) == -1)
             {
-                TargetStart = 0;
+                TargetStart = 0; //start over
             }
             this.SearchInTarget(text);
             this.IndicatorFillRange(TargetStart, TargetEnd - TargetStart);
             this.ScrollRange(TargetStart, TargetEnd);
             nextSearchStart = TargetEnd;
-            
+           
             return nextSearchStart;
         }
 
@@ -238,11 +262,20 @@ namespace TransformerApp
         public void Indent()
         {
             XmlIndenter indenter = new XmlIndenter();
-            if (indenter.LoadXml(this.Text))
+            try
             {
-                string indentedXML = indenter.Indent();
-                this.Text = indentedXML;
+                if (indenter.LoadXml(this.Text))
+                {
+                    string indentedXML = indenter.Indent();
+                    this.Text = indentedXML;
+                }
             }
+            catch (XmlException e)
+            {
+
+                MessageBox.Show(String.Format("{0} is not well formed, please check. ({1})", this.Description, e.Message), "Indent failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
 
         public void LoadContent(string path)

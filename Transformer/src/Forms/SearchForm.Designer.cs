@@ -85,7 +85,6 @@
             this.Controls.Add(this.textBox1);
             this.Name = "SearchForm";
             this.Text = "SearchForm";
-            this.Click += new System.EventHandler(this.SearchForm_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 

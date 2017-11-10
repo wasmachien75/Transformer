@@ -21,23 +21,20 @@ namespace TransformerApp
             InitializeComponent();
             form = mainForm;
             sc = form.scintillaSource;
+            searchStart = sc.CurrentPosition;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text.Trim() != "")
             {
+                searchStart = sc.FindPrevious(textBox1.Text, searchStart);
             }
-        }
-
-        private void SearchForm_Click(object sender, EventArgs e)
-        {
-            sc.ScrollToNextResult();
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
             if (textBox1.Text.Trim() != "")
             {
                 searchStart = sc.FindNext(textBox1.Text, searchStart);

@@ -303,6 +303,7 @@ namespace TransformerApp
             // 
             // scintillaSource
             // 
+            this.scintillaSource.Description = "Source XML";
             this.scintillaSource.AllowDrop = true;
             this.scintillaSource.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
             | ScintillaNET.AutomaticFold.Change)));
@@ -320,6 +321,7 @@ namespace TransformerApp
             // 
             // scintillaXSL
             // 
+            this.scintillaXSL.Description = "XSL";
             this.scintillaXSL.AllowDrop = true;
             this.scintillaXSL.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
             | ScintillaNET.AutomaticFold.Change)));
@@ -337,6 +339,7 @@ namespace TransformerApp
             // 
             // scintillaOutput
             // 
+            this.scintillaOutput.Description = "Output";
             this.scintillaOutput.AllowDrop = true;
             this.scintillaOutput.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
             | ScintillaNET.AutomaticFold.Change)));

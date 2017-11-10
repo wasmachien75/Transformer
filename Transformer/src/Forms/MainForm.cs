@@ -83,6 +83,12 @@ namespace TransformerApp
                 UpdateStatusBar(e.Message, e.LineNumber, e.LinePosition);
                 statusLabel.Image = Transformer.Properties.Resources.RedCross;
             }
+
+            catch(Exception e)
+            {
+                UpdateStatusBar(e.Message);
+                statusLabel.Image = Transformer.Properties.Resources.RedCross;
+            }
         }
 
         private void transformToolStripMenuItem_Click(object sender, EventArgs e)
