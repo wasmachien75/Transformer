@@ -17,7 +17,12 @@ namespace TransformerApp
         private string xml;
         public TreeViewForm(string xml)
         {
+            ImageList imglist = new ImageList();
+            imglist.Images.Add(Transformer.Properties.Resources.Folder_32xMD);
+            imglist.Images.Add(Transformer.Properties.Resources.Attribute_32xMD);
+            imglist.Images.Add(Transformer.Properties.Resources.WebFolder_16x);
             InitializeComponent();
+            treeView1.ImageList = imglist;
             this.xml = xml;
             XmlReader reader = LoadXml();
             AddNodes();
@@ -46,8 +51,10 @@ namespace TransformerApp
                 MessageBox.Show("Could not load source tree because of invalid XML.");
                 return;
             }
-           
-            treeView1.Nodes.Add(new TreeNode(dom.DocumentElement.Name));
+            TreeNode root = new TreeNode(dom.DocumentElement.Name);
+            root.ImageIndex = 2;
+            root.SelectedImageIndex = 2;
+            treeView1.Nodes.Add(root);
             TreeNode tnode = new TreeNode();
             tnode = treeView1.Nodes[0];
             AddNode(dom.DocumentElement, tnode);
@@ -63,6 +70,8 @@ namespace TransformerApp
                 foreach (XmlAttribute attribute in inXmlNode.Attributes)
                 {
                     inTreeNode.Nodes.Add(attribute.Name + " = " + attribute.Value);
+                    inTreeNode.Nodes[inTreeNode.Nodes.Count - 1].ImageIndex = 1;
+                    inTreeNode.Nodes[inTreeNode.Nodes.Count - 1].SelectedImageIndex = 1;
                 }
             }
             
@@ -91,16 +100,6 @@ namespace TransformerApp
                     inTreeNode.Text = (inXmlNode.Name).Trim();
                 }
             }
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            treeView1.CollapseAll();
-        }
-
-        private void expandAllButton_Click(object sender, EventArgs e)
-        {
-            treeView1.ExpandAll();
         }
     }
 }

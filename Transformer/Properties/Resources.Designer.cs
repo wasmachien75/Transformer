@@ -63,6 +63,16 @@ namespace Transformer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Attribute_32xMD {
+            get {
+                object obj = ResourceManager.GetObject("Attribute_32xMD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap CollapseChevronDownGroup_24x {
             get {
                 object obj = ResourceManager.GetObject("CollapseChevronDownGroup_24x", resourceCulture);
@@ -116,6 +126,16 @@ namespace Transformer.Properties {
         public static System.Drawing.Bitmap FilterFolderOpen_32x {
             get {
                 object obj = ResourceManager.GetObject("FilterFolderOpen_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Folder_32xMD {
+            get {
+                object obj = ResourceManager.GetObject("Folder_32xMD", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -241,6 +261,16 @@ namespace Transformer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap String_32x {
+            get {
+                object obj = ResourceManager.GetObject("String_32x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;
         ///&lt;transmissions&gt;
         ///  &lt;exportinformation username=&quot;psi developer&quot; reportname=&quot;back loading report&quot; reportNumberOfTimesExecuted=&quot;128&quot;&gt;
@@ -258,9 +288,29 @@ namespace Transformer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap WebFolder_16x {
+            get {
+                object obj = ResourceManager.GetObject("WebFolder_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap WrapPanel_24x {
             get {
                 object obj = ResourceManager.GetObject("WrapPanel_24x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap XPath_32x {
+            get {
+                object obj = ResourceManager.GetObject("XPath_32x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

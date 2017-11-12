@@ -5,8 +5,6 @@ using System.Windows.Forms;
 using ScintillaNET;
 using System.IO;
 using System.Xml;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace TransformerApp
 {
@@ -29,7 +27,7 @@ namespace TransformerApp
         {
             e.Effect = DragDropEffects.Move;
         }
-       
+
         public ScintillaXml()
         {
             this.AllowDrop = true;
@@ -103,18 +101,9 @@ namespace TransformerApp
             this.Styles[Style.LineNumber].Font = "Consolas";
             InitializeComponent();
         }
-        private List<int[]> SearchOccurences = new List<int[]> { };
 
-        private void AddResultToSearchOccurences(int start, int end)
+        public void ClearSearchIndication()
         {
-            SearchOccurences.Add(new int[] { start, end });
-        }
-
-        public int searchStart = 0;
-
-        public void ResetSearch()
-        {
-            searchStart = 0;
             this.IndicatorCurrent = 8;
             this.IndicatorClearRange(0, this.TextLength);
         }
@@ -160,11 +149,11 @@ namespace TransformerApp
             this.IndicatorFillRange(TargetStart, TargetEnd - TargetStart);
             this.ScrollRange(TargetStart, TargetEnd);
             nextSearchStart = TargetEnd;
-           
+
             return nextSearchStart;
         }
 
-        public void FindAll(string text) //this will indicate all found occurrences of 'text'
+        public int FindAll(string text) //this will indicate all found occurrences of 'text'
         {
             this.IndicatorCurrent = 8;
             this.IndicatorClearRange(0, this.TextLength);
@@ -174,32 +163,17 @@ namespace TransformerApp
             this.SearchFlags = SearchFlags.None;
 
             this.SearchInTarget(text);
+            int resultCount = 0;
 
             while (this.SearchInTarget(text) != -1)
             {
+                resultCount++;
                 this.IndicatorFillRange(this.TargetStart, this.TargetEnd - TargetStart);
                 this.TargetStart = this.TargetEnd;
                 this.TargetEnd = this.TextLength;
             }
-              
-        }
 
-        private int scrollCount = 0;
-
-        public void ScrollToNextResult()
-        {
-            int[] range = SearchOccurences[scrollCount];
-            int start = range[0];
-            int end = range[1];
-            ScrollRange(start, end);
-            if (scrollCount == SearchOccurences.Count)
-            {
-                scrollCount = 0;
-            }
-            else
-            {
-                scrollCount++;
-            }
+            return resultCount;
         }
 
         private int maxLineNumberCharLength;
@@ -222,14 +196,7 @@ namespace TransformerApp
 
         public void ToggleWrap()
         {
-            if (this.WrapMode == WrapMode.Word)
-            {
-                this.WrapMode = WrapMode.None;
-            }
-            else
-            {
-                this.WrapMode = WrapMode.Word;
-            }
+            WrapMode = (WrapMode == WrapMode.Word) ? WrapMode.None : WrapMode.Word; 
         }
 
         public void SaveOutput()
@@ -246,17 +213,15 @@ namespace TransformerApp
                 else dialog.Filter = "Text Document|*.txt|All Files|*.*";
 
                 if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    string loc = dialog.FileName;
+                    using (StreamWriter file = new StreamWriter(loc))
                     {
-                        string loc = dialog.FileName;
-                        using(StreamWriter file = new StreamWriter(loc))
-                        {
-                            file.Write(content);
-                        }
-
+                        file.Write(content);
                     }
+
+                }
             }
-            
-            
         }
 
         public void Indent()
@@ -272,10 +237,8 @@ namespace TransformerApp
             }
             catch (XmlException e)
             {
-
                 MessageBox.Show(String.Format("{0} is not well formed, please check. ({1})", this.Description, e.Message), "Indent failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
         }
 
         public void LoadContent(string path)
@@ -297,7 +260,6 @@ namespace TransformerApp
             }
             catch (Exception)
             {
-                System.Diagnostics.Debug.WriteLine("Exception thrown => not XML");
                 return false;
             }
             return true;
@@ -312,10 +274,8 @@ namespace TransformerApp
                 int tabs = depthfinder.GetDepth(fragment);
                 e.Text += new string('\t', tabs);
             }
-        
-        }
 
-        
+        }
 
         protected override void OnPaint(PaintEventArgs pe)
         {

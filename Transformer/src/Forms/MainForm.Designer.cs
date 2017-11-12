@@ -45,6 +45,7 @@ namespace TransformerApp
             this.saxonSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.dotNetSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.openTreeFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xPathQueryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xSLTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportDevWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,7 +140,8 @@ namespace TransformerApp
             this.wrapLinesToolStripMenuItem1,
             this.formatAndIndentToolStripMenuItem,
             this.setProcessorToolStripMenuItem1,
-            this.openTreeFormToolStripMenuItem});
+            this.openTreeFormToolStripMenuItem,
+            this.xPathQueryToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -148,7 +150,7 @@ namespace TransformerApp
             // 
             this.transformToolStripMenuItem.Image = global::Transformer.Properties.Resources.icons8_Circled_Play_96;
             this.transformToolStripMenuItem.Name = "transformToolStripMenuItem";
-            this.transformToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
+            this.transformToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.transformToolStripMenuItem.Text = "Transform";
             this.transformToolStripMenuItem.Click += new System.EventHandler(this.transformToolStripMenuItem_Click);
             // 
@@ -156,7 +158,7 @@ namespace TransformerApp
             // 
             this.wrapLinesToolStripMenuItem1.Image = global::Transformer.Properties.Resources.WrapPanel_24x;
             this.wrapLinesToolStripMenuItem1.Name = "wrapLinesToolStripMenuItem1";
-            this.wrapLinesToolStripMenuItem1.Size = new System.Drawing.Size(262, 26);
+            this.wrapLinesToolStripMenuItem1.Size = new System.Drawing.Size(206, 26);
             this.wrapLinesToolStripMenuItem1.Text = "Wrap Lines";
             this.wrapLinesToolStripMenuItem1.Click += new System.EventHandler(this.wrapLinesToolStripMenuItem_Click);
             // 
@@ -164,7 +166,7 @@ namespace TransformerApp
             // 
             this.formatAndIndentToolStripMenuItem.Image = global::Transformer.Properties.Resources.icons8_Indent_Filled_100;
             this.formatAndIndentToolStripMenuItem.Name = "formatAndIndentToolStripMenuItem";
-            this.formatAndIndentToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
+            this.formatAndIndentToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.formatAndIndentToolStripMenuItem.Text = "Format and Indent";
             this.formatAndIndentToolStripMenuItem.Click += new System.EventHandler(this.indentClick);
             // 
@@ -175,7 +177,7 @@ namespace TransformerApp
             this.dotNetSelect});
             this.setProcessorToolStripMenuItem1.Image = global::Transformer.Properties.Resources.ProcessModel_32x;
             this.setProcessorToolStripMenuItem1.Name = "setProcessorToolStripMenuItem1";
-            this.setProcessorToolStripMenuItem1.Size = new System.Drawing.Size(262, 26);
+            this.setProcessorToolStripMenuItem1.Size = new System.Drawing.Size(206, 26);
             this.setProcessorToolStripMenuItem1.Text = "Set Processor";
             // 
             // saxonSelect
@@ -200,9 +202,17 @@ namespace TransformerApp
             // 
             this.openTreeFormToolStripMenuItem.Image = global::Transformer.Properties.Resources.DependencyGraph_16x;
             this.openTreeFormToolStripMenuItem.Name = "openTreeFormToolStripMenuItem";
-            this.openTreeFormToolStripMenuItem.Size = new System.Drawing.Size(262, 26);
-            this.openTreeFormToolStripMenuItem.Text = "Source Tree (experimental)";
+            this.openTreeFormToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.openTreeFormToolStripMenuItem.Text = "Source Tree";
             this.openTreeFormToolStripMenuItem.Click += new System.EventHandler(this.openTreeFormToolStripMenuItem_Click);
+            // 
+            // xPathQueryToolStripMenuItem
+            // 
+            this.xPathQueryToolStripMenuItem.Image = global::Transformer.Properties.Resources.XPath_32x;
+            this.xPathQueryToolStripMenuItem.Name = "xPathQueryToolStripMenuItem";
+            this.xPathQueryToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.xPathQueryToolStripMenuItem.Text = "XPath Query";
+            this.xPathQueryToolStripMenuItem.Click += new System.EventHandler(this.xPathQueryToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -303,11 +313,11 @@ namespace TransformerApp
             // 
             // scintillaSource
             // 
-            this.scintillaSource.Description = "Source XML";
             this.scintillaSource.AllowDrop = true;
             this.scintillaSource.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
             | ScintillaNET.AutomaticFold.Change)));
             this.scintillaSource.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scintillaSource.Description = "Source XML";
             this.scintillaSource.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scintillaSource.Lexer = ScintillaNET.Lexer.Xml;
             this.scintillaSource.Location = new System.Drawing.Point(0, 0);
@@ -321,11 +331,11 @@ namespace TransformerApp
             // 
             // scintillaXSL
             // 
-            this.scintillaXSL.Description = "XSL";
             this.scintillaXSL.AllowDrop = true;
             this.scintillaXSL.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
             | ScintillaNET.AutomaticFold.Change)));
             this.scintillaXSL.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scintillaXSL.Description = "XSL";
             this.scintillaXSL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scintillaXSL.Lexer = ScintillaNET.Lexer.Xml;
             this.scintillaXSL.Location = new System.Drawing.Point(0, 0);
@@ -339,11 +349,11 @@ namespace TransformerApp
             // 
             // scintillaOutput
             // 
-            this.scintillaOutput.Description = "Output";
             this.scintillaOutput.AllowDrop = true;
             this.scintillaOutput.AutomaticFold = ((ScintillaNET.AutomaticFold)(((ScintillaNET.AutomaticFold.Show | ScintillaNET.AutomaticFold.Click) 
             | ScintillaNET.AutomaticFold.Change)));
             this.scintillaOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scintillaOutput.Description = "Output";
             this.scintillaOutput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scintillaOutput.Lexer = ScintillaNET.Lexer.Xml;
             this.scintillaOutput.Location = new System.Drawing.Point(0, 0);
@@ -480,5 +490,6 @@ namespace TransformerApp
         private System.Windows.Forms.ToolStripMenuItem openTreeFormToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripMenuItem xPathQueryToolStripMenuItem;
     }
 }

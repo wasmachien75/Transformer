@@ -236,5 +236,11 @@ namespace TransformerApp
             SearchForm sf = new SearchForm(this);
             sf.Show();
         }
+
+        private void xPathQueryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            XPathQueryForm xqf = new XPathQueryForm(scintillaSource.Text);
+            xqf.Show();
+        }
     }
 }

@@ -13,32 +13,95 @@ namespace TransformerApp
     public partial class SearchForm : Form
     {
         private MainForm form;
-        private ScintillaXml sc;
-        private int searchStart;
+        private ScintillaXml source;
+        private ScintillaXml xsl;
+        private ScintillaXml output;
+        private int searchStart = -1;
 
         public SearchForm(MainForm mainForm)
         {
             InitializeComponent();
             form = mainForm;
-            sc = form.scintillaSource;
-            searchStart = sc.CurrentPosition;
+            source = form.scintillaSource;
+            xsl = form.scintillaXSL;
+            output = form.scintillaOutput;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private ScintillaXml getView()
         {
-            if (textBox1.Text.Trim() != "")
+            if (sourceRadio.Checked) return source;
+            if (xslRadio.Checked) return xsl;
+            if (outputRadio.Checked) return output;
+            return new ScintillaXml();
+        }
+
+        private int getSearchStart(ScintillaXml sc)
+        {
+            if (searchStart == -1)
             {
-                searchStart = sc.FindPrevious(textBox1.Text, searchStart);
+                return sc.CurrentPosition;
+            }
+            else
+            {
+                return searchStart;
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void findPrevButton_Click(object sender, EventArgs e)
         {
+            ScintillaXml sc = getView();
+            if (textBox1.Text.Trim() != "")
+            {
+                searchStart = sc.FindPrevious(textBox1.Text, getSearchStart(sc));
+                form.Activate();
+            }
+        }
+
+        private void findNextButton_Click(object sender, EventArgs e)
+        {
+            ScintillaXml sc = getView();
+            if (textBox1.Text.Trim() != "")
+            {
+                searchStart = sc.FindNext(textBox1.Text, getSearchStart(sc));
+                form.Activate();
+            }
+        }
+
+        private void findAllButton_Click(object sender, EventArgs e)
+        {
+            ScintillaXml sc = getView();
+            if (textBox1.Text.Trim() != "")
+            {
+                int resultCount = sc.FindAll(textBox1.Text);
+                string occurrencesString = (resultCount == 1) ? "occurrence" : "occurrences";
+                searchStatus.Text = String.Format("{0} {1} found.", resultCount.ToString(), occurrencesString);
+                form.Activate();
+            }
+        }
+
+        private void ResetOpacity(object sender, EventArgs e)
+        {
+            Opacity = 1;
+        }
+
+        private void LowerOpacity(object sender, EventArgs e)
+        {
+            try
+            {
+                Opacity = 0.8;
+            }
+            catch (Win32Exception)
+            {
+                // search form has been closed, don't do anything
+            }
             
-            if (textBox1.Text.Trim() != "")
-            {
-                searchStart = sc.FindNext(textBox1.Text, searchStart);
-            }
+        }
+
+        private void ClearIndicator(object sender, FormClosingEventArgs e)
+        {
+            source.ClearSearchIndication();
+            xsl.ClearSearchIndication();
+            output.ClearSearchIndication();
         }
     }
 }

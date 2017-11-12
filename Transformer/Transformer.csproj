@@ -81,6 +81,12 @@
     <Compile Include="src\Forms\TreeViewForm.Designer.cs">
       <DependentUpon>TreeViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Forms\XPathQueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Forms\XPathQueryForm.Designer.cs">
+      <DependentUpon>XPathQueryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Xml\XmlDepthFinder.cs" />
     <Compile Include="src\Xml\XmlUtilities.cs" />
     <Compile Include="src\Xslt\XslProcessor.cs" />
@@ -142,6 +148,9 @@
     <EmbeddedResource Include="src\Forms\TreeViewForm.resx">
       <DependentUpon>TreeViewForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Forms\XPathQueryForm.resx">
+      <DependentUpon>XPathQueryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Xml\ScintXml.resx">
       <DependentUpon>ScintXml.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,6 +164,11 @@
   <ItemGroup>
     <Content Include="kabouter_plop_eD8_icon.ico" />
     <Content Include="plop.ico" />
+    <None Include="Resources\XPath_32x.png" />
+    <None Include="Resources\WebFolder_16x.png" />
+    <None Include="Resources\Attribute_32xMD.png" />
+    <None Include="Resources\Folder_32xMD.png" />
+    <None Include="Resources\String_32x.png" />
     <None Include="Resources\Search_32x.png" />
     <None Include="Resources\Search_256x.png" />
     <None Include="Resources\Exit_32x.png" />
