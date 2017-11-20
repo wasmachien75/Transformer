@@ -41,11 +41,13 @@ namespace TransformerApp
             this.transformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.wrapLinesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.formatAndIndentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setProcessorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.processorSelectMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saxonSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.dotNetSelect = new System.Windows.Forms.ToolStripMenuItem();
+            this.msxmlSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.openTreeFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xPathQueryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xSLTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportDevWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,9 +141,10 @@ namespace TransformerApp
             this.transformToolStripMenuItem,
             this.wrapLinesToolStripMenuItem1,
             this.formatAndIndentToolStripMenuItem,
-            this.setProcessorToolStripMenuItem1,
+            this.processorSelectMenuItem,
             this.openTreeFormToolStripMenuItem,
-            this.xPathQueryToolStripMenuItem});
+            this.xPathQueryToolStripMenuItem,
+            this.searchToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -170,33 +173,42 @@ namespace TransformerApp
             this.formatAndIndentToolStripMenuItem.Text = "Format and Indent";
             this.formatAndIndentToolStripMenuItem.Click += new System.EventHandler(this.indentClick);
             // 
-            // setProcessorToolStripMenuItem1
+            // processorSelectMenuItem
             // 
-            this.setProcessorToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.processorSelectMenuItem.CheckOnClick = true;
+            this.processorSelectMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saxonSelect,
-            this.dotNetSelect});
-            this.setProcessorToolStripMenuItem1.Image = global::Transformer.Properties.Resources.ProcessModel_32x;
-            this.setProcessorToolStripMenuItem1.Name = "setProcessorToolStripMenuItem1";
-            this.setProcessorToolStripMenuItem1.Size = new System.Drawing.Size(206, 26);
-            this.setProcessorToolStripMenuItem1.Text = "Set Processor";
+            this.dotNetSelect,
+            this.msxmlSelect});
+            this.processorSelectMenuItem.Image = global::Transformer.Properties.Resources.ProcessModel_32x;
+            this.processorSelectMenuItem.Name = "processorSelectMenuItem";
+            this.processorSelectMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.processorSelectMenuItem.Text = "Set Processor";
             // 
             // saxonSelect
             // 
             this.saxonSelect.CheckOnClick = true;
             this.saxonSelect.Name = "saxonSelect";
-            this.saxonSelect.Size = new System.Drawing.Size(124, 26);
+            this.saxonSelect.Size = new System.Drawing.Size(181, 26);
             this.saxonSelect.Text = "Saxon";
             this.saxonSelect.Click += new System.EventHandler(this.saxonOptionsClick);
             // 
             // dotNetSelect
             // 
-            this.dotNetSelect.Checked = true;
             this.dotNetSelect.CheckOnClick = true;
-            this.dotNetSelect.CheckState = System.Windows.Forms.CheckState.Checked;
             this.dotNetSelect.Name = "dotNetSelect";
-            this.dotNetSelect.Size = new System.Drawing.Size(124, 26);
+            this.dotNetSelect.Size = new System.Drawing.Size(181, 26);
             this.dotNetSelect.Text = ".NET";
             this.dotNetSelect.Click += new System.EventHandler(this.dotNetSelect_Click);
+            // 
+            // msxmlSelect
+            // 
+            this.msxmlSelect.Checked = true;
+            this.msxmlSelect.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.msxmlSelect.Name = "msxmlSelect";
+            this.msxmlSelect.Size = new System.Drawing.Size(181, 26);
+            this.msxmlSelect.Text = "MSXML 6.0";
+            this.msxmlSelect.Click += new System.EventHandler(this.mSXML60ToolStripMenuItem_Click);
             // 
             // openTreeFormToolStripMenuItem
             // 
@@ -213,6 +225,13 @@ namespace TransformerApp
             this.xPathQueryToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.xPathQueryToolStripMenuItem.Text = "XPath Query";
             this.xPathQueryToolStripMenuItem.Click += new System.EventHandler(this.xPathQueryToolStripMenuItem_Click);
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.searchToolStripMenuItem.Text = "Search";
+            this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -484,12 +503,14 @@ namespace TransformerApp
         public ScintillaXml scintillaOutput;
         private System.Windows.Forms.ToolStripMenuItem wrapLinesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem formatAndIndentToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem setProcessorToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem processorSelectMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saxonSelect;
         private System.Windows.Forms.ToolStripMenuItem dotNetSelect;
         private System.Windows.Forms.ToolStripMenuItem openTreeFormToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripMenuItem xPathQueryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem msxmlSelect;
     }
 }

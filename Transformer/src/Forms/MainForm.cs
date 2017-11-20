@@ -9,7 +9,8 @@ namespace TransformerApp
 {
     public partial class MainForm : Form
     {
-        static XslProcessor processor = XslProcessor.DotNet; //.NET is our default XSLT processor
+        static XslProcessor processor = XslProcessor.MSXML; //.NET is our default XSLT processor
+        public static string saxonVersion = new Saxon.Api.Processor().ProductVersion;
 
         public MainForm(string [] args)
         {
@@ -86,7 +87,7 @@ namespace TransformerApp
 
             catch(Exception e)
             {
-                UpdateStatusBar(e.Message);
+                UpdateStatusBar(e.Message.TrimEnd());
                 statusLabel.Image = Transformer.Properties.Resources.RedCross;
             }
         }
@@ -200,12 +201,22 @@ namespace TransformerApp
         {
             processor = XslProcessor.Saxon;
             dotNetSelect.Checked = false;
+            msxmlSelect.Checked = false;
         }
 
         private void dotNetSelect_Click(object sender, EventArgs e)
         {
             processor = XslProcessor.DotNet;
             saxonSelect.Checked = false;
+            msxmlSelect.Checked = false;
+        }
+
+        private void mSXML60ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            processor = XslProcessor.MSXML;
+            saxonSelect.Checked = false;
+            dotNetSelect.Checked = false;
+
         }
 
         private void PrintPosition(object sender, UpdateUIEventArgs e)
@@ -233,8 +244,7 @@ namespace TransformerApp
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            SearchForm sf = new SearchForm(this);
-            sf.Show();
+            openSearchForm();
         }
 
         private void xPathQueryToolStripMenuItem_Click(object sender, EventArgs e)
@@ -242,5 +252,17 @@ namespace TransformerApp
             XPathQueryForm xqf = new XPathQueryForm(scintillaSource.Text);
             xqf.Show();
         }
+
+        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openSearchForm();
+        }
+
+        private void openSearchForm()
+        {
+            SearchForm sf = new SearchForm(this);
+            sf.Show();
+        }
     }
+    
 }

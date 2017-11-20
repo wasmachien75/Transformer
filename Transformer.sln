@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transformer", "Transformer\Transformer.csproj", "{5FD52C22-CDA3-4A27-8B9D-F120E3FD145B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{F2E219FB-8FA0-4FA5-B09F-6EA50434E6D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransfomerTests", "UnitTestProject1\TransfomerTests.csproj", "{F2E219FB-8FA0-4FA5-B09F-6EA50434E6D4}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{D4CB5238-3302-4E0D-86DA-A7DA3ED68327}"
 EndProject
@@ -28,5 +28,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9DEF0F32-DC0F-43AE-B2C0-61BBBAEC5AD7}
 	EndGlobalSection
 EndGlobal

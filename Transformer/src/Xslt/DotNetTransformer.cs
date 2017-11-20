@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Xsl;
+using MSXML2;
 
 namespace TransformerApp
 {
@@ -56,6 +57,6 @@ namespace TransformerApp
             return writer;
         }
 
-    }
+    }       
 
 }

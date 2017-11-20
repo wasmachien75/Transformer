@@ -29,9 +29,14 @@ namespace TransformerApp
                 Result = SaxonTransform();
             }
 
-            else
+            else if(processor == XslProcessor.DotNet)
             {
                 Result = DotNetTransform();
+            }
+
+            else if(processor == XslProcessor.MSXML)
+            {
+                Result = MSXMLTransform();
             }
 
             watch.Stop();
@@ -68,8 +73,12 @@ namespace TransformerApp
             MemoryStream stream = new MemoryStream();
             StreamWriter writer = xformer.CreateWriter(); // writer will write to the stream
             return xformer.Transform(XmlReader.Create(sourceReader), XmlReader.Create(xslReader));
-            
+        }
 
+        private string MSXMLTransform()
+        {
+            MSXMLTransformer transformer = new MSXMLTransformer();
+            return transformer.Transform(source.Text, xsl.Text);
         }
     }
 }

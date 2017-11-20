@@ -215,10 +215,18 @@ namespace TransformerApp
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     string loc = dialog.FileName;
-                    using (StreamWriter file = new StreamWriter(loc))
+                    try
                     {
-                        file.Write(content);
+                        using (StreamWriter file = new StreamWriter(loc))
+                        {
+                            file.Write(content);
+                        }
                     }
+                    catch (IOException)
+                    {
+                        Helper.ShowErrorMessage(String.Format("{0} could not be overwritten. Is it opened in another application?", loc));
+                    }
+                    
 
                 }
             }

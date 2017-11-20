@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.XPath;
@@ -18,6 +13,8 @@ namespace TransformerApp
         private XPathDocument dom;
         private string query;
         private XPathNodeIterator result;
+        private string resultString;
+        private double resultDouble;
 
         public XPathQueryForm(string sourceText)
         {
@@ -25,7 +22,7 @@ namespace TransformerApp
             StringReader sr = new StringReader(sourceText);
             XmlReader xr = XmlReader.Create(sr);
             dom = new XPathDocument(xr);
-           
+
         }
 
         private string BuildXPathStringFromAncestors(XPathNodeIterator xpn)
@@ -40,30 +37,61 @@ namespace TransformerApp
 
             foreach (string item in ancestors)
             {
-                sb.AppendFormat("/{0}", item);
+                if (item != "")
+                {
+                    sb.AppendFormat("/{0}", item);
+                }
             }
-            
+
             return sb.ToString();
+        }
+
+        private void UpdateLabel(string message)
+        {
+
+            statusLabel.Text = message;
         }
         private void ExecuteQuery(string query)
         {
             XPathNavigator xpn = dom.CreateNavigator();
             try
             {
-                XPathNodeIterator xpni = xpn.Select(query);
+                XPathNodeIterator xpni = (XPathNodeIterator)xpn.Evaluate(query);
+                string resultSingleOrMultiple = (xpni.Count == 1) ? " result" : " results";
+                UpdateLabel(xpni.Count.ToString() + resultSingleOrMultiple + " found.");
                 result = xpni;
             }
 
-            catch(XPathException e)
+            catch (XPathException e)
             {
-                MessageBox.Show("Your XPath query is invalid: " + e.Message);
+                UpdateLabel(e.Message);
             }
 
-            catch(ArgumentException e)
+            catch (InvalidCastException e)
             {
-                MessageBox.Show("Your XPath query did not return a nodeset. Sorry!");
-            }  
+                object result = xpn.Evaluate(query);
+                ListViewItem lvi = new ListViewItem(new string[] { "", result.ToString(), "" });
+                xPathList.Items.Add(lvi);
+            }
 
+        }
+
+        private string GetNodeValue(XPathNavigator node)
+        {
+            if (node.NodeType == XPathNodeType.Attribute)
+            {
+                return node.Value;
+            }
+            else if (node.NodeType == XPathNodeType.Element)
+            {
+                XPathNavigator xpn = node.SelectSingleNode("text()");
+                if (xpn != null)
+                {
+                    return xpn.Value;
+                }
+
+            }
+            return "";
         }
 
         private void ParseResult(XPathNodeIterator xpi)
@@ -71,29 +99,31 @@ namespace TransformerApp
             xPathList.Items.Clear();
             foreach (XPathNavigator node in xpi)
             {
-                XPathNodeIterator ancestors = node.SelectAncestors(XPathNodeType.Element, true);
+                XPathNodeIterator ancestors = node.SelectAncestors(XPathNodeType.All, true);
                 string xPathString = BuildXPathStringFromAncestors(ancestors);
-                xPathList.Items.Add(xPathString);
-                xPathList.Items[xPathList.Items.Count - 1].SubItems.Add(xPathList.Items.Count.ToString());
+                string value = GetNodeValue(node);
+
+                ListViewItem item = new ListViewItem(new string[] { (xPathList.Items.Count + 1).ToString(), xPathString, value, node.NodeType.ToString() });
+                xPathList.Items.Add(item);
                 xPathList.Items[xPathList.Items.Count - 1].ToolTipText = xPathString;
             }
-            xPathList.Columns[0].Width = -2;
-            xPathList.ShowItemToolTips = true;
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
             query = xpathQueryTextbox.Text;
+            xPathList.Items.Clear();
             ExecuteQuery(query);
-            if(result != null)
+            if (result != null)
             {
                 ParseResult(result);
             }
-            else
-            {
-                xPathList.Items.Clear();
-            }
-            
+
+            this.Height = 450;
+            this.xPathList.Visible = true;
+            xPathList.Columns[0].Width = -2;
+            xPathList.ShowItemToolTips = true;
+
         }
     }
 }
