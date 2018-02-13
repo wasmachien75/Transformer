@@ -48,6 +48,7 @@ namespace TransformerApp
             this.openTreeFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xPathQueryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simpleModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xSLTutorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportDevWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +64,7 @@ namespace TransformerApp
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.runButton = new System.Windows.Forms.ToolStripButton();
             this.saveButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.indentButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -109,7 +110,7 @@ namespace TransformerApp
             this.loadSourceXMLToolStripMenuItem.Name = "loadSourceXMLToolStripMenuItem";
             this.loadSourceXMLToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.loadSourceXMLToolStripMenuItem.Text = "Load Source XML";
-            this.loadSourceXMLToolStripMenuItem.Click += new System.EventHandler(this.loadSourceXMLToolStripMenuItem_Click);
+            this.loadSourceXMLToolStripMenuItem.Click += new System.EventHandler(this.LoadSourceXMLToolStripMenuItem_Click);
             // 
             // loadStylesheetToolStripMenuItem
             // 
@@ -117,7 +118,7 @@ namespace TransformerApp
             this.loadStylesheetToolStripMenuItem.Name = "loadStylesheetToolStripMenuItem";
             this.loadStylesheetToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.loadStylesheetToolStripMenuItem.Text = "Load Stylesheet";
-            this.loadStylesheetToolStripMenuItem.Click += new System.EventHandler(this.loadStylesheetToolStripMenuItem_Click);
+            this.loadStylesheetToolStripMenuItem.Click += new System.EventHandler(this.LoadStylesheetToolStripMenuItem_Click);
             // 
             // saveOutputAsToolStripMenuItem
             // 
@@ -125,7 +126,7 @@ namespace TransformerApp
             this.saveOutputAsToolStripMenuItem.Name = "saveOutputAsToolStripMenuItem";
             this.saveOutputAsToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.saveOutputAsToolStripMenuItem.Text = "Save Output As";
-            this.saveOutputAsToolStripMenuItem.Click += new System.EventHandler(this.saveOutputAsToolStripMenuItem_Click);
+            this.saveOutputAsToolStripMenuItem.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -133,7 +134,7 @@ namespace TransformerApp
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(199, 26);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // toolsToolStripMenuItem
             // 
@@ -144,7 +145,8 @@ namespace TransformerApp
             this.processorSelectMenuItem,
             this.openTreeFormToolStripMenuItem,
             this.xPathQueryToolStripMenuItem,
-            this.searchToolStripMenuItem});
+            this.searchToolStripMenuItem,
+            this.simpleModeToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -155,7 +157,7 @@ namespace TransformerApp
             this.transformToolStripMenuItem.Name = "transformToolStripMenuItem";
             this.transformToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.transformToolStripMenuItem.Text = "Transform";
-            this.transformToolStripMenuItem.Click += new System.EventHandler(this.transformToolStripMenuItem_Click);
+            this.transformToolStripMenuItem.Click += new System.EventHandler(this.RunButton_Click);
             // 
             // wrapLinesToolStripMenuItem1
             // 
@@ -163,7 +165,7 @@ namespace TransformerApp
             this.wrapLinesToolStripMenuItem1.Name = "wrapLinesToolStripMenuItem1";
             this.wrapLinesToolStripMenuItem1.Size = new System.Drawing.Size(206, 26);
             this.wrapLinesToolStripMenuItem1.Text = "Wrap Lines";
-            this.wrapLinesToolStripMenuItem1.Click += new System.EventHandler(this.wrapLinesToolStripMenuItem_Click);
+            this.wrapLinesToolStripMenuItem1.Click += new System.EventHandler(this.WrapLinesToolStripMenuItem_Click);
             // 
             // formatAndIndentToolStripMenuItem
             // 
@@ -171,11 +173,10 @@ namespace TransformerApp
             this.formatAndIndentToolStripMenuItem.Name = "formatAndIndentToolStripMenuItem";
             this.formatAndIndentToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.formatAndIndentToolStripMenuItem.Text = "Format and Indent";
-            this.formatAndIndentToolStripMenuItem.Click += new System.EventHandler(this.indentClick);
+            this.formatAndIndentToolStripMenuItem.Click += new System.EventHandler(this.IndentClick);
             // 
             // processorSelectMenuItem
             // 
-            this.processorSelectMenuItem.CheckOnClick = true;
             this.processorSelectMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saxonSelect,
             this.dotNetSelect,
@@ -189,26 +190,27 @@ namespace TransformerApp
             // 
             this.saxonSelect.CheckOnClick = true;
             this.saxonSelect.Name = "saxonSelect";
-            this.saxonSelect.Size = new System.Drawing.Size(181, 26);
+            this.saxonSelect.Size = new System.Drawing.Size(157, 26);
             this.saxonSelect.Text = "Saxon";
-            this.saxonSelect.Click += new System.EventHandler(this.saxonOptionsClick);
+            this.saxonSelect.Click += new System.EventHandler(this.SaxonOptionsClick);
             // 
             // dotNetSelect
             // 
             this.dotNetSelect.CheckOnClick = true;
             this.dotNetSelect.Name = "dotNetSelect";
-            this.dotNetSelect.Size = new System.Drawing.Size(181, 26);
+            this.dotNetSelect.Size = new System.Drawing.Size(157, 26);
             this.dotNetSelect.Text = ".NET";
-            this.dotNetSelect.Click += new System.EventHandler(this.dotNetSelect_Click);
+            this.dotNetSelect.Click += new System.EventHandler(this.DotNetSelect_Click);
             // 
             // msxmlSelect
             // 
             this.msxmlSelect.Checked = true;
+            this.msxmlSelect.CheckOnClick = true;
             this.msxmlSelect.CheckState = System.Windows.Forms.CheckState.Checked;
             this.msxmlSelect.Name = "msxmlSelect";
-            this.msxmlSelect.Size = new System.Drawing.Size(181, 26);
+            this.msxmlSelect.Size = new System.Drawing.Size(157, 26);
             this.msxmlSelect.Text = "MSXML 6.0";
-            this.msxmlSelect.Click += new System.EventHandler(this.mSXML60ToolStripMenuItem_Click);
+            this.msxmlSelect.Click += new System.EventHandler(this.MSXML60ToolStripMenuItem_Click);
             // 
             // openTreeFormToolStripMenuItem
             // 
@@ -216,7 +218,7 @@ namespace TransformerApp
             this.openTreeFormToolStripMenuItem.Name = "openTreeFormToolStripMenuItem";
             this.openTreeFormToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.openTreeFormToolStripMenuItem.Text = "Source Tree";
-            this.openTreeFormToolStripMenuItem.Click += new System.EventHandler(this.openTreeFormToolStripMenuItem_Click);
+            this.openTreeFormToolStripMenuItem.Click += new System.EventHandler(this.OpenTreeFormToolStripMenuItem_Click);
             // 
             // xPathQueryToolStripMenuItem
             // 
@@ -224,14 +226,22 @@ namespace TransformerApp
             this.xPathQueryToolStripMenuItem.Name = "xPathQueryToolStripMenuItem";
             this.xPathQueryToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.xPathQueryToolStripMenuItem.Text = "XPath Query";
-            this.xPathQueryToolStripMenuItem.Click += new System.EventHandler(this.xPathQueryToolStripMenuItem_Click);
+            this.xPathQueryToolStripMenuItem.Click += new System.EventHandler(this.XPathQueryToolStripMenuItem_Click);
             // 
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
             this.searchToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
             this.searchToolStripMenuItem.Text = "Search";
-            this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
+            this.searchToolStripMenuItem.Click += new System.EventHandler(this.SearchToolStripMenuItem_Click);
+            // 
+            // simpleModeToolStripMenuItem
+            // 
+            this.simpleModeToolStripMenuItem.CheckOnClick = true;
+            this.simpleModeToolStripMenuItem.Name = "simpleModeToolStripMenuItem";
+            this.simpleModeToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.simpleModeToolStripMenuItem.Text = "Simple Mode";
+            this.simpleModeToolStripMenuItem.Click += new System.EventHandler(this.SimpleModeToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -248,14 +258,14 @@ namespace TransformerApp
             this.xSLTutorialToolStripMenuItem.Name = "xSLTutorialToolStripMenuItem";
             this.xSLTutorialToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
             this.xSLTutorialToolStripMenuItem.Text = "XSL Tutorial";
-            this.xSLTutorialToolStripMenuItem.Click += new System.EventHandler(this.xSLTutorialToolStripMenuItem_Click);
+            this.xSLTutorialToolStripMenuItem.Click += new System.EventHandler(this.XSLTutorialToolStripMenuItem_Click);
             // 
             // reportDevWikiToolStripMenuItem
             // 
             this.reportDevWikiToolStripMenuItem.Name = "reportDevWikiToolStripMenuItem";
             this.reportDevWikiToolStripMenuItem.Size = new System.Drawing.Size(192, 26);
             this.reportDevWikiToolStripMenuItem.Text = "Report Dev Wiki";
-            this.reportDevWikiToolStripMenuItem.Click += new System.EventHandler(this.reportDevWikiToolStripMenuItem_Click);
+            this.reportDevWikiToolStripMenuItem.Click += new System.EventHandler(this.ReportDevWikiToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem1
             // 
@@ -263,7 +273,7 @@ namespace TransformerApp
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
             this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(192, 26);
             this.aboutToolStripMenuItem1.Text = "About";
-            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -388,7 +398,7 @@ namespace TransformerApp
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.runButton,
             this.saveButton,
-            this.toolStripButton1,
+            this.indentButton,
             this.toolStripButton2});
             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.toolStrip1.Location = new System.Drawing.Point(0, 28);
@@ -408,7 +418,7 @@ namespace TransformerApp
             this.runButton.Size = new System.Drawing.Size(24, 24);
             this.runButton.Text = "toolStripButton1";
             this.runButton.ToolTipText = "Transform";
-            this.runButton.Click += new System.EventHandler(this.runButton_Click);
+            this.runButton.Click += new System.EventHandler(this.RunButton_Click);
             // 
             // saveButton
             // 
@@ -420,18 +430,18 @@ namespace TransformerApp
             this.saveButton.Size = new System.Drawing.Size(24, 24);
             this.saveButton.Text = "toolStripButton2";
             this.saveButton.ToolTipText = "Save Output...";
-            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // toolStripButton1
+            // indentButton
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Margin = new System.Windows.Forms.Padding(0, 1, 8, 2);
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButton1.Text = "Indent";
-            this.toolStripButton1.Click += new System.EventHandler(this.indentClick);
+            this.indentButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.indentButton.Image = ((System.Drawing.Image)(resources.GetObject("indentButton.Image")));
+            this.indentButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.indentButton.Margin = new System.Windows.Forms.Padding(0, 1, 8, 2);
+            this.indentButton.Name = "indentButton";
+            this.indentButton.Size = new System.Drawing.Size(24, 24);
+            this.indentButton.Text = "Indent";
+            this.indentButton.Click += new System.EventHandler(this.IndentClick);
             // 
             // toolStripButton2
             // 
@@ -442,7 +452,7 @@ namespace TransformerApp
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.toolStripButton2.Click += new System.EventHandler(this.SearchToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -454,10 +464,12 @@ namespace TransformerApp
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(853, 600);
             this.Name = "MainForm";
             this.Text = "Transformer";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainFormKeyPress);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -498,7 +510,6 @@ namespace TransformerApp
         private System.Windows.Forms.ToolStripMenuItem xSLTutorialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportDevWikiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         public ScintillaXml scintillaXSL;
         public ScintillaXml scintillaOutput;
         private System.Windows.Forms.ToolStripMenuItem wrapLinesToolStripMenuItem1;
@@ -512,5 +523,7 @@ namespace TransformerApp
         private System.Windows.Forms.ToolStripMenuItem xPathQueryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem msxmlSelect;
+        private System.Windows.Forms.ToolStripMenuItem simpleModeToolStripMenuItem;
+        public System.Windows.Forms.ToolStripButton indentButton;
     }
 }

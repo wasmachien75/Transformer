@@ -10,6 +10,7 @@ namespace TransformerApp
 {
     public partial class ScintillaXml : Scintilla
     {
+        
         public string Description { get; set; }
 
         private void scintilla_DragDrop(object sender, DragEventArgs e)
@@ -30,10 +31,17 @@ namespace TransformerApp
 
         public ScintillaXml()
         {
+            this.TextChanged += new EventHandler(this.ScintillaTextChanged);
+            SetStyle();
+            InitializeComponent();
+            Indent();
+        }
+
+        public void SetStyle()
+        {
             this.AllowDrop = true;
             this.DragDrop += new DragEventHandler(scintilla_DragDrop);
             this.DragEnter += new DragEventHandler(scintilla_DragEnter);
-            this.TextChanged += new EventHandler(this.ScintillaTextChanged);
             this.InsertCheck += new EventHandler<InsertCheckEventArgs>(OnInsertCheck);
             this.TabWidth = 2;
 
@@ -48,9 +56,6 @@ namespace TransformerApp
 
             // Set the XML Lexer
             this.Lexer = Lexer.Xml;
-
-            // Show line numbers
-            this.Margins[0].Width = 10;
 
             // Enable folding
             this.SetProperty("fold", "1");
@@ -99,13 +104,25 @@ namespace TransformerApp
             this.Styles[Style.Xml.SingleString].ForeColor = Color.FromArgb(1, 214, 32, 171);
             this.Styles[Style.LineNumber].Size = 9;
             this.Styles[Style.LineNumber].Font = "Consolas";
-            InitializeComponent();
         }
 
         public void ClearSearchIndication()
         {
             this.IndicatorCurrent = 8;
             this.IndicatorClearRange(0, this.TextLength);
+        }
+
+        public void ClearStyle()
+        {
+            this.StyleResetDefault();
+            this.Lexer = Lexer.Null;
+            this.AutomaticFold = AutomaticFold.None;
+            for (int i = 0; i < this.Markers.Count; i++)
+            {
+                this.Markers[i].DeleteAll();
+            }
+            this.ClearDocumentStyle();
+
         }
 
         public int FindPrevious(string text, int searchStart)

@@ -87,9 +87,12 @@
       <DependentUpon>XPathQueryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Helper.cs" />
+    <Compile Include="src\RunStats.cs" />
     <Compile Include="src\Xml\XmlDepthFinder.cs" />
     <Compile Include="src\Xml\XmlUtilities.cs" />
+    <Compile Include="src\Xslt\AbstractTransformer.cs" />
     <Compile Include="src\Xslt\MSXMLTransformer.cs" />
+    <Compile Include="src\Xslt\TransformerFactory.cs" />
     <Compile Include="src\Xslt\XslProcessor.cs" />
     <Compile Include="src\Xslt\DotNetTransformer.cs" />
     <Compile Include="src\Xslt\SaxonTransformer.cs" />
@@ -131,7 +134,7 @@
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>

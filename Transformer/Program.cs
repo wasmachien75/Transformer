@@ -13,7 +13,6 @@ namespace TransformerApp
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm mainform = new MainForm(args);
 
-
             Application.Run(mainform);
 
         }

@@ -3,21 +3,39 @@ using System.IO;
 using System.Windows.Forms;
 using ScintillaNET;
 using System.Linq;
-using System.Xml.Xsl;
+using System.Diagnostics;
 
 namespace TransformerApp
 {
     public partial class MainForm : Form
     {
-        static XslProcessor processor = XslProcessor.MSXML; //.NET is our default XSLT processor
-        public static string saxonVersion = new Saxon.Api.Processor().ProductVersion;
+        private XslProcessor processor = Transformer.Properties.Settings.Default.XslProcessor;
 
-        public MainForm(string [] args)
+        bool simpleMode = false;
+
+        public MainForm(string[] args)
         {
             InitializeComponent();
             Setup();
             EvaluateArgs(args);
+        }
 
+        private string GetDebugInfo()
+        {
+            using (Process proc = Process.GetCurrentProcess())
+            {
+                RunStats runStats = new RunStats(proc, scintillaSource.Text, processor);
+                return runStats.Stats;
+            }
+
+        }
+
+        public void MainFormKeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.P)
+            {
+                MessageBox.Show(GetDebugInfo(), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void Setup()
@@ -28,7 +46,7 @@ namespace TransformerApp
             this.splitContainer2.SplitterWidth = 2;
         }
 
-        private void EvaluateArgs(string [] args)
+        private void EvaluateArgs(string[] args)
         {
             string[] xmlExt = new string[] { ".xml", String.Empty };
             string[] xsltExt = new string[] { ".xsl", ".xslt" };
@@ -36,12 +54,12 @@ namespace TransformerApp
             {
                 if (xmlExt.Contains(Path.GetExtension(args[0])))
                 {
-                    loadAndPrintFile(args[0], scintillaSource);
+                    LoadAndPrintFile(args[0], scintillaSource);
                 }
 
                 else if (xsltExt.Contains(Path.GetExtension(args[0])))
                 {
-                    loadAndPrintFile(args[0], scintillaXSL);
+                    LoadAndPrintFile(args[0], scintillaXSL);
                 }
             }
         }
@@ -70,55 +88,43 @@ namespace TransformerApp
 
         private void Transform()
         {
-            XslTransformer transformer = new XslTransformer(this);
-            try
+            using (MemoryStream xmlStream = Helper.createStream(scintillaSource.Text))
+            using (MemoryStream xslStream = Helper.createStream(scintillaXSL.Text))
             {
-                transformer.TransformIt(processor);
-                PrintOutput(transformer.Result, scintillaOutput);
-                UpdateStatusBar(String.Format("Transformation succeeded in {0} s", transformer.ElapsedSecs));
-                statusLabel.Image =  Transformer.Properties.Resources.GreenCheckMark;
+                XslTransformer transformer = new XslTransformer(xmlStream, xslStream);
+
+                try
+                {
+                    transformer.Transform(processor);
+                    using (Stream result = transformer.Result)
+                    {
+                        PrintOutput(new StreamReader(result).ReadToEnd(), scintillaOutput);
+                        UpdateStatusBar(String.Format("Transformation succeeded in {0} s", transformer.ElapsedSecs));
+                        statusLabel.Image = Transformer.Properties.Resources.GreenCheckMark;
+                    };
+
+                }
+
+                catch (Exception e)
+                {
+                    UpdateStatusBar(e.Message.TrimEnd());
+                    statusLabel.Image = Transformer.Properties.Resources.RedCross;
+                }
+
             }
-
-            catch(XsltException e)
-            {
-                UpdateStatusBar(e.Message, e.LineNumber, e.LinePosition);
-                statusLabel.Image = Transformer.Properties.Resources.RedCross;
-            }
-
-            catch(Exception e)
-            {
-                UpdateStatusBar(e.Message.TrimEnd());
-                statusLabel.Image = Transformer.Properties.Resources.RedCross;
-            }
         }
 
-        private void transformToolStripMenuItem_Click(object sender, EventArgs e)
-        { 
-            Transform();
-        }
+        private void UpdateStatusBar(string str) => statusLabel.Text = str;
 
-        private void UpdateStatusBar(string str)
-        {
-            statusLabel.Text = str;
-        }
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e) => Application.Exit();
 
-        private void UpdateStatusBar(string str, int line, int column)
-        {
-            statusLabel.Text = str;
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutForm about = new AboutForm();
             about.Show();
         }
 
-        private void loadAndPrintFile(string filename, ScintillaXml scintilla)
+        private void LoadAndPrintFile(string filename, ScintillaXml scintilla)
         {
             if (filename != "")
             {
@@ -126,12 +132,11 @@ namespace TransformerApp
                 {
                     try
                     {
-                        // Read the stream to a string, and write the string to the console.
                         string line = sr.ReadToEnd();
                         scintilla.Text = line;
                     }
 
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         statusLabel.Text = e.Message;
                     }
@@ -139,53 +144,35 @@ namespace TransformerApp
             }
         }
 
-        private void loadStylesheetToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LoadStylesheetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string filename = ChooseFile("XSLT Stylesheets (*.xsl;*.xslt)|*.xsl;*.xslt");
-            loadAndPrintFile(filename, scintillaXSL);
+            LoadAndPrintFile(filename, scintillaXSL);
         }
 
-        private void loadSourceXMLToolStripMenuItem_Click(object sender, EventArgs e)
+        private void LoadSourceXMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string filename = ChooseFile("XML Documents (*.xml)|*.xml");
-            loadAndPrintFile(filename, scintillaSource);
+            LoadAndPrintFile(filename, scintillaSource);
         }
 
-        private void runButton_Click(object sender, EventArgs e)
-        {
-            Transform();
-        }
+        private void RunButton_Click(object sender, EventArgs e) => Transform();
 
-        private void wrapLinesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void WrapLinesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             scintillaSource.ToggleWrap();
             scintillaXSL.ToggleWrap();
             scintillaOutput.ToggleWrap();
             wrapLinesToolStripMenuItem1.Checked = !wrapLinesToolStripMenuItem1.Checked;
-            
         }
 
-        private void saveButton_Click(object sender, EventArgs e)
-        {
-            scintillaOutput.SaveOutput();
-        }
+        private void SaveButton_Click(object sender, EventArgs e) => scintillaOutput.SaveOutput();
 
-        private void saveOutputAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            scintillaOutput.SaveOutput();
-        }
+        private void XSLTutorialToolStripMenuItem_Click(object sender, EventArgs e) => Process.Start("https://www.w3schools.com/xml/xsl_intro.asp");
 
-        private void xSLTutorialToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.w3schools.com/xml/xsl_intro.asp");
-        }
+        private void ReportDevWikiToolStripMenuItem_Click(object sender, EventArgs e) => Process.Start("https://wiki.mediagenix.tv/display/Webdev");
 
-        private void reportDevWikiToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://wiki.mediagenix.tv/display/Webdev"); 
-        }
-
-        private void indentClick(object sender, EventArgs e)
+        private void IndentClick(object sender, EventArgs e)
         {
             scintillaSource.Indent();
             scintillaXSL.Indent();
@@ -197,26 +184,18 @@ namespace TransformerApp
             }
         }
 
-        private void saxonOptionsClick(object sender, EventArgs e)
-        {
-            processor = XslProcessor.Saxon;
-            dotNetSelect.Checked = false;
-            msxmlSelect.Checked = false;
-        }
+        private void SaxonOptionsClick(object sender, EventArgs e) => SelectProcessor(XslProcessor.Saxon);
 
-        private void dotNetSelect_Click(object sender, EventArgs e)
-        {
-            processor = XslProcessor.DotNet;
-            saxonSelect.Checked = false;
-            msxmlSelect.Checked = false;
-        }
+        private void DotNetSelect_Click(object sender, EventArgs e) => SelectProcessor(XslProcessor.DotNet);
 
-        private void mSXML60ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            processor = XslProcessor.MSXML;
-            saxonSelect.Checked = false;
-            dotNetSelect.Checked = false;
+        private void MSXML60ToolStripMenuItem_Click(object sender, EventArgs e) => SelectProcessor(XslProcessor.MSXML);
 
+        private void SelectProcessor(XslProcessor processor)
+        {
+            this.processor = processor;
+            saxonSelect.Checked = (processor == XslProcessor.Saxon);
+            dotNetSelect.Checked = (processor == XslProcessor.DotNet);
+            msxmlSelect.Checked = (processor == XslProcessor.MSXML);
         }
 
         private void PrintPosition(object sender, UpdateUIEventArgs e)
@@ -227,7 +206,7 @@ namespace TransformerApp
             posLabel.Text = "| Line " + line.ToString() + ", Col " + pos.ToString();
         }
 
-        private void openTreeFormToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenTreeFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (scintillaSource.ContentIsXml())
             {
@@ -239,30 +218,41 @@ namespace TransformerApp
             {
                 MessageBox.Show("Could not load source tree because the source view does not contain valid XML.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            openSearchForm();
-        }
-
-        private void xPathQueryToolStripMenuItem_Click(object sender, EventArgs e)
+        private void XPathQueryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             XPathQueryForm xqf = new XPathQueryForm(scintillaSource.Text);
             xqf.Show();
         }
 
-        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            openSearchForm();
-        }
-
-        private void openSearchForm()
+        private void SearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SearchForm sf = new SearchForm(this);
             sf.Show();
         }
+
+        private void SimpleModeToolStripMenuItem_Click(object sender, EventArgs e) => ToggleSimpleMode();
+
+        private void ToggleSimpleMode()
+        {
+            if (simpleMode)
+            {
+                scintillaSource.SetStyle();
+                scintillaXSL.SetStyle();
+                scintillaOutput.SetStyle();
+            }
+            else
+            {
+                scintillaSource.ClearStyle();
+                scintillaXSL.ClearStyle();
+                scintillaOutput.ClearStyle();
+            }
+            
+            indentButton.Enabled = !indentButton.Enabled;
+            formatAndIndentToolStripMenuItem.Enabled = !formatAndIndentToolStripMenuItem.Enabled;
+            simpleMode = !simpleMode;
+        }
     }
-    
 }

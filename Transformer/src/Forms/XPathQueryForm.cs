@@ -13,8 +13,6 @@ namespace TransformerApp
         private XPathDocument dom;
         private string query;
         private XPathNodeIterator result;
-        private string resultString;
-        private double resultDouble;
 
         public XPathQueryForm(string sourceText)
         {
@@ -67,7 +65,7 @@ namespace TransformerApp
                 UpdateLabel(e.Message);
             }
 
-            catch (InvalidCastException e)
+            catch (InvalidCastException)
             {
                 object result = xpn.Evaluate(query);
                 ListViewItem lvi = new ListViewItem(new string[] { "", result.ToString(), "" });
