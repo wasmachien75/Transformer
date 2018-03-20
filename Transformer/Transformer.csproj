@@ -90,6 +90,7 @@
     <Compile Include="src\RunStats.cs" />
     <Compile Include="src\Xml\XmlDepthFinder.cs" />
     <Compile Include="src\Xml\XmlUtilities.cs" />
+    <Compile Include="src\Xml\XmlValidator.cs" />
     <Compile Include="src\Xslt\AbstractTransformer.cs" />
     <Compile Include="src\Xslt\MSXMLTransformer.cs" />
     <Compile Include="src\Xslt\TransformerFactory.cs" />
@@ -168,6 +169,9 @@
   <ItemGroup>
     <Content Include="kabouter_plop_eD8_icon.ico" />
     <Content Include="plop.ico" />
+    <None Include="Resources\- Export PROMO TEST.xsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\XPath_32x.png" />
     <None Include="Resources\WebFolder_16x.png" />
     <None Include="Resources\Attribute_32xMD.png" />
@@ -192,6 +196,9 @@
     <None Include="Resources\CollapseChevronDownGroup_24x.png" />
     <None Include="Resources\ExpandAll_32x.png" />
     <None Include="Resources\ExpandAll_16x.png" />
+    <None Include="Resources\xslt.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="templates\xml\transmissions.xml" />
     <None Include="Resources\OpenXml.png" />
     <None Include="Resources\icons8-Save-96.png" />

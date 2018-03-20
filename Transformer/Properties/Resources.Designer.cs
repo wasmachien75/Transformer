@@ -61,6 +61,28 @@ namespace Transformer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///&lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;
+        ///	&lt;xsl:output method=&quot;xml&quot; encoding=&quot;UTF-8&quot; indent=&quot;yes&quot; cdata-section-elements=&quot;ESP_TEXT&quot;/&gt;
+        ///
+        ///
+        ///&lt;xsl:template match=&quot;/&quot;&gt;
+        ///	&lt;RTBF_Move_Export_file&gt;	
+        ///	&lt;xsl:choose&gt;
+        ///		&lt;xsl:when test=&quot;trailercampaigns&quot;&gt;
+        ///		      
+        ///			&lt;Informations_Generales&gt;
+        ///				&lt;FullDate_Generation_File&gt;
+        ///				      &lt;xsl:value-of select=&quot;trailercampaigns/exportinformation/timestamp/ESP_TIMEINSTANT/@full&quot;/&gt;
+        ///				&lt;/FullDate_Generation_File&gt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string @__Export_PROMO_TEST {
+            get {
+                return ResourceManager.GetString("__Export_PROMO_TEST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap Attribute_32xMD {
@@ -312,6 +334,25 @@ namespace Transformer.Properties {
             get {
                 object obj = ResourceManager.GetObject("XPath_32x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;!--
+        ///    Copyright © 2001 World Wide Web Consortium, (Massachusetts Institute of
+        ///    Technology, European Research Consortium for Informatics and Mathematics,
+        ///    Keio University). All Rights Reserved. This work is distributed under
+        ///    the W3C® Software License [1].
+        ///
+        ///    [1] http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231
+        ///
+        ///    Portions © 2004-2009 Microsoft Corporation.  All rights reserved.
+        ///    This file was derived from http://www.w3.or [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string xslt {
+            get {
+                return ResourceManager.GetString("xslt", resourceCulture);
             }
         }
     }

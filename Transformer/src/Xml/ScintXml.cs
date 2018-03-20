@@ -13,6 +13,8 @@ namespace TransformerApp
         
         public string Description { get; set; }
 
+        private Timer validationTimer = new Timer();      
+
         private void scintilla_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop, true))
@@ -29,9 +31,15 @@ namespace TransformerApp
             e.Effect = DragDropEffects.Move;
         }
 
-        public ScintillaXml()
+        public ScintillaXml(bool shouldValidate)
         {
             this.TextChanged += new EventHandler(this.ScintillaTextChanged);
+            if (shouldValidate)
+            {
+                this.TextChanged += new EventHandler(this.ValidateOnTextChanged);
+            }
+            validationTimer.Interval = 1000;
+            validationTimer.Tick += new EventHandler(OnTick);
             SetStyle();
             InitializeComponent();
             Indent();
@@ -43,6 +51,7 @@ namespace TransformerApp
             this.DragDrop += new DragEventHandler(scintilla_DragDrop);
             this.DragEnter += new DragEventHandler(scintilla_DragEnter);
             this.InsertCheck += new EventHandler<InsertCheckEventArgs>(OnInsertCheck);
+            
             this.TabWidth = 2;
 
             //set style for search results
@@ -50,6 +59,10 @@ namespace TransformerApp
             this.Indicators[8].Under = false;
             this.Indicators[8].Alpha = 100;
             this.Indicators[8].ForeColor = Color.LimeGreen;
+
+            //set style for syntax errors
+            this.Indicators[9].Style = IndicatorStyle.Squiggle;
+            this.Indicators[9].ForeColor = Color.Red;
 
             //No wrapping by default
             this.WrapMode = WrapMode.None;
@@ -211,6 +224,17 @@ namespace TransformerApp
             this.maxLineNumberCharLength = maxLineNumberCharLength;
         }
 
+        private void ValidateOnTextChanged(object sender, EventArgs e)
+        {
+            validationTimer.Start();
+        }
+
+        private void OnTick(object sender, EventArgs e)
+        {
+            Validate();
+            validationTimer.Stop();
+        }
+
         public void ToggleWrap()
         {
             WrapMode = (WrapMode == WrapMode.Word) ? WrapMode.None : WrapMode.Word; 
@@ -300,6 +324,32 @@ namespace TransformerApp
                 e.Text += new string('\t', tabs);
             }
 
+        }
+
+        public XmlDocument ToXmlDocument()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(this.Text);
+            return doc;
+        }
+
+        public void Validate()
+        {
+            this.IndicatorClearRange(0, this.TextLength);
+            Validator v = new Validator(this.Text);
+            v.Validate();
+            if (v.ExceptionLocation != null)
+            {
+                int lNumber = v.ExceptionLocation.Item1;
+                int lPosition = v.ExceptionLocation.Item2;
+                indicateException(lNumber, lPosition);
+            }
+        }
+
+        private void indicateException(int number, int position)
+        {
+            this.IndicatorCurrent = 9;
+            this.IndicatorFillRange(this.Lines[number - 1].Position - 1 + position, 5);
         }
 
         protected override void OnPaint(PaintEventArgs pe)

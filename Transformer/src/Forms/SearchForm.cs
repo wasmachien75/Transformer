@@ -26,7 +26,7 @@ namespace TransformerApp
             if (sourceRadio.Checked) return source;
             if (xslRadio.Checked) return xsl;
             if (outputRadio.Checked) return output;
-            return new ScintillaXml();
+            return null;
         }
 
         private int getSearchStart(ScintillaXml sc)

@@ -58,14 +58,15 @@ namespace TransformerApp
             this.posLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.scintillaSource = new TransformerApp.ScintillaXml();
-            this.scintillaXSL = new TransformerApp.ScintillaXml();
-            this.scintillaOutput = new TransformerApp.ScintillaXml();
+            this.scintillaSource = new TransformerApp.ScintillaXml(true);
+            this.scintillaXSL = new TransformerApp.ScintillaXml(true);
+            this.scintillaOutput = new TransformerApp.ScintillaXml(false);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.runButton = new System.Windows.Forms.ToolStripButton();
             this.saveButton = new System.Windows.Forms.ToolStripButton();
             this.indentButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.validateXSLTtestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -146,7 +147,8 @@ namespace TransformerApp
             this.openTreeFormToolStripMenuItem,
             this.xPathQueryToolStripMenuItem,
             this.searchToolStripMenuItem,
-            this.simpleModeToolStripMenuItem});
+            this.simpleModeToolStripMenuItem,
+            this.validateXSLTtestToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(56, 24);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -155,7 +157,7 @@ namespace TransformerApp
             // 
             this.transformToolStripMenuItem.Image = global::Transformer.Properties.Resources.icons8_Circled_Play_96;
             this.transformToolStripMenuItem.Name = "transformToolStripMenuItem";
-            this.transformToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.transformToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.transformToolStripMenuItem.Text = "Transform";
             this.transformToolStripMenuItem.Click += new System.EventHandler(this.RunButton_Click);
             // 
@@ -163,7 +165,7 @@ namespace TransformerApp
             // 
             this.wrapLinesToolStripMenuItem1.Image = global::Transformer.Properties.Resources.WrapPanel_24x;
             this.wrapLinesToolStripMenuItem1.Name = "wrapLinesToolStripMenuItem1";
-            this.wrapLinesToolStripMenuItem1.Size = new System.Drawing.Size(206, 26);
+            this.wrapLinesToolStripMenuItem1.Size = new System.Drawing.Size(211, 26);
             this.wrapLinesToolStripMenuItem1.Text = "Wrap Lines";
             this.wrapLinesToolStripMenuItem1.Click += new System.EventHandler(this.WrapLinesToolStripMenuItem_Click);
             // 
@@ -171,7 +173,7 @@ namespace TransformerApp
             // 
             this.formatAndIndentToolStripMenuItem.Image = global::Transformer.Properties.Resources.icons8_Indent_Filled_100;
             this.formatAndIndentToolStripMenuItem.Name = "formatAndIndentToolStripMenuItem";
-            this.formatAndIndentToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.formatAndIndentToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.formatAndIndentToolStripMenuItem.Text = "Format and Indent";
             this.formatAndIndentToolStripMenuItem.Click += new System.EventHandler(this.IndentClick);
             // 
@@ -183,7 +185,7 @@ namespace TransformerApp
             this.msxmlSelect});
             this.processorSelectMenuItem.Image = global::Transformer.Properties.Resources.ProcessModel_32x;
             this.processorSelectMenuItem.Name = "processorSelectMenuItem";
-            this.processorSelectMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.processorSelectMenuItem.Size = new System.Drawing.Size(211, 26);
             this.processorSelectMenuItem.Text = "Set Processor";
             // 
             // saxonSelect
@@ -216,7 +218,7 @@ namespace TransformerApp
             // 
             this.openTreeFormToolStripMenuItem.Image = global::Transformer.Properties.Resources.DependencyGraph_16x;
             this.openTreeFormToolStripMenuItem.Name = "openTreeFormToolStripMenuItem";
-            this.openTreeFormToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.openTreeFormToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.openTreeFormToolStripMenuItem.Text = "Source Tree";
             this.openTreeFormToolStripMenuItem.Click += new System.EventHandler(this.OpenTreeFormToolStripMenuItem_Click);
             // 
@@ -224,14 +226,14 @@ namespace TransformerApp
             // 
             this.xPathQueryToolStripMenuItem.Image = global::Transformer.Properties.Resources.XPath_32x;
             this.xPathQueryToolStripMenuItem.Name = "xPathQueryToolStripMenuItem";
-            this.xPathQueryToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.xPathQueryToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.xPathQueryToolStripMenuItem.Text = "XPath Query";
             this.xPathQueryToolStripMenuItem.Click += new System.EventHandler(this.XPathQueryToolStripMenuItem_Click);
             // 
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.searchToolStripMenuItem.Text = "Search";
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.SearchToolStripMenuItem_Click);
             // 
@@ -239,7 +241,7 @@ namespace TransformerApp
             // 
             this.simpleModeToolStripMenuItem.CheckOnClick = true;
             this.simpleModeToolStripMenuItem.Name = "simpleModeToolStripMenuItem";
-            this.simpleModeToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
+            this.simpleModeToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
             this.simpleModeToolStripMenuItem.Text = "Simple Mode";
             this.simpleModeToolStripMenuItem.Click += new System.EventHandler(this.SimpleModeToolStripMenuItem_Click);
             // 
@@ -454,6 +456,13 @@ namespace TransformerApp
             this.toolStripButton2.Text = "toolStripButton2";
             this.toolStripButton2.Click += new System.EventHandler(this.SearchToolStripMenuItem_Click);
             // 
+            // validateXSLTtestToolStripMenuItem
+            // 
+            this.validateXSLTtestToolStripMenuItem.Name = "validateXSLTtestToolStripMenuItem";
+            this.validateXSLTtestToolStripMenuItem.Size = new System.Drawing.Size(211, 26);
+            this.validateXSLTtestToolStripMenuItem.Text = "Validate XSLT [test]";
+            this.validateXSLTtestToolStripMenuItem.Click += new System.EventHandler(this.validateXSLTtestToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -525,5 +534,6 @@ namespace TransformerApp
         private System.Windows.Forms.ToolStripMenuItem msxmlSelect;
         private System.Windows.Forms.ToolStripMenuItem simpleModeToolStripMenuItem;
         public System.Windows.Forms.ToolStripButton indentButton;
+        private System.Windows.Forms.ToolStripMenuItem validateXSLTtestToolStripMenuItem;
     }
 }

@@ -254,5 +254,10 @@ namespace TransformerApp
             formatAndIndentToolStripMenuItem.Enabled = !formatAndIndentToolStripMenuItem.Enabled;
             simpleMode = !simpleMode;
         }
+
+        private void validateXSLTtestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            scintillaXSL.Validate();
+        }
     }
 }

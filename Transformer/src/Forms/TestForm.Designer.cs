@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.scintillaXml1 = new ScintillaXml();
+            this.scintillaXml1 = new ScintillaXml(true);
             this.SuspendLayout();
             // 
             // scintillaXml1
